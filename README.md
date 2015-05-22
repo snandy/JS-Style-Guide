@@ -1,5 +1,5 @@
 # JavaScript代码规范
-[原文: https://github.com/airbnb/javascript](https://github.com/airbnb/javascript)，依据本人习惯做了部分修改
+原文: [https://github.com/airbnb/javascript](https://github.com/airbnb/javascript)，依据本人习惯做了部分修改
 
 
 ## <a name='table-of-contents'>内容列表</a>
@@ -73,7 +73,7 @@
     console.log(foo[0], bar[0]) // => 9, 9
     ```
 
-**[返回顶部](#table-of-contents)**
+**[返回列表](#table-of-contents)**
 
 ## <a name='references'>引用</a>
 
@@ -121,7 +121,7 @@
     console.log(b) // ReferenceError
     ```
 
-**[返回顶部](#table-of-contents)**
+**[返回列表](#table-of-contents)**
 
 ## <a name='Objects'>对象</a>
 
@@ -215,7 +215,7 @@
     }
     ```
 
-**[返回顶部](#table-of-contents)**
+**[返回列表](#table-of-contents)**
 
 ## <a name='Arrays'>数组</a>
 
@@ -266,7 +266,7 @@
     const nodes = Array.from(foo);
     ```
 
-**[返回顶部](#table-of-contents)**
+**[返回列表](#table-of-contents)**
 
 ## <a name='Destructuring'>解构</a>
 
@@ -381,7 +381,7 @@
     }
     ```
 
-**[返回顶部](#table-of-contents)**
+**[返回列表](#table-of-contents)**
 
 
 ## <a name="Functions">函数</a>
@@ -501,7 +501,7 @@
   ```
 
 
-**[返回顶部](#table-of-contents)**
+**[返回列表](#table-of-contents)**
 
 ## <a name="arrow-functions">箭头函数</a>
 
@@ -542,9 +542,7 @@
 
 ## <a name="Constructors">构造器</a>
 
-  - [9.1](#9.1) <a name='9.1'></a> Always use `class`. Avoid manipulating `prototype` directly.
-
-  > Why? `class` syntax is more concise and easier to reason about.
+  - [9.1](#9.1) <a name='9.1'></a> 使用class定义类，避免使用函数及其原型
 
     ```javascript
     // bad
@@ -571,9 +569,7 @@
     }
     ```
 
-  - [9.2](#9.2) <a name='9.2'></a> Use `extends` for inheritance.
-
-  > Why? It is a built-in way to inherit prototype functionality without breaking `instanceof`.
+  - [9.2](#9.2) <a name='9.2'></a> 使用extends实现继承
 
     ```javascript
     // bad
@@ -594,7 +590,7 @@
     }
     ```
 
-  - [9.3](#9.3) <a name='9.3'></a> Methods can return `this` to help with method chaining.
+  - [9.3](#9.3) <a name='9.3'></a> 方法内可以使用return this实现链式调用
 
     ```javascript
     // bad
@@ -631,7 +627,7 @@
     ```
 
 
-  - [9.4](#9.4) <a name='9.4'></a> It's okay to write a custom toString() method, just make sure it works successfully and causes no side effects.
+  - [9.4](#9.4) <a name='9.4'></a> 可以重写类的toString方法，只要确保它可用且无副作用
 
     ```javascript
     class Jedi {
@@ -649,10 +645,10 @@
     }
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[返回列表](#table-of-contents)**
 
 
-## Modules
+## <a name="Modules">模块</a>
 
   - [10.1](#10.1) <a name='10.1'></a> Always use modules (`import`/`export`) over a non-standard module system. You can always transpile to your preferred module system.
 
@@ -699,7 +695,7 @@
     export default es6;
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[返回列表](#table-of-contents)**
 
 ## Iterators and Generators
 
@@ -732,7 +728,7 @@
 
   > Why? They don't transpile well to ES5.
 
-**[⬆ back to top](#table-of-contents)**
+**[返回列表](#table-of-contents)**
 
 
 ## Properties
@@ -767,7 +763,7 @@
     const isJedi = getProp('jedi');
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[返回列表](#table-of-contents)**
 
 
 ## Variables
@@ -876,7 +872,7 @@
     }
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[返回列表](#table-of-contents)**
 
 
 ## Hoisting
@@ -972,7 +968,7 @@
 
   - For more information refer to [JavaScript Scoping & Hoisting](http://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting) by [Ben Cherry](http://www.adequatelygood.com/).
 
-**[⬆ back to top](#table-of-contents)**
+**[返回列表](#table-of-contents)**
 
 
 ## Comparison Operators & Equality
@@ -1020,7 +1016,7 @@
 
   - [15.4](#15.4) <a name='15.4'></a> For more information see [Truth Equality and JavaScript](http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/#more-2108) by Angus Croll.
 
-**[⬆ back to top](#table-of-contents)**
+**[返回列表](#table-of-contents)**
 
 
 ## Blocks
@@ -1072,7 +1068,7 @@
     ```
 
 
-**[⬆ back to top](#table-of-contents)**
+**[返回列表](#table-of-contents)**
 
 
 ## Comments
@@ -1163,7 +1159,7 @@
     }
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[返回列表](#table-of-contents)**
 
 
 ## Whitespace
@@ -1349,7 +1345,7 @@
     ```
 
 
-**[⬆ back to top](#table-of-contents)**
+**[返回列表](#table-of-contents)**
 
 ## Commas
 
@@ -1430,7 +1426,7 @@
     ];
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[返回列表](#table-of-contents)**
 
 
 ## Semicolons
@@ -1459,7 +1455,7 @@
 
     [Read more](http://stackoverflow.com/a/7365214/1712802).
 
-**[⬆ back to top](#table-of-contents)**
+**[返回列表](#table-of-contents)**
 
 
 ## Type Casting & Coercion
@@ -1536,7 +1532,7 @@
     const hasAge = !!age;
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[返回列表](#table-of-contents)**
 
 
 ## Naming Conventions
@@ -1670,7 +1666,7 @@
     ```
 
 
-**[⬆ back to top](#table-of-contents)**
+**[返回列表](#table-of-contents)**
 
 
 ## Accessors
@@ -1725,7 +1721,7 @@
     }
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[返回列表](#table-of-contents)**
 
 
 ## Events
@@ -1756,7 +1752,7 @@
     });
     ```
 
-  **[⬆ back to top](#table-of-contents)**
+  **[返回列表](#table-of-contents)**
 
 
 ## jQuery
@@ -1818,14 +1814,14 @@
     $sidebar.find('ul').hide();
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[返回列表](#table-of-contents)**
 
 
 ## ECMAScript 5 Compatibility
 
   - [26.1](#26.1) <a name='26.1'></a> Refer to [Kangax](https://twitter.com/kangax/)'s ES5 [compatibility table](http://kangax.github.com/es5-compat-table/).
 
-**[⬆ back to top](#table-of-contents)**
+**[返回列表](#table-of-contents)**
 
 ## ECMAScript 6 Styles
 
@@ -1845,7 +1841,7 @@
 1. [Iterators and Generators](#iterators-and-generators)
 1. [Modules](#modules)
 
-**[⬆ back to top](#table-of-contents)**
+**[返回列表](#table-of-contents)**
 
 ## Testing
 
@@ -1857,7 +1853,7 @@
     }
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[返回列表](#table-of-contents)**
 
 
 ## Performance
@@ -1871,7 +1867,7 @@
   - [Long String Concatenation](http://jsperf.com/ya-string-concat)
   - Loading...
 
-**[⬆ back to top](#table-of-contents)**
+**[返回列表](#table-of-contents)**
 
 
 ## Resources
@@ -1950,7 +1946,7 @@
   - [JavaScript Jabber](http://devchat.tv/js-jabber/)
 
 
-**[⬆ back to top](#table-of-contents)**
+**[返回列表](#table-of-contents)**
 
 ## In the Wild
 
@@ -2042,7 +2038,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-**[返回顶部](#table-of-contents)**
+**[返回列表](#table-of-contents)**
 
 # };
 
