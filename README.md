@@ -1,5 +1,5 @@
-# JS-Style-Guide
-JavaScript代码规范，依据本人习惯做了部分修改
+# JavaScript代码规范
+[原文: https://github.com/airbnb/javascript](https://github.com/airbnb/javascript)，依据本人习惯做了部分修改
 
 
 ## <a name='table-of-contents'>内容列表</a>
@@ -115,137 +115,85 @@ JavaScript代码规范，依据本人习惯做了部分修改
     ```javascript
     // const and let only exist in the blocks they are defined in.
     {
-      let a = 1;
-      const b = 1;
+      let a = 1
+      const b = 1
     }
-    console.log(a); // ReferenceError
-    console.log(b); // ReferenceError
+    console.log(a) // ReferenceError
+    console.log(b) // ReferenceError
     ```
 
 **[返回顶部](#table-of-contents)**
 
 ## <a name='Objects'>对象</a>
 
-  - [3.1](#3.1) <a name='3.1'></a> Use the literal syntax for object creation.
+  - [3.1](#3.1) <a name='3.1'></a> 使用对象直接量创建对象
 
     ```javascript
     // bad
-    const item = new Object();
+    const item = new Object()
 
     // good
-    const item = {};
+    const item = {}
     ```
 
-  - [3.2](#3.2) <a name='3.2'></a> Don't use [reserved words](http://es5.github.io/#x7.6.1) as keys. It won't work in IE8. [More info](https://github.com/airbnb/javascript/issues/61).
+  - [3.2](#3.2) <a name='3.2'></a> 不要使用 [保留字](http://es5.github.io/#x7.6.1) 当key，IE8里有bug， [查看更多](https://github.com/airbnb/javascript/issues/61)
 
     ```javascript
     // bad
     const superman = {
       default: { clark: 'kent' },
       private: true
-    };
+    }
 
     // good
     const superman = {
       defaults: { clark: 'kent' },
       hidden: true
-    };
+    }
     ```
 
-  - [3.3](#3.3) <a name='3.3'></a> Use readable synonyms in place of reserved words.
+  - [3.3](#3.3) <a name='3.3'></a> 使用可读性更好的同义词来替代保留字
 
     ```javascript
     // bad
     const superman = {
       class: 'alien'
-    };
+    }
 
     // bad
     const superman = {
       klass: 'alien'
-    };
+    }
 
     // good
     const superman = {
       type: 'alien'
-    };
-    ```
-
-  <a name="es6-computed-properties"></a>
-  - [3.4](#3.4) <a name='3.4'></a> Use computed property names when creating objects with dynamic property names.
-
-  > Why? They allow you to define all the properties of an object in one place.
-
-    ```javascript
-
-    function getKey(k) {
-      return `a key named ${k}`;
     }
-
-    // bad
-    const obj = {
-      id: 5,
-      name: 'San Francisco',
-    };
-    obj[getKey('enabled')] = true;
-
-    // good
-    const obj = {
-      id: 5,
-      name: 'San Francisco',
-      [getKey('enabled')]: true,
-    };
     ```
 
-  <a name="es6-object-shorthand"></a>
-  - [3.5](#3.5) <a name='3.5'></a> Use object method shorthand.
-
-    ```javascript
-    // bad
-    const atom = {
-      value: 1,
-
-      addValue: function (value) {
-        return atom.value + value;
-      },
-    };
-
-    // good
-    const atom = {
-      value: 1,
-
-      addValue(value) {
-        return atom.value + value;
-      },
-    };
-    ```
 
   <a name="es6-object-concise"></a>
-  - [3.6](#3.6) <a name='3.6'></a> Use property value shorthand.
-
-  > Why? It is shorter to write and descriptive.
+  - [3.4](#3.4) <a name='3.4'></a> 使用简写的属性
 
     ```javascript
-    const lukeSkywalker = 'Luke Skywalker';
+    const lukeSkywalker = 'Luke Skywalker'
 
     // bad
     const obj = {
       lukeSkywalker: lukeSkywalker
-    };
+    }
 
     // good
     const obj = {
       lukeSkywalker
-    };
+    }
     ```
 
-  - [3.7](#3.7) <a name='3.7'></a> Group your shorthand properties at the beginning of your object declaration.
-
-  > Why? It's easier to tell which properties are using the shorthand.
+  - [3.5](#3.5) <a name='3.5'></a> 简写属性放在开头并分组
 
     ```javascript
-    const anakinSkywalker = 'Anakin Skywalker';
-    const lukeSkywalker = 'Luke Skywalker';
+    const anakinSkywalker = 'Anakin Skywalker'
+    const lukeSkywalker = 'Luke Skywalker'
 
     // bad
     const obj = {
@@ -255,114 +203,111 @@ JavaScript代码规范，依据本人习惯做了部分修改
       episodeThree: 3,
       mayTheFourth: 4,
       anakinSkywalker,
-    };
-
-    // good
-    const obj = {
-      lukeSkywalker,
-      anakinSkywalker,
-      episodeOne: 1,
-      twoJedisWalkIntoACantina: 2,
-      episodeThree: 3,
-      mayTheFourth: 4,
-    };
-    ```
-
-**[⬆ back to top](#table-of-contents)**
-
-## Arrays
-
-  - [4.1](#4.1) <a name='4.1'></a> Use the literal syntax for array creation.
-
-    ```javascript
-    // bad
-    const items = new Array();
-
-    // good
-    const items = [];
-    ```
-
-  - [4.2](#4.2) <a name='4.2'></a> Use Array#push instead of direct assignment to add items to an array.
-
-    ```javascript
-    const someStack = [];
-
-
-    // bad
-    someStack[someStack.length] = 'abracadabra';
-
-    // good
-    someStack.push('abracadabra');
-    ```
-
-  <a name="es6-array-spreads"></a>
-  - [4.3](#4.3) <a name='4.3'></a> Use array spreads `...` to copy arrays.
-
-    ```javascript
-    // bad
-    const len = items.length;
-    const itemsCopy = [];
-    let i;
-
-    for (i = 0; i < len; i++) {
-      itemsCopy[i] = items[i];
     }
 
     // good
-    const itemsCopy = [...items];
+    const obj = {
+      lukeSkywalker,
+      anakinSkywalker,
+      episodeOne: 1,
+      twoJedisWalkIntoACantina: 2,
+      episodeThree: 3,
+      mayTheFourth: 4,
+    }
     ```
-  - [4.4](#4.4) <a name='4.4'></a> To convert an array-like object to an array, use Array#from.
+
+**[返回顶部](#table-of-contents)**
+
+## <a name='Arrays'>数组</a>
+
+  - [4.1](#4.1) <a name='4.1'></a> 使用数组直接量定义数组
+
+    ```javascript
+    // bad
+    const items = new Array()
+
+    // good
+    const items = []
+    ```
+
+  - [4.2](#4.2) <a name='4.2'></a> 添加元素用push替代直接复制
+
+    ```javascript
+    const someStack = []
+
+
+    // bad
+    someStack[someStack.length] = 'abracadabra'
+
+    // good
+    someStack.push('abracadabra')
+    ```
+
+  <a name="es6-array-spreads"></a>
+  - [4.3](#4.3) <a name='4.3'></a> 使用扩展运算符 `...` 复制数组
+
+    ```javascript
+    // bad
+    const len = items.length
+    const itemsCopy = []
+    let i
+
+    for (i = 0; i < len; i++) {
+      itemsCopy[i] = items[i]
+    }
+
+    // good
+    const itemsCopy = [...items]
+    ```
+
+  - [4.4](#4.4) <a name='4.4'></a> 使用Array.from将伪数组转成数组
 
     ```javascript
     const foo = document.querySelectorAll('.foo');
     const nodes = Array.from(foo);
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[返回顶部](#table-of-contents)**
 
-## Destructuring
+## <a name='Destructuring'>解构</a>
 
-  - [5.1](#5.1) <a name='5.1'></a> Use object destructuring when accessing and using multiple properties of an object.
-
-  > Why? Destructuring saves you from creating temporary references for those properties.
+  - [5.1](#5.1) <a name='5.1'></a> 使用对象解构
 
     ```javascript
     // bad
     function getFullName(user) {
-      const firstName = user.firstName;
-      const lastName = user.lastName;
+      const firstName = user.firstName
+      const lastName = user.lastName
 
-      return `${firstName} ${lastName}`;
+      return `${firstName} ${lastName}`
     }
 
     // good
     function getFullName(obj) {
-      const { firstName, lastName } = obj;
-      return `${firstName} ${lastName}`;
+      const { firstName, lastName } = obj
+      return `${firstName} ${lastName}`
     }
 
     // best
     function getFullName({ firstName, lastName }) {
-      return `${firstName} ${lastName}`;
+      return `${firstName} ${lastName}`
     }
     ```
 
-  - [5.2](#5.2) <a name='5.2'></a> Use array destructuring.
+  - [5.2](#5.2) <a name='5.2'></a> 使用数组解构
 
     ```javascript
-    const arr = [1, 2, 3, 4];
+    const arr = [1, 2, 3, 4]
 
     // bad
-    const first = arr[0];
-    const second = arr[1];
+    const first = arr[0]
+    const second = arr[1]
 
     // good
-    const [first, second] = arr;
+    const [first, second] = arr
     ```
 
-  - [5.3](#5.3) <a name='5.3'></a> Use object destructuring for multiple return values, not array destructuring.
-
-  > Why? You can add new properties over time or change the order of things without breaking call sites.
+  - [5.3](#5.3) <a name='5.3'></a> 使用对象解构一次返回多个值。
 
     ```javascript
     // bad
@@ -385,11 +330,11 @@ JavaScript代码规范，依据本人习惯做了部分修改
     ```
 
 
-**[⬆ back to top](#table-of-contents)**
+**[返回首页](#table-of-contents)**
 
-## Strings
+## <a name="Strings">字符串</a>
 
-  - [6.1](#6.1) <a name='6.1'></a> Use single quotes `''` for strings.
+  - [6.1](#6.1) <a name='6.1'></a> 使用单引号定义字符串
 
     ```javascript
     // bad
@@ -399,8 +344,7 @@ JavaScript代码规范，依据本人习惯做了部分修改
     const name = 'Capt. Janeway';
     ```
 
-  - [6.2](#6.2) <a name='6.2'></a> Strings longer than 80 characters should be written across multiple lines using string concatenation.
-  - [6.3](#6.3) <a name='6.3'></a> Note: If overused, long strings with concatenation could impact performance. [jsPerf](http://jsperf.com/ya-string-concat) & [Discussion](https://github.com/airbnb/javascript/issues/40).
+  - [6.2](#6.2) <a name='6.2'></a> 超过80个字符的字符串采用加号 “+”， 多行显示
 
     ```javascript
     // bad
@@ -419,9 +363,7 @@ JavaScript代码规范，依据本人习惯做了部分修改
     ```
 
   <a name="es6-template-literals"></a>
-  - [6.4](#6.4) <a name='6.4'></a> When programmatically building up strings, use template strings instead of concatenation.
-
-  > Why? Template strings give you a readable, concise syntax with proper newlines and string interpolation features.
+  - [6.4](#6.4) <a name='6.4'></a> 使用模板替代字符串拼加
 
     ```javascript
     // bad
@@ -440,14 +382,12 @@ JavaScript代码规范，依据本人习惯做了部分修改
     }
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[返回顶部](#table-of-contents)**
 
 
-## Functions
+## <a name="Functions">函数</a>
 
-  - [7.1](#7.1) <a name='7.1'></a> Use function declarations instead of function expressions.
-
-  > Why? Function declarations are named, so they're easier to identify in call stacks. Also, the whole body of a function declaration is hoisted, whereas only the reference of a function expression is hoisted. This rule makes it possible to always use [Arrow Functions](#arrow-functions) in place of function expressions.
+  - [7.1](#7.1) <a name='7.1'></a> 使用函数声明替代函数表达式
 
     ```javascript
     // bad
@@ -459,7 +399,7 @@ JavaScript代码规范，依据本人习惯做了部分修改
     }
     ```
 
-  - [7.2](#7.2) <a name='7.2'></a> Function expressions:
+  - [7.2](#7.2) <a name='7.2'></a> 函数表达式
 
     ```javascript
     // immediately-invoked function expression (IIFE)
@@ -468,8 +408,8 @@ JavaScript代码规范，依据本人习惯做了部分修改
     })();
     ```
 
-  - [7.3](#7.3) <a name='7.3'></a> Never declare a function in a non-function block (if, while, etc). Assign the function to a variable instead. Browsers will allow you to do it, but they all interpret it differently, which is bad news bears.
-  - [7.4](#7.4) <a name='7.4'></a> **Note:** ECMA-262 defines a `block` as a list of statements. A function declaration is not a statement. [Read ECMA-262's note on this issue](http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf#page=97).
+  - [7.3](#7.3) <a name='7.3'></a> 不要将一个函数定义非函数块内，如if while语句等。虽然浏览器允许这么干，但在各个浏览器中<a href="http://w3help.org/zh-cn/causes/SJ9002" target="_blank">表现不一致</a>。
+  - [7.4](#7.4) <a name='7.4'></a> **注意:** ECMA-262 定义了一些语句块，但函数声明不属于语句。 [查看ECMA-262关于此问题](http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf#page=97).
 
     ```javascript
     // bad
@@ -488,7 +428,7 @@ JavaScript代码规范，依据本人习惯做了部分修改
     }
     ```
 
-  - [7.5](#7.5) <a name='7.5'></a> Never name a parameter `arguments`. This will take precedence over the `arguments` object that is given to every function scope.
+  - [7.5](#7.5) <a name='7.5'></a> 参数不要命名为 “arguments”，该名在函数内自动创建
 
     ```javascript
     // bad
@@ -503,9 +443,9 @@ JavaScript代码规范，依据本人习惯做了部分修改
     ```
 
   <a name="es6-rest"></a>
-  - [7.6](#7.6) <a name='7.6'></a> Never use `arguments`, opt to use rest syntax `...` instead.
+  - [7.6](#7.6) <a name='7.6'></a> 使用扩展运算符替代 “arguments”
 
-  > Why? `...` is explicit about which arguments you want pulled. Plus rest arguments are a real Array and not Array-like like `arguments`.
+  > 为什么？ “...” 具有arguments的所有功能，并且它是一个真正的数组，arguments则是一个伪数组。
 
     ```javascript
     // bad
@@ -521,7 +461,7 @@ JavaScript代码规范，依据本人习惯做了部分修改
     ```
 
   <a name="es6-default-parameters"></a>
-  - [7.7](#7.7) <a name='7.7'></a> Use default parameter syntax rather than mutating function arguments.
+  - [7.7](#7.7) <a name='7.7'></a> 多个参数有默认值时，使用默认参数特性
 
     ```javascript
     // really bad
@@ -547,9 +487,7 @@ JavaScript代码规范，依据本人习惯做了部分修改
     }
     ```
 
-  - [7.8](#7.8) <a name='7.8'></a> Avoid side effects with default parameters
-
-  > Why? They are confusing to reason about.
+  - [7.8](#7.8) <a name='7.8'></a> 注意避免默认参数的副作用
 
   ```javascript
   var b = 1;
@@ -564,9 +502,9 @@ JavaScript代码规范，依据本人习惯做了部分修改
   ```
 
 
-**[⬆ back to top](#table-of-contents)**
+**[返回顶部](#table-of-contents)**
 
-## Arrow Functions
+## <a name="arrow-functions">箭头函数</a>
 
   - [8.1](#8.1) <a name='8.1'></a> When you must use function expressions (as when passing an anonymous function), use arrow function notation.
 
