@@ -650,9 +650,9 @@
 
 ## <a name="Modules">模块</a>
 
-  - [10.1](#10.1) <a name='10.1'></a> Always use modules (`import`/`export`) over a non-standard module system. You can always transpile to your preferred module system.
+  - [10.1](#10.1) <a name='10.1'></a> 经常使用 (`import`/`export`) 在非标准的模块系统中，你可以迁移到你想要的模块系统。
 
-  > Why? Modules are the future, let's start using the future now.
+  > 为什么? 模块是未来，现在就让我们开始使用。
 
     ```javascript
     // bad
@@ -668,9 +668,9 @@
     export default es6;
     ```
 
-  - [10.2](#10.2) <a name='10.2'></a> Do not use wildcard imports.
+  - [10.2](#10.2) <a name='10.2'></a> 不要使用通配符导入模块
 
-  > Why? This makes sure you have a single default export.
+  > 这确保你有一个简单的默认导出API的方式
 
     ```javascript
     // bad
@@ -680,7 +680,7 @@
     import AirbnbStyleGuide from './AirbnbStyleGuide';
     ```
 
-  - [10.3](#10.3) <a name='10.3'></a>And do not export directly from an import.
+  - [10.3](#10.3) <a name='10.3'></a> 不要导入后立即导出模块
 
   > Why? Although the one-liner is concise, having one clear way to import and one clear way to export makes things consistent.
 
@@ -697,7 +697,7 @@
 
 **[返回列表](#table-of-contents)**
 
-## Iterators and Generators
+## <a name="iterators-and-generators">迭代器和生成器</a>
 
   - [11.1](#11.1) <a name='11.1'></a> Don't use iterators. Prefer JavaScript's higher-order functions like `map()` and `reduce()` instead of loops like `for-of`.
 
