@@ -2,7 +2,7 @@
 JavaScript代码规范，依据本人习惯做了部分修改
 
 
-## Table of Contents
+## 内容列表
 
   1. [类型](#types)
   1. [引用](#references)
@@ -41,7 +41,7 @@ JavaScript代码规范，依据本人习惯做了部分修改
   1. [贡献者](#contributors)
   1. [许可](#license)
 
-## Types
+## 类型
 
   - [1.1](#1.1) <a name='1.1'></a> **原始类型**: 直接传值
 
@@ -74,43 +74,43 @@ JavaScript代码规范，依据本人习惯做了部分修改
     console.log(foo[0], bar[0]) // => 9, 9
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[返回顶部](#table-of-contents)**
 
-## References
+## 引用
 
-  - [2.1](#2.1) <a name='2.1'></a> Use `const` for all of your references; avoid using `var`.
+  - [2.1](#2.1) <a name='2.1'></a> 使用关键字 const 声明变量，避免使用 var
 
-  > Why? This ensures that you can't reassign your references (mutation), which can lead to bugs and difficult to comprehend code.
+  > 为什么？这可以确保该变量不能二次赋值，可以保证bug及晦涩代码的减少。
 
     ```javascript
     // bad
-    var a = 1;
-    var b = 2;
+    var a = 1
+    var b = 2
 
     // good
-    const a = 1;
-    const b = 2;
+    const a = 1
+    const b = 2
     ```
 
-  - [2.2](#2.2) <a name='2.2'></a> If you must mutate references, use `let` instead of `var`.
+  - [2.2](#2.2) <a name='2.2'></a> 如果需要使用可变的引用，使用 let，不要使用 var
 
-  > Why? `let` is block-scoped rather than function-scoped like `var`.
+  > 为什么？ let在函数内具有块级作用域，var没有。
 
     ```javascript
     // bad
-    var count = 1;
+    var count = 1
     if (true) {
-      count += 1;
+      count += 1
     }
 
     // good, use the let.
-    let count = 1;
+    let count = 1
     if (true) {
-      count += 1;
+      count += 1
     }
     ```
 
-  - [2.3](#2.3) <a name='2.3'></a> Note that both `let` and `const` are block-scoped.
+  - [2.3](#2.3) <a name='2.3'></a> 注意 let 和 const 都具有块级作用域。
 
     ```javascript
     // const and let only exist in the blocks they are defined in.
@@ -122,7 +122,7 @@ JavaScript代码规范，依据本人习惯做了部分修改
     console.log(b); // ReferenceError
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[返回顶部](#table-of-contents)**
 
 ## Objects
 
