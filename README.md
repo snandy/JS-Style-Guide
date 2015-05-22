@@ -41,7 +41,7 @@ JavaScript代码规范，依据本人习惯做了部分修改
   1. [贡献者](#contributors)
   1. [许可](#license)
 
-## 类型
+## <a name='types'>类型</a>
 
   - [1.1](#1.1) <a name='1.1'></a> **原始类型**: 直接传值
 
@@ -76,7 +76,7 @@ JavaScript代码规范，依据本人习惯做了部分修改
 
 **[返回顶部](#table-of-contents)**
 
-## 引用
+## <a name='types'>引用</a>
 
   - [2.1](#2.1) <a name='2.1'></a> 使用关键字 const 声明变量，避免使用 var
 
