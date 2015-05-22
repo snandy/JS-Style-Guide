@@ -34,8 +34,10 @@
   1. [测试](#testing)
   1. [性能](#performance)
   1. [资源](#resources)
+  1. [哪些人再使用](#in-the-wild)
   1. [JavaScript风格指南](#the-javascript-style-guide-guide)
   1. [Chat With Us About Javascript](#chat-with-us-about-javascript)
+  1. [贡献者](#contributors)
   1. [许可](#license)
 
 ## <a name='types'>类型</a>
@@ -1946,6 +1948,58 @@
 
 **[返回列表](#table-of-contents)**
 
+## In the Wild
+
+  This is a list of organizations that are using this style guide. Send us a pull request or open an issue and we'll add you to the list.
+
+  - **Aan Zee**: [AanZee/javascript](https://github.com/AanZee/javascript)
+  - **Adult Swim**: [adult-swim/javascript](https://github.com/adult-swim/javascript)
+  - **Airbnb**: [airbnb/javascript](https://github.com/airbnb/javascript)
+  - **American Insitutes for Research**: [AIRAST/javascript](https://github.com/AIRAST/javascript)
+  - **Apartmint**: [apartmint/javascript](https://github.com/apartmint/javascript)
+  - **Avalara**: [avalara/javascript](https://github.com/avalara/javascript)
+  - **Billabong**: [billabong/javascript](https://github.com/billabong/javascript)
+  - **Compass Learning**: [compasslearning/javascript-style-guide](https://github.com/compasslearning/javascript-style-guide)
+  - **DailyMotion**: [dailymotion/javascript](https://github.com/dailymotion/javascript)
+  - **Digitpaint** [digitpaint/javascript](https://github.com/digitpaint/javascript)
+  - **Evernote**: [evernote/javascript-style-guide](https://github.com/evernote/javascript-style-guide)
+  - **ExactTarget**: [ExactTarget/javascript](https://github.com/ExactTarget/javascript)
+  - **Flexberry**: [Flexberry/javascript-style-guide](https://github.com/Flexberry/javascript-style-guide)
+  - **Gawker Media**: [gawkermedia/javascript](https://github.com/gawkermedia/javascript)
+  - **GeneralElectric**: [GeneralElectric/javascript](https://github.com/GeneralElectric/javascript)
+  - **GoodData**: [gooddata/gdc-js-style](https://github.com/gooddata/gdc-js-style)
+  - **Grooveshark**: [grooveshark/javascript](https://github.com/grooveshark/javascript)
+  - **How About We**: [howaboutwe/javascript](https://github.com/howaboutwe/javascript)
+  - **InfoJobs**: [InfoJobs/JavaScript-Style-Guide](https://github.com/InfoJobs/JavaScript-Style-Guide)
+  - **Intent Media**: [intentmedia/javascript](https://github.com/intentmedia/javascript)
+  - **Jam3**: [Jam3/Javascript-Code-Conventions](https://github.com/Jam3/Javascript-Code-Conventions)
+  - **JSSolutions**: [JSSolutions/javascript](https://github.com/JSSolutions/javascript)
+  - **Kinetica Solutions**: [kinetica/javascript](https://github.com/kinetica/javascript)
+  - **Mighty Spring**: [mightyspring/javascript](https://github.com/mightyspring/javascript)
+  - **MinnPost**: [MinnPost/javascript](https://github.com/MinnPost/javascript)
+  - **ModCloth**: [modcloth/javascript](https://github.com/modcloth/javascript)
+  - **Money Advice Service**: [moneyadviceservice/javascript](https://github.com/moneyadviceservice/javascript)
+  - **Muber**: [muber/javascript](https://github.com/muber/javascript)
+  - **National Geographic**: [natgeo/javascript](https://github.com/natgeo/javascript)
+  - **National Park Service**: [nationalparkservice/javascript](https://github.com/nationalparkservice/javascript)
+  - **Nimbl3**: [nimbl3/javascript](https://github.com/nimbl3/javascript)
+  - **Orion Health**: [orionhealth/javascript](https://github.com/orionhealth/javascript)
+  - **Peerby**: [Peerby/javascript](https://github.com/Peerby/javascript)
+  - **Razorfish**: [razorfish/javascript-style-guide](https://github.com/razorfish/javascript-style-guide)
+  - **reddit**: [reddit/styleguide/javascript](https://github.com/reddit/styleguide/tree/master/javascript)
+  - **REI**: [reidev/js-style-guide](https://github.com/reidev/js-style-guide)
+  - **Ripple**: [ripple/javascript-style-guide](https://github.com/ripple/javascript-style-guide)
+  - **SeekingAlpha**: [seekingalpha/javascript-style-guide](https://github.com/seekingalpha/javascript-style-guide)
+  - **Shutterfly**: [shutterfly/javascript](https://github.com/shutterfly/javascript)
+  - **StudentSphere**: [studentsphere/javascript](https://github.com/studentsphere/javascript)
+  - **Target**: [target/javascript](https://github.com/target/javascript)
+  - **TheLadders**: [TheLadders/javascript](https://github.com/TheLadders/javascript)
+  - **T4R Technology**: [T4R-Technology/javascript](https://github.com/T4R-Technology/javascript)
+  - **Userify**: [userify/javascript](https://github.com/userify/javascript)
+  - **VoxFeed**: [VoxFeed/javascript-style-guide](https://github.com/VoxFeed/javascript-style-guide)
+  - **Weggo**: [Weggo/javascript](https://github.com/Weggo/javascript)
+  - **Zillow**: [zillow/javascript](https://github.com/zillow/javascript)
+  - **ZocDoc**: [ZocDoc/javascript](https://github.com/ZocDoc/javascript)
 
 ## The JavaScript Style Guide Guide
 
@@ -1954,6 +2008,10 @@
 ## Chat With Us About JavaScript
 
   - Find us on [gitter](https://gitter.im/airbnb/javascript).
+
+## Contributors
+
+  - [View Contributors](https://github.com/snandy/javascript/graphs/contributors)
 
 
 ## License
