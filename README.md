@@ -2,7 +2,7 @@
 JavaScript代码规范，依据本人习惯做了部分修改
 
 
-## 内容列表
+## <a name='table-of-contents'>内容列表</a>
 
   1. [类型](#types)
   1. [引用](#references)
@@ -76,7 +76,7 @@ JavaScript代码规范，依据本人习惯做了部分修改
 
 **[返回顶部](#table-of-contents)**
 
-## <a name='types'>引用</a>
+## <a name='references'>引用</a>
 
   - [2.1](#2.1) <a name='2.1'></a> 使用关键字 const 声明变量，避免使用 var
 
@@ -124,7 +124,7 @@ JavaScript代码规范，依据本人习惯做了部分修改
 
 **[返回顶部](#table-of-contents)**
 
-## Objects
+## <a name='Objects'>对象</a>
 
   - [3.1](#3.1) <a name='3.1'></a> Use the literal syntax for object creation.
 
