@@ -34,7 +34,7 @@
 
 ## <a name='references'>分号</a>
 
-  - 语句始终使用分号结尾，for, function, if, switch, try, while除外，不依赖于引擎隐式插入。
+  - 语句始终使用分号结尾，for, function, if, switch, try, while 除外，不要依赖于引擎隐式插入。
 
     ```javascript
     // bad
@@ -60,94 +60,24 @@
 
 ## <a name='Objects'>对象</a>
 
-  - [3.1](#3.1) <a name='3.1'></a> 使用对象直接量创建对象
+  - [3.1](#3.1) <a name='3.1'></a> 引号多用来定义字符串，始终使用单引号
 
     ```javascript
     // bad
-    const item = new Object()
+    var name = "John";
 
     // good
-    const item = {}
+    var name = 'John';
     ```
 
-  - [3.2](#3.2) <a name='3.2'></a> 不要使用 [保留字](http://es5.github.io/#x7.6.1) 当key，IE8里有bug， [查看更多](https://github.com/airbnb/javascript/issues/61)
+  - [3.2](#3.2) <a name='3.2'></a> HTML属性使用双引号，即单引号在外层，双引号在内层
 
     ```javascript
     // bad
-    const superman = {
-      default: { clark: 'kent' },
-      private: true
-    }
+    var html = “<a href=’http://www.jd.com’>京东</a>”;
 
     // good
-    const superman = {
-      defaults: { clark: 'kent' },
-      hidden: true
-    }
-    ```
-
-  - [3.3](#3.3) <a name='3.3'></a> 使用可读性更好的同义词来替代保留字
-
-    ```javascript
-    // bad
-    const superman = {
-      class: 'alien'
-    }
-
-    // bad
-    const superman = {
-      klass: 'alien'
-    }
-
-    // good
-    const superman = {
-      type: 'alien'
-    }
-    ```
-
-
-  <a name="es6-object-concise"></a>
-  - [3.4](#3.4) <a name='3.4'></a> 使用简写的属性
-
-    ```javascript
-    const lukeSkywalker = 'Luke Skywalker'
-
-    // bad
-    const obj = {
-      lukeSkywalker: lukeSkywalker
-    }
-
-    // good
-    const obj = {
-      lukeSkywalker
-    }
-    ```
-
-  - [3.5](#3.5) <a name='3.5'></a> 简写属性放在开头并分组
-
-    ```javascript
-    const anakinSkywalker = 'Anakin Skywalker'
-    const lukeSkywalker = 'Luke Skywalker'
-
-    // bad
-    const obj = {
-      episodeOne: 1,
-      twoJedisWalkIntoACantina: 2,
-      lukeSkywalker,
-      episodeThree: 3,
-      mayTheFourth: 4,
-      anakinSkywalker,
-    }
-
-    // good
-    const obj = {
-      lukeSkywalker,
-      anakinSkywalker,
-      episodeOne: 1,
-      twoJedisWalkIntoACantina: 2,
-      episodeThree: 3,
-      mayTheFourth: 4,
-    }
+    var html = ‘<a href=”http://www.jd.com”>京东</a>’;
     ```
 
 **[返回列表](#table-of-contents)**
