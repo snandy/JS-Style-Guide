@@ -1,77 +1,34 @@
-# JavaScript代码规范
-原文: [https://github.com/airbnb/javascript](https://github.com/airbnb/javascript)，依据本人习惯做了部分修改
-
+# JavaScript代码风格
 
 ## <a name='table-of-contents'>内容列表</a>
 
-  1. [类型](#types)
-  1. [引用](#references)
-  1. [对象](#objects)
-  1. [数组](#arrays)
-  1. [解构](#destructuring)
-  1. [字符串](#strings)
-  1. [函数](#functions)
-  1. [箭头函数](#arrow-functions)
-  1. [构造器](#constructors)
-  1. [模块](#modules)
-  1. [迭代器和生成器](#iterators-and-generators)
-  1. [属性](#properties)
-  1. [变量](#variables)
-  1. [变量提升](#hoisting)
-  1. [比较和等值运算符](#comparison-operators--equality)
-  1. [块](#blocks)
-  1. [注释](#comments)
-  1. [空格](#whitespace)
-  1. [逗号](#commas)
-  1. [分号](#semicolons)
-  1. [类型转换](#type-casting--coercion)
-  1. [命名约定](#naming-conventions)
-  1. [存取器](#accessors)
-  1. [事件](#events)
-  1. [jQuery](#jquery)
-  1. [ES5兼容性](#ecmascript-5-compatibility)
-  1. [ES6风格](#ecmascript-6-styles)
-  1. [测试](#testing)
-  1. [性能](#performance)
-  1. [资源](#resources)
-  1. [哪些人再使用](#in-the-wild)
-  1. [JavaScript风格指南](#the-javascript-style-guide-guide)
-  1. [Chat With Us About Javascript](#chat-with-us-about-javascript)
-  1. [贡献者](#contributors)
-  1. [许可](#license)
+  1. [缩进](#indent)
+  1. [分号](#semicolon)
+  1. [引号](#quotation-marks)
+  1. [大括号](#curly-brackets)
+  1. [中括号](#square-brackets)
+  1. [小括号](#parenthese)
+  1. [对象属性](#attribute)
+  1. [变量声明](#variable-declaration)
+  1. [注释](#comment)
 
-## <a name='types'>类型</a>
+## <a name='indent'>类型</a>
 
-  - [1.1](#1.1) <a name='1.1'></a> **原始类型**: 直接传值
+  - [1.1](#1.1) <a name='1.1'></a> if, else, switch, case, for, while和冒号后1个空格
 
-    + `string`
-    + `number`
-    + `boolean`
-    + `null`
-    + `undefined`
+  - [1.2](#1.2) <a name='1.2'></a> 赋值语句两边各1个空格
 
-    ```javascript
-    const foo = 1
-    let bar = foo
+  - [1.3](#1.3) <a name='1.3'></a> 两元运算符（==, >, <等）两边各1个空格
 
-    bar = 9
+  - [1.4](#1.4) <a name='1.4'></a> 函数参数之间1个空格
 
-    console.log(foo, bar) // => 1, 9
-    ```
-  - [1.2](#1.2) <a name='1.2'></a> **复合类型**: 传引用
+  - [1.5](#1.5) <a name='1.5'></a> 左大括号前1个空格
 
-    + `object`
-    + `array`
-    + `function`
+  - [1.6](#1.6) <a name='1.6'></a> 一行一条语句，语句行之间2个空格缩进，不使用Tab
 
-    ```javascript
-    var foo = [1, 2]
-    var bar = foo
+  - [1.7](#1.5) <a name='1.7'></a> 一元运算符（++，--）前后不加空格
 
-    bar[0] = 9
 
-    console.log(foo[0], bar[0]) // => 9, 9
-    ```
 
 **[返回列表](#table-of-contents)**
 
