@@ -92,6 +92,7 @@
     {
       //…
     }
+
     // good
     if (a > b) {
       //…
@@ -144,9 +145,6 @@
 
     ```javascript
     // bad
-    const errorMessage = 'This is a super long error that was thrown because of Batman. When you stop to think about how Batman had anything to do with this, you would get nowhere fast.';
-
-    // bad
     return(x + y);
 
     // good
@@ -178,37 +176,56 @@
 
 ## <a name="variable-declaration">变量命名</a>
 
-  - [8.1](#8.1) <a name='8.1'></a> 当需要使用函数表达式（或匿名函数）时，应使用箭头函数
-
-  > 为什么？ 箭头函数的上下文通常是你想要的， 另外它很简洁。
+  - [8.1](#8.1) <a name='8.1'></a> 对象属性，方法名开始的第一个单词小写，之后的单词首字母大写（驼峰式）
 
     ```javascript
     // bad
-    [1, 2, 3].map(function (x) {
-      return x * x;
-    });
+    var nickname = ‘John’;
 
     // good
-    [1, 2, 3].map((x) => {
-      return x * x;
-    });
+    var nickName = ‘John’;
     ```
 
-  - [8.2](#8.2) <a name='8.2'></a> 如函数在一行且只有一个参数，可以省略括号和圆括号，并使用隐式返回。否则，加括号，括号，并使用`返回`声明。
-
-  > 为什么？语法糖，它可读性更好，且可以把多个函数链接在一起.
-
-  > 为什么不？ 当返回一个对象时不要这么干。
+  - [8.2](#8.2) <a name='8.2'></a> 常量名全部用大写字母
 
     ```javascript
-    // good
-    [1, 2, 3].map(x => x * x);
+    // bad
+    var pi = 3.1415926
 
     // good
-    [1, 2, 3].reduce((total, n) => {
-      return total + n;
-    }, 0);
+    var PI = 3.1415926
     ```
+
+  - [8.3](#8.3) <a name='8.2'></a> 类（构造器）名首字母大写，用名词
+
+    ```javascript
+    // bad
+    function person(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+
+    // good
+    function Person(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+
+  - [8.4](#8.4) <a name='8.2'></a> 多个变量，使用多个var关键字，不使用逗号分隔
+
+    ```javascript
+    // bad
+    var name = ‘John’,
+        age = 30,
+        gender = ‘male’;
+
+    // good
+    var name = ‘John’;
+    var age = 30;
+    var gender = ‘male’;
+
+  - [8.5](#8.5) <a name='8.2'></a> 前缀参考
+
 
 **[返回首页](#table-of-contents)**
 
@@ -292,6 +309,4 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 **[返回列表](#table-of-contents)**
-
-# };
 
