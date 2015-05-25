@@ -12,7 +12,7 @@
   1. [变量声明](#variable-declaration)
   1. [注释](#comment)
 
-## <a name='indent'>类型</a>
+## <a name='indent'>缩进</a>
 
   - [1.1](#1.1) <a name='1.1'></a> if, else, switch, case, for, while和冒号后1个空格
 
@@ -32,50 +32,28 @@
 
 **[返回列表](#table-of-contents)**
 
-## <a name='references'>引用</a>
+## <a name='references'>分号</a>
 
-  - [2.1](#2.1) <a name='2.1'></a> 使用关键字 const 声明变量，避免使用 var
-
-  > 为什么？这可以确保该变量不能二次赋值，可以保证bug及晦涩代码的减少。
+  - 语句始终使用分号结尾，for, function, if, switch, try, while除外，不依赖于引擎隐式插入。
 
     ```javascript
     // bad
-    var a = 1
-    var b = 2
-
+    function fn() {
+      //…
+    };
     // good
-    const a = 1
-    const b = 2
-    ```
+    function fn() {
+      //…
+    }
 
-  - [2.2](#2.2) <a name='2.2'></a> 如果需要使用可变的引用，使用 let，不要使用 var
-
-  > 为什么？ let在函数内具有块级作用域，var没有。
-
-    ```javascript
     // bad
-    var count = 1
-    if (true) {
-      count += 1
+    for (var i = 0; i < 5; i++) {
+      //…
+    };
+    // good
+    for (var i = 0; i < 5; i++) {
+      //…
     }
-
-    // good, use the let.
-    let count = 1
-    if (true) {
-      count += 1
-    }
-    ```
-
-  - [2.3](#2.3) <a name='2.3'></a> 注意 let 和 const 都具有块级作用域。
-
-    ```javascript
-    // const and let only exist in the blocks they are defined in.
-    {
-      let a = 1
-      const b = 1
-    }
-    console.log(a) // ReferenceError
-    console.log(b) // ReferenceError
     ```
 
 **[返回列表](#table-of-contents)**
