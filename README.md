@@ -226,7 +226,14 @@
 
   - [8.5](#8.5) <a name='8.2'></a> 前缀参考
 
-
+    <table>
+		<thead>
+			<tr><td>前缀</td><td>类型</td><td>示例</td></tr>
+		</thead>
+		<tbody>
+			<tr><td>n</td><td>Number</td><td>nSum</td></tr>
+		</tbody>
+    </table>
 **[返回首页](#table-of-contents)**
 
 
@@ -255,27 +262,6 @@
         const value = this._queue[0];
         this._queue.splice(0, 1);
         return value;
-      }
-    }
-    ```
-
-  - [9.2](#9.2) <a name='9.2'></a> 使用extends实现继承
-
-    ```javascript
-    // bad
-    const inherits = require('inherits');
-    function PeekableQueue(contents) {
-      Queue.apply(this, contents);
-    }
-    inherits(PeekableQueue, Queue);
-    PeekableQueue.prototype.peek = function() {
-      return this._queue[0];
-    }
-
-    // good
-    class PeekableQueue extends Queue {
-      peek() {
-        return this._queue[0];
       }
     }
     ```
