@@ -29,9 +29,6 @@
   - 一元运算符（++，--）前后不加空格
 
 
-
-**[返回列表](#table-of-contents)**
-
 ## <a name='semicolon'>分号</a>
 
   - 语句始终使用分号结尾，for, function, if, switch, try, while 除外，不要依赖于引擎隐式插入。
@@ -56,11 +53,9 @@
     }
     ```
 
-**[返回列表](#table-of-contents)**
-
 ## <a name='quotation-marks'>引号</a>
 
-  - [3.1](#3.1) <a name='3.1'></a> 引号多用来定义字符串，始终使用单引号
+  - 引号多用来定义字符串，始终使用单引号
 
     ```javascript
     // bad
@@ -70,7 +65,7 @@
     var name = 'John';
     ```
 
-  - [3.2](#3.2) <a name='3.2'></a> HTML属性使用双引号，即单引号在外层，双引号在内层
+  - HTML属性使用双引号，即单引号在外层，双引号在内层
 
     ```javascript
     // bad
@@ -79,8 +74,6 @@
     // good
     var html = ‘<a href=”http://www.jd.com”>京东</a>’;
     ```
-
-**[返回列表](#table-of-contents)**
 
 ## <a name='curly-brackets'>大括号</a>
 
@@ -100,11 +93,9 @@
 
     ```
 
-**[返回列表](#table-of-contents)**
-
 ## <a name='square-brackets'>中括号</a>
 
-  - [5.1](#5.1) <a name='5.1'></a> 定义数组，成员以逗号分隔，逗号后加1个空格
+  - 定义数组，成员以逗号分隔，逗号后加1个空格
 
     ```javascript
     // bad
@@ -114,7 +105,7 @@
     var arr = [1, 2, 3, 4];
     ```
 
-  - [5.2](#5.2) <a name='5.2'></a> 取对象属性用点号，非标准属性才使用中括号
+  - 取对象属性用点号，非标准属性才使用中括号
 
     ```javascript
     var obj = {name: 'John'};
@@ -126,12 +117,9 @@
     var name = obj.name;
     ```
 
-
-**[返回首页](#table-of-contents)**
-
 ## <a name="parenthese">小括号</a>
 
-  - [6.1](#6.1) <a name='6.1'></a> 作为函数调用时函数名与左小括号之间没有空格
+  - 作为函数调用时函数名与左小括号之间没有空格
 
     ```javascript
     // bad
@@ -141,7 +129,7 @@
     func();
     ```
 
-  - [6.2](#6.2) <a name='6.2'></a> 作为强制运算符时左括号前加1个空格
+  - 作为强制运算符时左括号前加1个空格
 
     ```javascript
     // bad
@@ -150,8 +138,6 @@
     // good
     return (x + y);
     ```
-
-**[返回列表](#table-of-contents)**
 
 
 ## <a name="attribute">对象属性</a>
@@ -172,11 +158,9 @@
     }
     ```
 
-**[返回列表](#table-of-contents)**
-
 ## <a name="variable-declaration">变量命名</a>
 
-  - [8.1](#8.1) <a name='8.1'></a> 对象属性，方法名开始的第一个单词小写，之后的单词首字母大写（驼峰式）
+  - 对象属性，方法名开始的第一个单词小写，之后的单词首字母大写（驼峰式）
 
     ```javascript
     // bad
@@ -186,7 +170,7 @@
     var nickName = ‘John’;
     ```
 
-  - [8.2](#8.2) <a name='8.2'></a> 常量名全部用大写字母
+  - 常量名全部用大写字母
 
     ```javascript
     // bad
@@ -196,7 +180,7 @@
     var PI = 3.1415926
     ```
 
-  - [8.3](#8.3) <a name='8.2'></a> 类（构造器）名首字母大写，用名词
+  - 类（构造器）名首字母大写，用名词
 
     ```javascript
     // bad
@@ -211,7 +195,7 @@
       this.age = age;
     }
 	```
-  - [8.4](#8.4) <a name='8.2'></a> 多个变量，使用多个var关键字，不使用逗号分隔
+  - 多个变量，使用多个var关键字，不使用逗号分隔
 
     ```javascript
     // bad
@@ -224,7 +208,7 @@
     var age = 30;
     var gender = ‘male’;
 	```
-  - [8.5](#8.5) <a name='8.2'></a> 前缀参考
+  - 前缀参考
 
     <table>
 		<thead>
@@ -243,12 +227,11 @@
 			<tr><td>$</td><td>jQuery Object</td><td>$nav</td></tr>
 		</tbody>
     </table>
-**[返回首页](#table-of-contents)**
 
 
 ## <a name="comment">注释</a>
 
-  - [9.1](#9.1) <a name='9.1'></a> 使用class定义类，避免使用函数及其原型
+  - 使用class定义类，避免使用函数及其原型
 
     ```javascript
     // bad
@@ -274,9 +257,6 @@
       }
     }
     ```
-
-**[返回列表](#table-of-contents)**
-
 
 
 ## License
