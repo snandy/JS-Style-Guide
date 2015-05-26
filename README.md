@@ -210,7 +210,7 @@
       this.name = name;
       this.age = age;
     }
-
+	```
   - [8.4](#8.4) <a name='8.2'></a> 多个变量，使用多个var关键字，不使用逗号分隔
 
     ```javascript
@@ -223,7 +223,7 @@
     var name = ‘John’;
     var age = 30;
     var gender = ‘male’;
-
+	```
   - [8.5](#8.5) <a name='8.2'></a> 前缀参考
 
     <table>
