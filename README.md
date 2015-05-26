@@ -232,6 +232,15 @@
 		</thead>
 		<tbody>
 			<tr><td>n</td><td>Number</td><td>nSum</td></tr>
+			<tr><td>s</td><td>String</td><td>sName</td></tr>
+			<tr><td>o</td><td>Object</td><td>oHash</td></tr>
+			<tr><td>a</td><td>Array</td><td>aColl</td></tr>
+			<tr><td>is, can has</td><td>Boolean</td><td>isPass</td></tr>
+			<tr><td>get</td><td>Getter</td><td>getName</td></tr>
+			<tr><td>set</td><td>Setter</td><td>setName</td></tr>
+			<tr><td>i, j, k</td><td>iterator</td><td></td></tr>
+			<tr><td>el</td><td>HTMLElement</td><td>elNav</td></tr>
+			<tr><td>$</td><td>jQuery Object</td><td>$nav</td></tr>
 		</tbody>
     </table>
 **[返回首页](#table-of-contents)**
