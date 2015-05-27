@@ -257,6 +257,7 @@
     ```javascript
     // bad
     var nickname = 'John';
+    var nick_name = 'John';
 
     // good
     var nickName = 'John';
