@@ -203,7 +203,7 @@
     var obj = {name: 'John'};
 
     // bad
-	var name = obj[‘name’];
+	var name = obj['name'];
 
     // good
     var name = obj.name;
