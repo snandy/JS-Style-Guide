@@ -16,18 +16,110 @@
 
   - if, else, switch, case, for, while和冒号后1个空格
 
+    ```javascript
+    // bad
+    if(a > b) {
+
+    }
+    // good
+    if (a > b) {
+
+    }
+
+    // bad
+    for(var i = 0; i < 5; i++) {
+      //…
+    }
+    // good
+    for (var i = 0; i < 5; i++) {
+      //…
+    }
+    ```
+
   - 赋值语句两边各1个空格
+
+    ```javascript
+    // bad
+    name='John';
+
+    // good
+    name = 'John';
+    ```  
 
   - 两元运算符（==, >, <等）两边各1个空格
 
+    ```javascript
+    // bad
+    if (a==b) {
+
+    }
+
+    // good
+    if (a == b) {
+
+    }
+    ```    
+
   - 函数参数之间1个空格
+
+    ```javascript
+    // bad
+    function ajax(url,param,success) {
+      // ...
+    }
+
+    // good
+    function ajax(url, param, success) {
+      // ...
+    }
+    ```
 
   - 左大括号前1个空格
 
+    ```javascript
+    // bad
+    function ajax(url, param, success){
+      // ...
+    }
+    if (a > b){
+
+    }
+
+    // good
+    function ajax(url, param, success) {
+      // ...
+    }
+    if (a > b) {
+
+    }
+    ```
+
   - 一行一条语句，语句行之间2个空格缩进，不使用Tab
+
+    ```javascript
+    // bad
+    var name = 'John'; var obj = {};
+    if (name = 'Lily') { login(name); }
+
+    // good
+    var name = 'John';
+    var obj = {}; 
+    if (name = 'Lily') {
+      login(name);
+    }
+    ```  
 
   - 一元运算符（++，--）前后不加空格
 
+    ```javascript
+    // bad
+    ++ sum;
+    total --;
+
+    // good
+    ++sum;
+    total--;
+    ```
 
 ## <a name='semicolon'>分号</a>
 
