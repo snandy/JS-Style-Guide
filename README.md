@@ -324,32 +324,68 @@
 
 ## <a name="comment">注释</a>
 
-  - 使用class定义类，避免使用函数及其原型
+  - 在单行注释符后留一个空格
 
     ```javascript
     // bad
-    function Queue(contents = []) {
-      this._queue = [...contents];
-    }
-    Queue.prototype.pop = function() {
-      const value = this._queue[0];
-      this._queue.splice(0, 1);
-      return value;
-    }
+    //this is comment
 
 
     // good
-    class Queue {
-      constructor(contents = []) {
-        this._queue = [...contents];
-      }
-      pop() {
-        const value = this._queue[0];
-        this._queue.splice(0, 1);
-        return value;
-      }
-    }
+    // this is comment
     ```
+
+  - 在多行注释的结束符前留一个空格，使星号对齐
+    ```javascript
+    // bad
+    /*
+      this is comment
+    */
+    
+    // good
+    /*
+       this is comment
+     */
+    ```
+
+  - 不要把注释写在多行注释的开始符、结束符所在行
+    ```javascript
+    // bad
+    /* start
+
+    end */
+
+    /*
+    here is line 1
+    here is line 2
+     */    
+    
+    // good
+    /*
+       start
+       end
+     */
+
+    /*
+       here is line 1
+       here is line 2
+     */         
+    ```
+
+  - 如果某段代码有功能未实现或有待完善，必须添加“TODO”标记，“TODO”前后应留一个空格
+
+    ```javascript
+    // bad
+    // 未处理IE6-8的兼容性
+    function setOpacity(node, val) {
+      node.style.opacity = val;
+    }
+    
+    // good
+    // TODO 未处理IE6-8的兼容性
+    function setOpacity(node, val) {
+      node.style.opacity = val;
+    }
 
 
 ## License
