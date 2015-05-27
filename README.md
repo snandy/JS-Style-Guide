@@ -256,10 +256,10 @@
 
     ```javascript
     // bad
-    var nickname = ‘John’;
+    var nickname = 'John';
 
     // good
-    var nickName = ‘John’;
+    var nickName = 'John';
     ```
 
   - 常量名全部用大写字母
@@ -291,14 +291,14 @@
 
     ```javascript
     // bad
-    var name = ‘John’,
+    var name = 'John',
         age = 30,
-        gender = ‘male’;
+        gender = 'male';
 
     // good
-    var name = ‘John’;
+    var name = 'John';
     var age = 30;
-    var gender = ‘male’;
+    var gender = 'male';
 	```
   - 前缀参考
 
