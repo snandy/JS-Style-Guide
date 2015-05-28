@@ -386,7 +386,119 @@
     function setOpacity(node, val) {
       node.style.opacity = val;
     }
+    ```
 
+  - 文档注释会以预定格式出现在API文档中。以“/**”开头，“*/”结束，其间的每一行均以“*”开头且与开始符的第一个“*”对齐，注释内容与“*”间留一个空格
+
+    ```javascript
+    // bad
+    /*
+     * comment
+     */
+    
+    // good
+    /**
+     * comment
+     */
+    ```
+
+  - 文档注释必须包含一个或多个注释标签
+
+  ```javascript
+  // bad
+  /**
+   * 模块说明
+   */
+
+  // good
+  /**
+   * 模块说明
+   * @module 模块名
+   */
+
+  /**
+   * Core模块提供最基础的接口
+   * @module Core
+   */   
+  ```
+
+  - class必须搭配@constructor或@static使用，分别标记非静态类与静态类
+
+  ```javascript
+  // bad
+  /**
+   * 组件基类
+   * @class Component
+   */
+  function Componetn(nodes) {
+    // ...
+  }
+
+  // good
+  /**
+   * 组件基类
+   * @class Component
+   * @constructor
+   * @param {ArrayLike<Element>} nodes 初始化节点
+   */
+  function Componetn(nodes) {
+    // ...
+  }   
+  ```  
+
+  - 声明函数或类方法，没有指定@for时，表示此函数为全局或顶层函数。当函数为静态函数时，必须添加@static；当函数有参数时，必须使用@param；当函数有返回值时，必须使用@return
+
+  ```javascript
+  // bad
+  /**
+   * 返回当前集合中指定位置的元素
+   * @method
+   */
+  Component.prototype.getNode = function(i) {
+    // ...
+  }
+
+  // good
+  /**
+   * 返回当前集合中指定位置的元素
+   * @method
+   * @for Component
+   * @param {Number} 位置下标。如果为负数，则从集合的最后一个元素开始倒数
+   * @return {Element} 指定元素
+   */
+  Component.prototype.getNode = function(i) {
+    // ...
+  }
+  ``` 
+
+  - 声明对象属性，@property
+
+  ```javascript
+  // bad
+  /**
+   * id 元素id
+   * classNames 样式
+   */
+  var htmlOptions = {
+      id:null,
+      classNames: null
+  }
+  htmlOptions.id = "123";
+  htmlOptions.classNames = "arrow area";
+
+  // good
+  /**
+   * @property {IDString} id 元素id
+   * @property {ClassString} classNames 样式
+   */
+  var htmlOptions = {
+      id:null,
+      classNames: null
+  }
+  htmlOptions.id = "123";
+  htmlOptions.classNames = "arrow area";
+
+  ``` 
 
 ## License
 
