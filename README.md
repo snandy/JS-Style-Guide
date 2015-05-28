@@ -374,7 +374,7 @@
 
     ```javascript
     // bad
-    // 未处理IE6-8的兼容性
+    // 未处理IE的兼容性
     function setOpacity(node, val) {
       node.style.opacity = val;
     }
