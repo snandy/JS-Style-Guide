@@ -309,7 +309,7 @@
 
 ## <a name="properties">属性</a>
 
-  - [12.1](#12.1) <a name='12.1'></a> 使用点号 `.` 访问对象属性
+  - [6.1](#6.1) <a name='6.1'></a> 使用点号 `.` 访问对象属性
 
     ```javascript
     var luke = {
@@ -324,7 +324,7 @@
     var isJedi = luke.jedi;
     ```
 
-  - [12.2](#12.2) <a name='12.2'></a> Use subscript notation `[]` when accessing properties with a variable.
+  - [6.2](#6.2) <a name='6.2'></a> 当使用变量访问属性时使用中括号
 
     ```javascript
     var luke = {
@@ -342,9 +342,9 @@
 **[返回列表](#table-of-contents)**
 
 
-## Variables
+## <a name="variables">变量</a>
 
-  - [12.1](#12.1) <a name='12.1'></a> Always use `var` to declare variables. Not doing so will result in global variables. We want to avoid polluting the global namespace. Captain Planet warned us of that.
+  - [7.1](#7.1) <a name='7.1'></a> 总是使用 `var` 来声明变量，如果不这么做将导致产生全局变量，我们要避免污染全局命名空间
 
     ```javascript
     // bad
@@ -354,20 +354,12 @@
     var superPower = new SuperPower();
     ```
 
-  - [12.2](#12.2) <a name='12.2'></a> Use one `var` declaration per variable.
-
-    > Why? It's easier to add new variable declarations this way, and you never have to worry about swapping out a `;` for a `,` or introducing punctuation-only diffs.
+  - [7.2](#7.2) <a name='7.2'></a> 使用多个 `var` 以及新行声明多个变量，缩进2个空格
 
     ```javascript
     // bad
     var items = getItems(),
         goSportsTeam = true,
-        dragonball = 'z';
-
-    // bad
-    // (compare to above, and try to spot the mistake)
-    var items = getItems(),
-        goSportsTeam = true;
         dragonball = 'z';
 
     // good
@@ -376,77 +368,87 @@
     var dragonball = 'z';
     ```
 
-  - [12.3](#12.3) <a name='12.3'></a> Group all your `var`s and then group all your `let`s.
-
-  > Why? This is helpful when later on you might need to assign a variable depending on one of the previous assigned variables.
+  - [7.3](#7.3) <a name='7.3'></a> 最后再声明未赋值的变量，当你想引用之前已赋值变量的时候很有用
 
     ```javascript
-    // bad
-    let i, len, dragonball,
-        items = getItems(),
-        goSportsTeam = true;
+	// bad
+	var i, len, dragonball,
+	    items = getItems(),
+	    goSportsTeam = true;
 
-    // bad
-    let i;
-    var items = getItems();
-    let dragonball;
-    var goSportsTeam = true;
-    let len;
+	// bad
+	var i, items = getItems(),
+	    dragonball,
+	    goSportsTeam = true,
+	    len;
 
-    // good
-    var goSportsTeam = true;
-    var items = getItems();
-    let dragonball;
-    let i;
-    let length;
+	// good
+	var items = getItems(),
+	    goSportsTeam = true,
+	    dragonball,
+	    length,
+	    i;
     ```
 
-  - [12.4](#12.4) <a name='12.4'></a> Assign variables where you need them, but place them in a reasonable place.
-
-  > Why? `let` and `var` are block scoped and not function scoped.
+  - [7.4](#7.4) <a name='7.4'></a> 在作用域顶部声明变量，避免变量声明和赋值引起的相关问题
 
     ```javascript
-    // good
-    function() {
-      test();
-      console.log('doing stuff..');
+	// bad
+	function() {
+	  test();
+	  console.log('doing stuff..');
 
-      //..other stuff..
+	  //..other stuff..
 
-      var name = getName();
+	  var name = getName();
 
-      if (name === 'test') {
-        return false;
-      }
+	  if (name === 'test') {
+	    return false;
+	  }
 
-      return name;
-    }
+	  return name;
+	}
 
-    // bad - unnessary function call
-    function(hasName) {
-      var name = getName();
+	// good
+	function() {
+	  var name = getName();
 
-      if (!hasName) {
-        return false;
-      }
+	  test();
+	  console.log('doing stuff..');
 
-      this.setFirstName(name);
+	  //..other stuff..
 
-      return true;
-    }
+	  if (name === 'test') {
+	    return false;
+	  }
 
-    // good
-    function(hasName) {
-      if (!hasName) {
-        return false;
-      }
+	  return name;
+	}
 
-      var name = getName();
-      this.setFirstName(name);
+	// bad
+	function() {
+	  var name = getName();
 
-      return true;
-    }
+	  if (!arguments.length) {
+	    return false;
+	  }
+
+	  return true;
+	}
+
+	// good
+	function() {
+	  if (!arguments.length) {
+	    return false;
+	  }
+
+	  var name = getName();
+
+	  return true;
+	}  
+
     ```
+
 
 **[返回列表](#table-of-contents)**
 
