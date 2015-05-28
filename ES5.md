@@ -187,7 +187,7 @@
     var name = 'Capt. Janeway';
     ```
 
-  - [4.2](#4.2) <a name='4.2'></a> 超过80个字符的字符串采用加号 “+”， 多行显示
+  - [4.2](#4.2) <a name='4.2'></a> 超过80个字符的字符串采用加号 `+`， 多行显示
 
     ```javascript
     // bad
@@ -205,7 +205,7 @@
       'with this, you would get nowhere fast.';
     ```
 
-  - [4.3](#4.3) <a name='4.3'></a> 编程时使用join而不是字符串连接来构建字符串
+  - [4.3](#4.3) <a name='4.3'></a> 编程时使用 `join` 而不是字符串连接来构建字符串
 
    ```javascript
     var items;
@@ -274,7 +274,7 @@
     })();
     ```
 
-  - [5.3](#5.3) <a name='5.3'></a> 不要将一个函数定义非函数块内，如if while语句等。虽然浏览器允许这么干，但在各个浏览器中<a href="http://w3help.org/zh-cn/causes/SJ9002" target="_blank">表现不一致</a>。
+  - [5.3](#5.3) <a name='5.3'></a> 不要将一个函数定义非函数块内，如 `if` `while` 语句等。虽然浏览器允许这么干，但在各个浏览器中<a href="http://w3help.org/zh-cn/causes/SJ9002" target="_blank">表现不一致</a>。
   - [5.4](#5.4) <a name='5.4'></a> **注意:** ECMA-262定义把块定义为一组语句，但函数声明不属于语句。 [查看ECMA-262关于此问题](http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf#page=97).
 
     ```javascript
