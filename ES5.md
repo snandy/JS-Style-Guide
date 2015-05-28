@@ -10,10 +10,6 @@
   1. [数组](#arrays)
   1. [字符串](#strings)
   1. [函数](#functions)
-  1. [箭头函数](#arrow-functions)
-  1. [构造器](#varructors)
-  1. [模块](#modules)
-  1. [迭代器和生成器](#iterators-and-generators)
   1. [属性](#properties)
   1. [变量](#variables)
   1. [变量提升](#hoisting)
@@ -310,237 +306,10 @@
 
 **[返回列表](#table-of-contents)**
 
-## <a name="arrow-functions">箭头函数</a>
 
-  - [8.1](#8.1) <a name='8.1'></a> 当需要使用函数表达式（或匿名函数）时，应使用箭头函数
+## <a name="properties">属性</a>
 
-  > 为什么？ 箭头函数的上下文通常是你想要的， 另外它很简洁。
-
-    ```javascript
-    // bad
-    [1, 2, 3].map(function (x) {
-      return x * x;
-    });
-
-    // good
-    [1, 2, 3].map((x) => {
-      return x * x;
-    });
-    ```
-
-  - [8.2](#8.2) <a name='8.2'></a> 如函数在一行且只有一个参数，可以省略括号和圆括号，并使用隐式返回。否则，加括号，括号，并使用`返回`声明。
-
-  > 为什么？语法糖，它可读性更好，且可以把多个函数链接在一起.
-
-  > 为什么不？ 当返回一个对象时不要这么干。
-
-    ```javascript
-    // good
-    [1, 2, 3].map(x => x * x);
-
-    // good
-    [1, 2, 3].reduce((total, n) => {
-      return total + n;
-    }, 0);
-    ```
-
-**[返回首页](#table-of-contents)**
-
-
-## <a name="varructors">构造器</a>
-
-  - [9.1](#9.1) <a name='9.1'></a> 使用class定义类，避免使用函数及其原型
-
-    ```javascript
-    // bad
-    function Queue(contents = []) {
-      this._queue = [...contents];
-    }
-    Queue.prototype.pop = function() {
-      var value = this._queue[0];
-      this._queue.splice(0, 1);
-      return value;
-    }
-
-
-    // good
-    class Queue {
-      varructor(contents = []) {
-        this._queue = [...contents];
-      }
-      pop() {
-        var value = this._queue[0];
-        this._queue.splice(0, 1);
-        return value;
-      }
-    }
-    ```
-
-  - [9.2](#9.2) <a name='9.2'></a> 使用extends实现继承
-
-    ```javascript
-    // bad
-    var inherits = require('inherits');
-    function PeekableQueue(contents) {
-      Queue.apply(this, contents);
-    }
-    inherits(PeekableQueue, Queue);
-    PeekableQueue.prototype.peek = function() {
-      return this._queue[0];
-    }
-
-    // good
-    class PeekableQueue extends Queue {
-      peek() {
-        return this._queue[0];
-      }
-    }
-    ```
-
-  - [9.3](#9.3) <a name='9.3'></a> 方法内可以使用return this实现链式调用
-
-    ```javascript
-    // bad
-    Jedi.prototype.jump = function() {
-      this.jumping = true;
-      return true;
-    };
-
-    Jedi.prototype.setHeight = function(height) {
-      this.height = height;
-    };
-
-    var luke = new Jedi();
-    luke.jump(); // => true
-    luke.setHeight(20); // => undefined
-
-    // good
-    class Jedi {
-      jump() {
-        this.jumping = true;
-        return this;
-      }
-
-      setHeight(height) {
-        this.height = height;
-        return this;
-      }
-    }
-
-    var luke = new Jedi();
-
-    luke.jump()
-      .setHeight(20);
-    ```
-
-
-  - [9.4](#9.4) <a name='9.4'></a> 可以重写类的toString方法，只要确保它可用且无副作用
-
-    ```javascript
-    class Jedi {
-      contructor(options = {}) {
-        this.name = options.name || 'no name';
-      }
-
-      getName() {
-        return this.name;
-      }
-
-      toString() {
-        return `Jedi - ${this.getName()}`;
-      }
-    }
-    ```
-
-**[返回列表](#table-of-contents)**
-
-
-## <a name="Modules">模块</a>
-
-  - [10.1](#10.1) <a name='10.1'></a> 经常使用 (`import`/`export`) 在非标准的模块系统中，你可以迁移到你想要的模块系统。
-
-  > 为什么? 模块是未来，现在就让我们开始使用。
-
-    ```javascript
-    // bad
-    var AirbnbStyleGuide = require('./AirbnbStyleGuide');
-    module.exports = AirbnbStyleGuide.es6;
-
-    // ok
-    import AirbnbStyleGuide from './AirbnbStyleGuide';
-    export default AirbnbStyleGuide.es6;
-
-    // best
-    import { es6 } from './AirbnbStyleGuide';
-    export default es6;
-    ```
-
-  - [10.2](#10.2) <a name='10.2'></a> 不要使用通配符导入模块
-
-  > 这确保你有一个简单的默认导出API的方式
-
-    ```javascript
-    // bad
-    import * as AirbnbStyleGuide from './AirbnbStyleGuide';
-
-    // good
-    import AirbnbStyleGuide from './AirbnbStyleGuide';
-    ```
-
-  - [10.3](#10.3) <a name='10.3'></a> 不要导入后立即导出模块
-
-  > Why? Although the one-liner is concise, having one clear way to import and one clear way to export makes things consistent.
-
-    ```javascript
-    // bad
-    // filename es6.js
-    export { es6 as default } from './airbnbStyleGuide';
-
-    // good
-    // filename es6.js
-    import { es6 } from './AirbnbStyleGuide';
-    export default es6;
-    ```
-
-**[返回列表](#table-of-contents)**
-
-## <a name="iterators-and-generators">迭代器和生成器</a>
-
-  - [11.1](#11.1) <a name='11.1'></a> Don't use iterators. Prefer JavaScript's higher-order functions like `map()` and `reduce()` instead of loops like `for-of`.
-
-  > Why? This enforces our immutable rule. Dealing with pure functions that return values is easier to reason about than side-effects.
-
-    ```javascript
-    var numbers = [1, 2, 3, 4, 5];
-
-    // bad
-    let sum = 0;
-    for (let num of numbers) {
-      sum += num;
-    }
-
-    sum === 15;
-
-    // good
-    let sum = 0;
-    numbers.forEach((num) => sum += num);
-    sum === 15;
-
-    // best (use the functional force)
-    var sum = numbers.reduce((total, num) => total + num, 0);
-    sum === 15;
-    ```
-
-  - [11.2](#11.2) <a name='11.2'></a> Don't use generators for now.
-
-  > Why? They don't transpile well to ES5.
-
-**[返回列表](#table-of-contents)**
-
-
-## Properties
-
-  - [12.1](#12.1) <a name='12.1'></a> Use dot notation when accessing properties.
+  - [12.1](#12.1) <a name='12.1'></a> 使用点号 `.` 访问对象属性
 
     ```javascript
     var luke = {
@@ -1156,7 +925,7 @@
 
 ## Commas
 
-  - [19.1](#19.1) <a name='19.1'></a> Leading commas: **Nope.**
+  - [16.1](#16.1) <a name='16.1'></a> Leading commas: **Nope.**
 
     ```javascript
     // bad
