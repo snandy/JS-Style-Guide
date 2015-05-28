@@ -498,6 +498,25 @@
 
     ``` 
 
+  - 文件注释位于文件的最前面，应包括文件的以下信息：概要说明及版本（必须）、项目地址（开源组件必须）、版权声明（必须）、开源协议（开源组件必须）、版本号（必须）、修改时间（必须）。
+
+    ```javascript
+    // bad
+    /*!
+     * Z.js Javascript Library
+     */
+
+    // good
+    /*!
+     * Z.js Javascript Library v1.0.0
+     * @snandy - (2013-03-15)
+     * http://github.com/snandy/z.js
+     * Released under MIT license
+     */
+
+    ``` 
+
+
 ## License
 
 The MIT License (MIT)
