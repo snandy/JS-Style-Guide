@@ -8,7 +8,6 @@
   1. [引用](#references)
   1. [对象](#objects)
   1. [数组](#arrays)
-  1. [解构](#destructuring)
   1. [字符串](#strings)
   1. [函数](#functions)
   1. [箭头函数](#arrow-functions)
@@ -88,7 +87,7 @@
     var item = {};
     ```
 
-  - [2.2](#2.2) <a name='2.2'></a> 不要使用 [保留字](http://es5.github.io/#x7.6.1) 当key，IE8里有bug， [查看更多](http://www.cnblogs.com/snandy/archive/2011/04/01/2001727.html)
+  - [2.2](#2.2) <a name='2.2'></a> 不要使用 [保留字](http://es5.github.io/#x5.4.1) 当key，IE8里有bug， [查看更多](http://www.cnblogs.com/snandy/archive/2011/04/01/2001727.html)
 
     ```javascript
     // bad
@@ -175,72 +174,10 @@
 
 **[返回列表](#table-of-contents)**
 
-## <a name='Destructuring'>解构</a>
-
-  - [5.1](#5.1) <a name='5.1'></a> 使用对象解构
-
-    ```javascript
-    // bad
-    function getFullName(user) {
-      var firstName = user.firstName
-      var lastName = user.lastName
-
-      return `${firstName} ${lastName}`
-    }
-
-    // good
-    function getFullName(obj) {
-      var { firstName, lastName } = obj
-      return `${firstName} ${lastName}`
-    }
-
-    // best
-    function getFullName({ firstName, lastName }) {
-      return `${firstName} ${lastName}`
-    }
-    ```
-
-  - [5.2](#5.2) <a name='5.2'></a> 使用数组解构
-
-    ```javascript
-    var arr = [1, 2, 3, 4]
-
-    // bad
-    var first = arr[0]
-    var second = arr[1]
-
-    // good
-    var [first, second] = arr
-    ```
-
-  - [5.3](#5.3) <a name='5.3'></a> 使用对象解构一次返回多个值。
-
-    ```javascript
-    // bad
-    function processInput(input) {
-      // then a miracle occurs
-      return [left, right, top, bottom];
-    }
-
-    // the caller needs to think about the order of return data
-    var [left, __, top] = processInput(input);
-
-    // good
-    function processInput(input) {
-      // then a miracle occurs
-      return { left, right, top, bottom };
-    }
-
-    // the caller selects only the data they need
-    var { left, right } = processInput(input);
-    ```
-
-
-**[返回首页](#table-of-contents)**
 
 ## <a name="Strings">字符串</a>
 
-  - [6.1](#6.1) <a name='6.1'></a> 使用单引号定义字符串
+  - [4.1](#4.1) <a name='4.1'></a> 使用单引号定义字符串
 
     ```javascript
     // bad
@@ -250,7 +187,7 @@
     var name = 'Capt. Janeway';
     ```
 
-  - [6.2](#6.2) <a name='6.2'></a> 超过80个字符的字符串采用加号 “+”， 多行显示
+  - [4.2](#4.2) <a name='4.2'></a> 超过80个字符的字符串采用加号 “+”， 多行显示
 
     ```javascript
     // bad
@@ -268,23 +205,46 @@
       'with this, you would get nowhere fast.';
     ```
 
-  <a name="es6-template-literals"></a>
-  - [6.4](#6.4) <a name='6.4'></a> 使用模板替代字符串拼加
+  - [4.3](#4.3) <a name='4.3'></a> 编程时使用join而不是字符串连接来构建字符串
 
-    ```javascript
-    // bad
-    function sayHi(name) {
-      return 'How are you, ' + name + '?';
-    }
+   ```javascript
+    var items;
+    var messages;
+    var i, length;
+
+    messages = [{
+        state: 'success',
+        message: 'This one worked.'
+    },{
+        state: 'success',
+        message: 'This one worked as well.'
+    },{
+        state: 'error',
+        message: 'This one did not work.'
+    }];
+
+    length = messages.length;
 
     // bad
-    function sayHi(name) {
-      return ['How are you, ', name, '?'].join();
+    function inbox(messages) {
+      items = '<ul>';
+
+      for (i = 0; i < length; i++) {
+        items += '<li>' + messages[i].message + '</li>';
+      }
+
+      return items + '</ul>';
     }
 
     // good
-    function sayHi(name) {
-      return `How are you, ${name}?`;
+    function inbox(messages) {
+      items = [];
+
+      for (i = 0; i < length; i++) {
+        items[i] = messages[i].message;
+      }
+
+      return '<ul><li>' + items.join('</li><li>') + '</li></ul>';
     }
     ```
 
@@ -293,7 +253,7 @@
 
 ## <a name="Functions">函数</a>
 
-  - [7.1](#7.1) <a name='7.1'></a> 使用函数声明替代函数表达式
+  - [5.1](#5.1) <a name='5.1'></a> 使用函数声明替代函数表达式
 
     ```javascript
     // bad
@@ -305,7 +265,7 @@
     }
     ```
 
-  - [7.2](#7.2) <a name='7.2'></a> 函数表达式
+  - [5.2](#5.2) <a name='5.2'></a> 函数表达式
 
     ```javascript
     // immediately-invoked function expression (IIFE)
@@ -314,8 +274,8 @@
     })();
     ```
 
-  - [7.3](#7.3) <a name='7.3'></a> 不要将一个函数定义非函数块内，如if while语句等。虽然浏览器允许这么干，但在各个浏览器中<a href="http://w3help.org/zh-cn/causes/SJ9002" target="_blank">表现不一致</a>。
-  - [7.4](#7.4) <a name='7.4'></a> **注意:** ECMA-262 定义了一些语句块，但函数声明不属于语句。 [查看ECMA-262关于此问题](http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf#page=97).
+  - [5.3](#5.3) <a name='5.3'></a> 不要将一个函数定义非函数块内，如if while语句等。虽然浏览器允许这么干，但在各个浏览器中<a href="http://w3help.org/zh-cn/causes/SJ9002" target="_blank">表现不一致</a>。
+  - [5.4](#5.4) <a name='5.4'></a> **注意:** ECMA-262定义把块定义为一组语句，但函数声明不属于语句。 [查看ECMA-262关于此问题](http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf#page=97).
 
     ```javascript
     // bad
@@ -334,7 +294,7 @@
     }
     ```
 
-  - [7.5](#7.5) <a name='7.5'></a> 参数不要命名为 “arguments”，该名在函数内自动创建
+  - [5.5](#5.5) <a name='5.5'></a> 参数不要命名为  `arguments`，该名在函数内自动创建
 
     ```javascript
     // bad
@@ -347,66 +307,6 @@
       // ...stuff...
     }
     ```
-
-  <a name="es6-rest"></a>
-  - [7.6](#7.6) <a name='7.6'></a> 使用扩展运算符替代 “arguments”
-
-  > 为什么？ “...” 具有arguments的所有功能，并且它是一个真正的数组，arguments则是一个伪数组。
-
-    ```javascript
-    // bad
-    function concatenateAll() {
-      var args = Array.prototype.slice.call(arguments);
-      return args.join('');
-    }
-
-    // good
-    function concatenateAll(...args) {
-      return args.join('');
-    }
-    ```
-
-  <a name="es6-default-parameters"></a>
-  - [7.7](#7.7) <a name='7.7'></a> 多个参数有默认值时，使用默认参数特性
-
-    ```javascript
-    // really bad
-    function handleThings(opts) {
-      // No! We shouldn't mutate function arguments.
-      // Double bad: if opts is falsy it'll be set to an object which may
-      // be what you want but it can introduce subtle bugs.
-      opts = opts || {};
-      // ...
-    }
-
-    // still bad
-    function handleThings(opts) {
-      if (opts === void 0) {
-        opts = {};
-      }
-      // ...
-    }
-
-    // good
-    function handleThings(opts = {}) {
-      // ...
-    }
-    ```
-
-  - [7.8](#7.8) <a name='7.8'></a> 注意避免默认参数的副作用
-
-  ```javascript
-  var b = 1;
-  // bad
-  function count(a = b++) {
-    console.log(a);
-  }
-  count();  // 1
-  count();  // 2
-  count(3); // 3
-  count();  // 3
-  ```
-
 
 **[返回列表](#table-of-contents)**
 
@@ -928,7 +828,7 @@
 
 ## Blocks
 
-  - [16.1](#16.1) <a name='16.1'></a> Use braces with all multi-line blocks.
+  - [14.1](#14.1) <a name='14.1'></a> Use braces with all multi-line blocks.
 
     ```javascript
     // bad
@@ -952,7 +852,7 @@
     }
     ```
 
-  - [16.2](#16.2) <a name='16.2'></a> If you're using multi-line blocks with `if` and `else`, put `else` on the same line as your
+  - [14.2](#14.2) <a name='14.2'></a> If you're using multi-line blocks with `if` and `else`, put `else` on the same line as your
     `if` block's closing brace.
 
     ```javascript
@@ -980,7 +880,7 @@
 
 ## Comments
 
-  - [17.1](#17.1) <a name='17.1'></a> Use `/** ... */` for multi-line comments. Include a description, specify types and values for all parameters and return values.
+  - [15.1](#15.1) <a name='15.1'></a> Use `/** ... */` for multi-line comments. Include a description, specify types and values for all parameters and return values.
 
     ```javascript
     // bad
@@ -1012,7 +912,7 @@
     }
     ```
 
-  - [17.2](#17.2) <a name='17.2'></a> Use `//` for single line comments. Place single line comments on a newline above the subject of the comment. Put an empty line before the comment.
+  - [15.2](#15.2) <a name='15.2'></a> Use `//` for single line comments. Place single line comments on a newline above the subject of the comment. Put an empty line before the comment.
 
     ```javascript
     // bad
@@ -1044,7 +944,7 @@
 
   - [17.3](#17.3) <a name='17.3'></a> Prefixing your comments with `FIXME` or `TODO` helps other developers quickly understand if you're pointing out a problem that needs to be revisited, or if you're suggesting a solution to the problem that needs to be implemented. These are different than regular comments because they are actionable. The actions are `FIXME -- need to figure this out` or `TODO -- need to implement`.
 
-  - [17.4](#17.4) <a name='17.4'></a> Use `// FIXME:` to annotate problems.
+  - [15.4](#15.4) <a name='15.4'></a> Use `// FIXME:` to annotate problems.
 
     ```javascript
     class Calculator {
@@ -1055,7 +955,7 @@
     }
     ```
 
-  - [17.5](#17.5) <a name='17.5'></a> Use `// TODO:` to annotate solutions to problems.
+  - [15.5](#15.5) <a name='15.5'></a> Use `// TODO:` to annotate solutions to problems.
 
     ```javascript
     class Calculator {
@@ -1726,13 +1626,13 @@
 
 ## ECMAScript 5 Compatibility
 
-  - [26.1](#26.1) <a name='26.1'></a> Refer to [Kangax](https://twitter.com/kangax/)'s ES5 [compatibility table](http://kangax.github.com/es5-compat-table/).
+  - [24.1](#24.1) <a name='24.1'></a> Refer to [Kangax](https://twitter.com/kangax/)'s ES5 [compatibility table](http://kangax.github.com/es5-compat-table/).
 
 **[返回列表](#table-of-contents)**
 
 ## ECMAScript 6 Styles
 
-[27.1](#27.1) <a name='27.1'></a> This is a collection of links to the various es6 features.
+[25.1](#25.1) <a name='25.1'></a> This is a collection of links to the various es6 features.
 
 1. [Arrow Functions](#arrow-functions)
 1. [Classes](#varructors)
