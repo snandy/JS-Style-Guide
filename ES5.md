@@ -1,4 +1,4 @@
-# JavaScript代码规范
+# JavaScript代码规范，遵循ES5
 原文: [https://github.com/airbnb/javascript](https://github.com/airbnb/javascript)，依据本人习惯做了部分修改
 
 

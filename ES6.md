@@ -1,10 +1,9 @@
-# JavaScript代码规范
+# ES6代码规范
 原文: [https://github.com/airbnb/javascript](https://github.com/airbnb/javascript)，依据本人习惯做了部分修改
 
 
 ## <a name='table-of-contents'>内容列表</a>
 
-  1. [类型](#types)
   1. [引用](#references)
   1. [对象](#objects)
   1. [数组](#arrays)
@@ -40,82 +39,48 @@
   1. [贡献者](#contributors)
   1. [许可](#license)
 
-## <a name='types'>类型</a>
-
-  - [1.1](#1.1) <a name='1.1'></a> **原始类型**: 直接传值
-
-    + `string`
-    + `number`
-    + `boolean`
-    + `null`
-    + `undefined`
-
-    ```javascript
-    const foo = 1
-    let bar = foo
-
-    bar = 9
-
-    console.log(foo, bar) // => 1, 9
-    ```
-  - [1.2](#1.2) <a name='1.2'></a> **复合类型**: 传引用
-
-    + `object`
-    + `array`
-    + `function`
-
-    ```javascript
-    var foo = [1, 2]
-    var bar = foo
-
-    bar[0] = 9
-
-    console.log(foo[0], bar[0]) // => 9, 9
-    ```
-
-**[返回列表](#table-of-contents)**
 
 ## <a name='references'>引用</a>
 
-  - [2.1](#2.1) <a name='2.1'></a> 使用关键字 const 声明变量，避免使用 var
+  - [1.1](#1.1) <a name='1.1'></a> 使用关键字 `const` 声明变量，避免使用 `var`。
 
-  > 为什么？这可以确保该变量不能二次赋值，可以保证bug及晦涩代码的减少。
+  > 为什么？这可以确保该变量不能二次赋值，可以减少bug及晦涩代码的。
 
     ```javascript
     // bad
-    var a = 1
-    var b = 2
+    var a = 1;
+    var b = 2;
 
     // good
-    const a = 1
-    const b = 2
+    const a = 1;
+    const b = 2;
     ```
 
-  - [2.2](#2.2) <a name='2.2'></a> 如果需要使用可变的引用，使用 let，不要使用 var
+  - [1.2](#1.2) <a name='1.2'></a> 如果需要使用可变的引用，使用 `let`，不要使用 `var`。
 
   > 为什么？ let在函数内具有块级作用域，var没有。
 
     ```javascript
     // bad
-    var count = 1
+    var count = 1;
     if (true) {
-      count += 1
+      count += 1;
     }
 
     // good, use the let.
-    let count = 1
+    let count = 1;
     if (true) {
-      count += 1
+      count += 1;
     }
     ```
 
-  - [2.3](#2.3) <a name='2.3'></a> 注意 let 和 const 都具有块级作用域。
+  - [1.3](#1.3) <a name='1.3'></a> 注意 `let` 和 `const` 都具有块级作用域。
 
     ```javascript
     // const and let only exist in the blocks they are defined in.
     {
-      let a = 1
-      const b = 1
+      let a = 1;
+      const b = 1;
     }
     console.log(a) // ReferenceError
     console.log(b) // ReferenceError
@@ -123,72 +88,25 @@
 
 **[返回列表](#table-of-contents)**
 
-## <a name='Objects'>对象</a>
+## <a name='objects'>对象</a>
 
-  - [3.1](#3.1) <a name='3.1'></a> 使用对象直接量创建对象
-
-    ```javascript
-    // bad
-    const item = new Object()
-
-    // good
-    const item = {}
-    ```
-
-  - [3.2](#3.2) <a name='3.2'></a> 不要使用 [保留字](http://es5.github.io/#x7.6.1) 当key，IE8里有bug， [查看更多](https://github.com/airbnb/javascript/issues/61)
+  - [2.1](#2.1) <a name='2.1'></a> 使用简写的属性
 
     ```javascript
-    // bad
-    const superman = {
-      default: { clark: 'kent' },
-      private: true
-    }
-
-    // good
-    const superman = {
-      defaults: { clark: 'kent' },
-      hidden: true
-    }
-    ```
-
-  - [3.3](#3.3) <a name='3.3'></a> 使用可读性更好的同义词来替代保留字
-
-    ```javascript
-    // bad
-    const superman = {
-      class: 'alien'
-    }
-
-    // bad
-    const superman = {
-      klass: 'alien'
-    }
-
-    // good
-    const superman = {
-      type: 'alien'
-    }
-    ```
-
-
-  <a name="es6-object-concise"></a>
-  - [3.4](#3.4) <a name='3.4'></a> 使用简写的属性
-
-    ```javascript
-    const lukeSkywalker = 'Luke Skywalker'
+    const lukeSkywalker = 'Luke Skywalker';
 
     // bad
     const obj = {
       lukeSkywalker: lukeSkywalker
-    }
+    };
 
     // good
     const obj = {
       lukeSkywalker
-    }
+    };
     ```
 
-  - [3.5](#3.5) <a name='3.5'></a> 简写属性放在开头并分组
+  - [2.2](#2.2) <a name='2.2'></a> 简写属性放在开头并分组
 
     ```javascript
     const anakinSkywalker = 'Anakin Skywalker'
@@ -217,49 +135,25 @@
 
 **[返回列表](#table-of-contents)**
 
-## <a name='Arrays'>数组</a>
+## <a name='arrays'>数组</a>
 
-  - [4.1](#4.1) <a name='4.1'></a> 使用数组直接量定义数组
-
-    ```javascript
-    // bad
-    const items = new Array()
-
-    // good
-    const items = []
-    ```
-
-  - [4.2](#4.2) <a name='4.2'></a> 添加元素用push替代直接复制
-
-    ```javascript
-    const someStack = []
-
-
-    // bad
-    someStack[someStack.length] = 'abracadabra'
-
-    // good
-    someStack.push('abracadabra')
-    ```
-
-  <a name="es6-array-spreads"></a>
-  - [4.3](#4.3) <a name='4.3'></a> 使用扩展运算符 `...` 复制数组
+  - [3.1](#3.1) <a name='3.1'></a> 使用扩展运算符 `...` 复制数组
 
     ```javascript
     // bad
-    const len = items.length
-    const itemsCopy = []
-    let i
+    const len = items.length;
+    const itemsCopy = [];
+    let i;
 
     for (i = 0; i < len; i++) {
-      itemsCopy[i] = items[i]
+      itemsCopy[i] = items[i];
     }
 
     // good
     const itemsCopy = [...items]
     ```
 
-  - [4.4](#4.4) <a name='4.4'></a> 使用Array.from将伪数组转成数组
+  - [3.2](#3.2) <a name='3.2'></a> 使用Array.from将伪数组转成数组
 
     ```javascript
     const foo = document.querySelectorAll('.foo');
@@ -268,9 +162,9 @@
 
 **[返回列表](#table-of-contents)**
 
-## <a name='Destructuring'>解构</a>
+## <a name='destructuring'>解构</a>
 
-  - [5.1](#5.1) <a name='5.1'></a> 使用对象解构
+  - [4.1](#4.1) <a name='4.1'></a> 使用对象解构
 
     ```javascript
     // bad
@@ -293,7 +187,7 @@
     }
     ```
 
-  - [5.2](#5.2) <a name='5.2'></a> 使用数组解构
+  - [4.2](#4.2) <a name='4.2'></a> 使用数组解构
 
     ```javascript
     const arr = [1, 2, 3, 4]
@@ -306,7 +200,7 @@
     const [first, second] = arr
     ```
 
-  - [5.3](#5.3) <a name='5.3'></a> 使用对象解构一次返回多个值。
+  - [4.3](#4.3) <a name='4.3'></a> 使用对象解构一次返回多个值。
 
     ```javascript
     // bad
@@ -331,38 +225,9 @@
 
 **[返回首页](#table-of-contents)**
 
-## <a name="Strings">字符串</a>
+## <a name="strings">字符串</a>
 
-  - [6.1](#6.1) <a name='6.1'></a> 使用单引号定义字符串
-
-    ```javascript
-    // bad
-    const name = "Capt. Janeway";
-
-    // good
-    const name = 'Capt. Janeway';
-    ```
-
-  - [6.2](#6.2) <a name='6.2'></a> 超过80个字符的字符串采用加号 “+”， 多行显示
-
-    ```javascript
-    // bad
-    const errorMessage = 'This is a super long error that was thrown because of Batman. When you stop to think about how Batman had anything to do with this, you would get nowhere fast.';
-
-    // bad
-    const errorMessage = 'This is a super long error that was thrown because \
-    of Batman. When you stop to think about how Batman had anything to do \
-    with this, you would get nowhere \
-    fast.';
-
-    // good
-    const errorMessage = 'This is a super long error that was thrown because ' +
-      'of Batman. When you stop to think about how Batman had anything to do ' +
-      'with this, you would get nowhere fast.';
-    ```
-
-  <a name="es6-template-literals"></a>
-  - [6.4](#6.4) <a name='6.4'></a> 使用模板替代字符串拼加
+  - [5.1](#5.1) <a name='5.1'></a> 使用模板替代字符串拼加
 
     ```javascript
     // bad
@@ -386,62 +251,6 @@
 
 ## <a name="Functions">函数</a>
 
-  - [7.1](#7.1) <a name='7.1'></a> 使用函数声明替代函数表达式
-
-    ```javascript
-    // bad
-    const foo = function () {
-    };
-
-    // good
-    function foo() {
-    }
-    ```
-
-  - [7.2](#7.2) <a name='7.2'></a> 函数表达式
-
-    ```javascript
-    // immediately-invoked function expression (IIFE)
-    (() => {
-      console.log('Welcome to the Internet. Please follow me.');
-    })();
-    ```
-
-  - [7.3](#7.3) <a name='7.3'></a> 不要将一个函数定义非函数块内，如if while语句等。虽然浏览器允许这么干，但在各个浏览器中<a href="http://w3help.org/zh-cn/causes/SJ9002" target="_blank">表现不一致</a>。
-  - [7.4](#7.4) <a name='7.4'></a> **注意:** ECMA-262 定义了一些语句块，但函数声明不属于语句。 [查看ECMA-262关于此问题](http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf#page=97).
-
-    ```javascript
-    // bad
-    if (currentUser) {
-      function test() {
-        console.log('Nope.');
-      }
-    }
-
-    // good
-    let test;
-    if (currentUser) {
-      test = () => {
-        console.log('Yup.');
-      };
-    }
-    ```
-
-  - [7.5](#7.5) <a name='7.5'></a> 参数不要命名为 “arguments”，该名在函数内自动创建
-
-    ```javascript
-    // bad
-    function nope(name, options, arguments) {
-      // ...stuff...
-    }
-
-    // good
-    function yup(name, options, args) {
-      // ...stuff...
-    }
-    ```
-
-  <a name="es6-rest"></a>
   - [7.6](#7.6) <a name='7.6'></a> 使用扩展运算符替代 “arguments”
 
   > 为什么？ “...” 具有arguments的所有功能，并且它是一个真正的数组，arguments则是一个伪数组。
@@ -748,7 +557,7 @@
     const isJedi = luke.jedi;
     ```
 
-  - [12.2](#12.2) <a name='12.2'></a> Use subscript notation `[]` when accessing properties with a variable.
+  - [11.2](#11.2) <a name='11.2'></a> Use subscript notation `[]` when accessing properties with a variable.
 
     ```javascript
     const luke = {
@@ -825,7 +634,7 @@
     let length;
     ```
 
-  - [13.4](#13.4) <a name='13.4'></a> Assign variables where you need them, but place them in a reasonable place.
+  - [12.1](#12.1) <a name='12.1'></a> Assign variables where you need them, but place them in a reasonable place.
 
   > Why? `let` and `const` are block scoped and not function scoped.
 
@@ -926,7 +735,7 @@
     }
     ```
 
-  - [14.3](#14.3) <a name='14.3'></a> Named function expressions hoist the variable name, not the function name or the function body.
+  - [13.1](#13.1) <a name='13.1'></a> Named function expressions hoist the variable name, not the function name or the function body.
 
     ```javascript
     function example() {
@@ -954,7 +763,7 @@
     }
     ```
 
-  - [14.4](#14.4) <a name='14.4'></a> Function declarations hoist their name and the function body.
+  - [13.2](#13.2) <a name='13.2'></a> Function declarations hoist their name and the function body.
 
     ```javascript
     function example() {
@@ -973,8 +782,8 @@
 
 ## Comparison Operators & Equality
 
-  - [15.1](#15.1) <a name='15.1'></a> Use `===` and `!==` over `==` and `!=`.
-  - [15.2](#15.2) <a name='15.2'></a> Conditional statements such as the `if` statement evaulate their expression using coercion with the `ToBoolean` abstract method and always follow these simple rules:
+  - [14.1](#14.1) <a name='14.1'></a> Use `===` and `!==` over `==` and `!=`.
+  - [14.2](#14.2) <a name='14.2'></a> Conditional statements such as the `if` statement evaulate their expression using coercion with the `ToBoolean` abstract method and always follow these simple rules:
 
     + **Objects** evaluate to **true**
     + **Undefined** evaluates to **false**
@@ -990,7 +799,7 @@
     }
     ```
 
-  - [15.3](#15.3) <a name='15.3'></a> Use shortcuts.
+  - [14.3](#14.3) <a name='14.3'></a> Use shortcuts.
 
     ```javascript
     // bad
@@ -1509,7 +1318,7 @@
     const val = inputValue >> 0;
     ```
 
-  - [21.5](#21.5) <a name='21.5'></a> **Note:** Be careful when using bitshift operations. Numbers are represented as [64-bit values](http://es5.github.io/#x4.3.19), but Bitshift operations always return a 32-bit integer ([source](http://es5.github.io/#x11.7)). Bitshift can lead to unexpected behavior for integer values larger than 32 bits. [Discussion](https://github.com/airbnb/javascript/issues/109). Largest signed 32-bit Int is 2,147,483,647:
+  - [21.5](#21.5) <a name='21.5'></a> **Note:** Be careful when using bitshift operations. Numbers are represented as [64-bit values](http://es5.github.io/#x3.1.19), but Bitshift operations always return a 32-bit integer ([source](http://es5.github.io/#x11.7)). Bitshift can lead to unexpected behavior for integer values larger than 32 bits. [Discussion](https://github.com/airbnb/javascript/issues/109). Largest signed 32-bit Int is 2,147,483,647:
 
     ```javascript
     2147483647 >> 0 //=> 2147483647
@@ -1551,7 +1360,7 @@
     }
     ```
 
-  - [22.2](#22.2) <a name='22.2'></a> Use camelCase when naming objects, functions, and instances.
+  - [21.2](#21.2) <a name='21.2'></a> Use camelCase when naming objects, functions, and instances.
 
     ```javascript
     // bad
@@ -1564,7 +1373,7 @@
     function thisIsMyFunction() {}
     ```
 
-  - [22.3](#22.3) <a name='22.3'></a> Use PascalCase when naming constructors or classes.
+  - [21.3](#21.3) <a name='21.3'></a> Use PascalCase when naming constructors or classes.
 
     ```javascript
     // bad
@@ -1702,7 +1511,7 @@
     }
     ```
 
-  - [23.4](#23.4) <a name='23.4'></a> It's okay to create get() and set() functions, but be consistent.
+  - [22.1](#22.1) <a name='22.1'></a> It's okay to create get() and set() functions, but be consistent.
 
     ```javascript
     class Jedi {
@@ -1757,7 +1566,7 @@
 
 ## jQuery
 
-  - [25.1](#25.1) <a name='25.1'></a> Prefix jQuery object variables with a `$`.
+  - [24.1](#24.1) <a name='24.1'></a> Prefix jQuery object variables with a `$`.
 
     ```javascript
     // bad
@@ -1767,7 +1576,7 @@
     const $sidebar = $('.sidebar');
     ```
 
-  - [25.2](#25.2) <a name='25.2'></a> Cache jQuery lookups.
+  - [24.2](#24.2) <a name='24.2'></a> Cache jQuery lookups.
 
     ```javascript
     // bad
@@ -1794,7 +1603,7 @@
     }
     ```
 
-  - [25.3](#25.3) <a name='25.3'></a> For DOM queries use Cascading `$('.sidebar ul')` or parent > child `$('.sidebar > ul')`. [jsPerf](http://jsperf.com/jquery-find-vs-context-sel/16)
+  - [24.3](#24.3) <a name='24.3'></a> For DOM queries use Cascading `$('.sidebar ul')` or parent > child `$('.sidebar > ul')`. [jsPerf](http://jsperf.com/jquery-find-vs-context-sel/16)
   - [25.4](#25.4) <a name='25.4'></a> Use `find` with scoped jQuery object queries.
 
     ```javascript
@@ -1881,7 +1690,7 @@
 
 **Read This**
 
-  - [Annotated ECMAScript 5.1](http://es5.github.com/)
+  - [Annotated ECMAScript 4.1](http://es5.github.com/)
 
 **Tools**
 
