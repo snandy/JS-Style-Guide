@@ -12,8 +12,7 @@
   1. [函数](#functions)
   1. [属性](#properties)
   1. [变量](#variables)
-  1. [变量提升](#hoisting)
-  1. [比较和等值运算符](#comparison-operators--equality)
+  1. [比较和等值运算符](#conditionals)
   1. [块](#blocks)
   1. [注释](#comments)
   1. [空格](#whitespace)
@@ -413,7 +412,7 @@
 	var dragonball, length;
     ```
 
-  - [7.5](#7.5) <a name='7.5'></a> 在作用域顶部（头部）声明变量，避免变量声明和赋值引起的相关问题
+  - [7.5](#7.5) <a name='7.5'></a> 在作用域顶部（头部）声明变量，避免声明和赋值引起问题
 
     ```javascript
 	// bad
@@ -474,17 +473,17 @@
 **[返回列表](#table-of-contents)**
 
 
-## Comparison Operators & Equality
+## <a name="conditionals">条件表达式和等号</a>
 
-  - [15.1](#15.1) <a name='15.1'></a> Use `===` and `!==` over `==` and `!=`.
-  - [15.2](#15.2) <a name='15.2'></a> Conditional statements such as the `if` statement evaulate their expression using coercion with the `ToBoolean` abstract method and always follow these simple rules:
+  - [8.1](#8.1) <a name='8.1'></a> 适当使用  ===  和  !==  以及  ==  和  != 
+  - [8.2](#8.2) <a name='8.2'></a> 条件表达式的转换内部执行ES规范里抽象方法的 `ToBoolean`， 遵循以下规则:
 
-    + **Objects** evaluate to **true**
-    + **Undefined** evaluates to **false**
-    + **Null** evaluates to **false**
-    + **Booleans** evaluate to **the value of the boolean**
-    + **Numbers** evaluate to **false** if **+0, -0, or NaN**, otherwise **true**
-    + **Strings** evaluate to **false** if an empty string `''`, otherwise **true**
+    + **对象** 转换为 **true**
+    + **Undefined** 转化为 **false**
+    + **Null** 转换为 **false**
+    + **Booleans** 转换为 **布尔自身的值**
+    + **Numbers** 如果是 **+0, -0, or NaN** 转换为 **false**，其它转换成 **true**
+    + **Strings** 如果是 空字符串 `''` 转换成 **false** , 其它转化成 **true**
 
     ```javascript
     if ([0]) {
@@ -493,14 +492,13 @@
     }
     ```
 
-  - [15.3](#15.3) <a name='15.3'></a> Use shortcuts.
+  - [8.3](#8.3) <a name='8.3'></a> 使用快捷方式
 
     ```javascript
     // bad
     if (name !== '') {
       // ...stuff...
     }
-
     // good
     if (name) {
       // ...stuff...
@@ -510,21 +508,20 @@
     if (collection.length > 0) {
       // ...stuff...
     }
-
     // good
     if (collection.length) {
       // ...stuff...
     }
     ```
 
-  - [15.4](#15.4) <a name='15.4'></a> For more information see [Truth Equality and JavaScript](http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/#more-2108) by Angus Croll.
+  - [8.4](#8.4) <a name='8.4'></a> 见 [JavaScript中奇葩的假值](http://www.cnblogs.com/snandy/p/3589517.html)
 
 **[返回列表](#table-of-contents)**
 
 
-## Blocks
+## <a name="blocks">块</a>
 
-  - [14.1](#14.1) <a name='14.1'></a> Use braces with all multi-line blocks.
+  - [9.1](#9.1) <a name='9.1'></a> 所有多行语句的块使用大括号
 
     ```javascript
     // bad
@@ -548,8 +545,7 @@
     }
     ```
 
-  - [14.2](#14.2) <a name='14.2'></a> If you're using multi-line blocks with `if` and `else`, put `else` on the same line as your
-    `if` block's closing brace.
+  - [14.2](#14.2) <a name='14.2'></a> `if` 和 `else` 块, 把 `else` 和第一个块的结束行放在一行
 
     ```javascript
     // bad
