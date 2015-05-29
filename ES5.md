@@ -354,7 +354,7 @@
     var superPower = new SuperPower();
     ```
 
-  - [7.2](#7.2) <a name='7.2'></a> 使用多个 `var` 以及新行声明多个变量，缩进2个空格
+  - [7.2](#7.2) <a name='7.2'></a> 使用多个 `var` 以及新行声明多个变量
 
     ```javascript
     // bad
@@ -368,71 +368,84 @@
     var dragonball = 'z';
     ```
 
-  - [7.3](#7.3) <a name='7.3'></a> 最后再声明未赋值的变量，当你想引用之前已赋值变量的时候很有用
+  - [7.3](#7.3) <a name='7.3'></a> 就近声明，用时声明，更自然的在视角范围内
 
     ```javascript
-	// bad
-	var i, len, dragonball,
-	    items = getItems(),
-	    goSportsTeam = true;
+    // bad
+    var i, len;
+    var goSportsTeam = true;
+	var dragonball = 'z';
+	
+	// ...
+		
+	for (i = 0; i < len; i++) {
+		// ...
+	}
 
-	// bad
-	var i, items = getItems(),
-	    dragonball,
-	    goSportsTeam = true,
-	    len;
-
-	// good
-	var items = getItems(),
-	    goSportsTeam = true,
-	    dragonball,
-	    length,
-	    i;
+    // good
+    var goSportsTeam = true;
+	var dragonball = 'z';
+	
+	// ...
+		
+	for (var i = 0, len = arr.length; i < len; i++) {
+		// ...
+	}
     ```
 
-  - [7.4](#7.4) <a name='7.4'></a> 在作用域顶部声明变量，避免变量声明和赋值引起的相关问题
+  - [7.4](#7.4) <a name='7.4'></a> 最后声明未赋值的变量，当你想引用之前已赋值变量的时候很有用
+
+    ```javascript
+	// bad
+	var len, dragonball;
+	var items = getItems();
+	var goSportsTeam = true;
+
+	// bad
+	var items = getItems();
+	var dragonball;
+	var goSportsTeam = true;
+	var len;
+
+	// good
+	var items = getItems();
+	var goSportsTeam = true;
+	var dragonball, length;
+    ```
+
+  - [7.5](#7.5) <a name='7.5'></a> 在作用域顶部声明变量，避免变量声明和赋值引起的相关问题
 
     ```javascript
 	// bad
 	function() {
 	  test();
 	  console.log('doing stuff..');
-
-	  //..other stuff..
-
+	  // ...
 	  var name = getName();
-
 	  if (name === 'test') {
 	    return false;
 	  }
-
 	  return name;
 	}
 
 	// good
 	function() {
 	  var name = getName();
-
 	  test();
 	  console.log('doing stuff..');
-
-	  //..other stuff..
-
+	  // ...
 	  if (name === 'test') {
 	    return false;
 	  }
-
 	  return name;
 	}
 
 	// bad
 	function() {
 	  var name = getName();
-
 	  if (!arguments.length) {
 	    return false;
 	  }
-
 	  return true;
 	}
 
@@ -441,110 +454,12 @@
 	  if (!arguments.length) {
 	    return false;
 	  }
-
 	  var name = getName();
-
 	  return true;
 	}  
 
     ```
 
-
-**[返回列表](#table-of-contents)**
-
-
-## Hoisting
-
-  - [13.1](#13.1) <a name='13.1'></a> `var` declarations get hoisted to the top of their scope, their assignment does not. `var` and `let` declarations are blessed with a new concept called [Temporal Dead Zones (TDZ)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#Temporal_dead_zone_and_errors_with_let). It's important to know why [typeof is no longer safe](http://es-discourse.com/t/why-typeof-is-no-longer-safe/15).
-
-    ```javascript
-    // we know this wouldn't work (assuming there
-    // is no notDefined global variable)
-    function example() {
-      console.log(notDefined); // => throws a ReferenceError
-    }
-
-    // creating a variable declaration after you
-    // reference the variable will work due to
-    // variable hoisting. Note: the assignment
-    // value of `true` is not hoisted.
-    function example() {
-      console.log(declaredButNotAssigned); // => undefined
-      var declaredButNotAssigned = true;
-    }
-
-    // The interpreter is hoisting the variable
-    // declaration to the top of the scope,
-    // which means our example could be rewritten as:
-    function example() {
-      let declaredButNotAssigned;
-      console.log(declaredButNotAssigned); // => undefined
-      declaredButNotAssigned = true;
-    }
-
-    // using var and let
-    function example() {
-      console.log(declaredButNotAssigned); // => throws a ReferenceError
-      console.log(typeof declaredButNotAssigned); // => throws a ReferenceError
-      var declaredButNotAssigned = true;
-    }
-    ```
-
-  - [13.2](#13.2) <a name='13.2'></a> Anonymous function expressions hoist their variable name, but not the function assignment.
-
-    ```javascript
-    function example() {
-      console.log(anonymous); // => undefined
-
-      anonymous(); // => TypeError anonymous is not a function
-
-      var anonymous = function() {
-        console.log('anonymous function expression');
-      };
-    }
-    ```
-
-  - [13.3](#13.3) <a name='13.3'></a> Named function expressions hoist the variable name, not the function name or the function body.
-
-    ```javascript
-    function example() {
-      console.log(named); // => undefined
-
-      named(); // => TypeError named is not a function
-
-      superPower(); // => ReferenceError superPower is not defined
-
-      var named = function superPower() {
-        console.log('Flying');
-      };
-    }
-
-    // the same is true when the function name
-    // is the same as the variable name.
-    function example() {
-      console.log(named); // => undefined
-
-      named(); // => TypeError named is not a function
-
-      var named = function named() {
-        console.log('named');
-      }
-    }
-    ```
-
-  - [13.4](#13.4) <a name='13.4'></a> Function declarations hoist their name and the function body.
-
-    ```javascript
-    function example() {
-      superPower(); // => Flying
-
-      function superPower() {
-        console.log('Flying');
-      }
-    }
-    ```
-
-  - For more information refer to [JavaScript Scoping & Hoisting](http://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting) by [Ben Cherry](http://www.adequatelygood.com/).
 
 **[返回列表](#table-of-contents)**
 
