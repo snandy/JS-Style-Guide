@@ -344,7 +344,7 @@
 
 ## <a name="variables">变量</a>
 
-  - [7.1](#7.1) <a name='7.1'></a> 总是使用 `var` 来声明变量，如果不这么做将导致产生全局变量，我们要避免污染全局命名空间
+  - [7.1](#7.1) <a name='7.1'></a> 使用 `var` 来声明变量，否则会产生全局变量，要避免污染全局命名空间
 
     ```javascript
     // bad
@@ -413,7 +413,7 @@
 	var dragonball, length;
     ```
 
-  - [7.5](#7.5) <a name='7.5'></a> 在作用域顶部声明变量，避免变量声明和赋值引起的相关问题
+  - [7.5](#7.5) <a name='7.5'></a> 在作用域顶部（头部）声明变量，避免变量声明和赋值引起的相关问题
 
     ```javascript
 	// bad
@@ -457,7 +457,17 @@
 	  var name = getName();
 	  return true;
 	}  
+    ```
 
+  - [7.6](#7.6) <a name='7.6'></a> 分组声明：变量多且有明显相关性时
+
+    ```javascript
+	// bad
+	var x, y, z, width, height;
+
+	// good
+	var x, y, z;
+	var width, height;
     ```
 
 
