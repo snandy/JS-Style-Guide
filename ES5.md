@@ -5,7 +5,6 @@
 ## <a name='table-of-contents'>内容列表</a>
 
   1. [类型](#types)
-  1. [引用](#references)
   1. [对象](#objects)
   1. [数组](#arrays)
   1. [字符串](#strings)
@@ -15,7 +14,6 @@
   1. [比较和等值运算符](#conditionals)
   1. [块](#blocks)
   1. [类型转换](#type-casting--coercion)
-  1. [资源](#resources)
   1. [许可](#license)
 
 ## <a name='types'>类型</a>
