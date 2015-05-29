@@ -58,7 +58,7 @@
 
   - [1.2](#1.2) <a name='1.2'></a> 如果需要使用可变的引用，使用 `let`，不要使用 `var`。
 
-  > 为什么？ let在函数内具有块级作用域，var没有。
+  > 为什么？ `let` 在函数内具有块级作用域，`var` 没有。
 
     ```javascript
     // bad
@@ -227,7 +227,7 @@
 
 ## <a name="strings">字符串</a>
 
-  - [5.1](#5.1) <a name='5.1'></a> 使用模板替代字符串拼加
+  - [5.1](#5.1) <a name='5.1'></a> 使用模板替代字符串拼加。
 
     ```javascript
     // bad
@@ -249,11 +249,11 @@
 **[返回列表](#table-of-contents)**
 
 
-## <a name="Functions">函数</a>
+## <a name="functions">函数</a>
 
-  - [7.6](#7.6) <a name='7.6'></a> 使用扩展运算符替代 “arguments”
+  - [6.1](#6.1) <a name='6.1'></a> 使用扩展运算符替代 “arguments”。
 
-  > 为什么？ “...” 具有arguments的所有功能，并且它是一个真正的数组，arguments则是一个伪数组。
+  > 为什么？ “...” 具有arguments的所有功能，并且它是一个真正的数组，`arguments` 则是一个伪数组。
 
     ```javascript
     // bad
@@ -268,8 +268,7 @@
     }
     ```
 
-  <a name="es6-default-parameters"></a>
-  - [7.7](#7.7) <a name='7.7'></a> 多个参数有默认值时，使用默认参数特性
+  - [6.2](#6.2) <a name='6.2'></a> 多个参数有默认值时，使用默认参数特性。
 
     ```javascript
     // really bad
@@ -295,26 +294,25 @@
     }
     ```
 
-  - [7.8](#7.8) <a name='7.8'></a> 注意避免默认参数的副作用
+  - [6.3](#6.3) <a name='6.3'></a> 注意避免默认参数的副作用。
 
-  ```javascript
-  var b = 1;
-  // bad
-  function count(a = b++) {
-    console.log(a);
-  }
-  count();  // 1
-  count();  // 2
-  count(3); // 3
-  count();  // 3
-  ```
-
+    ```javascript
+    var b = 1;
+    // bad
+    function count(a = b++) {
+      console.log(a);
+    }
+    count();  // 1
+    count();  // 2
+    count(3); // 3
+    count();  // 3
+    ```
 
 **[返回列表](#table-of-contents)**
 
 ## <a name="arrow-functions">箭头函数</a>
 
-  - [8.1](#8.1) <a name='8.1'></a> 当需要使用函数表达式（或匿名函数）时，应使用箭头函数
+  - [7.1](#7.1) <a name='7.1'></a> 当需要使用函数表达式（或匿名函数）时，应使用箭头函数。
 
   > 为什么？ 箭头函数的上下文通常是你想要的， 另外它很简洁。
 
@@ -330,9 +328,9 @@
     });
     ```
 
-  - [8.2](#8.2) <a name='8.2'></a> 如函数在一行且只有一个参数，可以省略括号和圆括号，并使用隐式返回。否则，加括号，括号，并使用`返回`声明。
+  - [7.2](#7.2) <a name='7.2'></a> 如函数在一行且只有一个参数，可以省略括号和圆括号，并使用隐式返回。否则，加括号，括号，并使用`返回`声明。
 
-  > 为什么？语法糖，它可读性更好，且可以把多个函数链接在一起.
+  > 为什么？语法糖，它可读性更好，且可以把多个函数链接在一起。
 
   > 为什么不？ 当返回一个对象时不要这么干。
 
@@ -351,7 +349,7 @@
 
 ## <a name="Constructors">构造器</a>
 
-  - [9.1](#9.1) <a name='9.1'></a> 使用class定义类，避免使用函数及其原型
+  - [8.1](#8.1) <a name='8.1'></a> 使用 `class` 定义类，避免使用函数及其原型。
 
     ```javascript
     // bad
@@ -363,8 +361,7 @@
       this._queue.splice(0, 1);
       return value;
     }
-
-
+    
     // good
     class Queue {
       constructor(contents = []) {
@@ -378,7 +375,7 @@
     }
     ```
 
-  - [9.2](#9.2) <a name='9.2'></a> 使用extends实现继承
+  - [8.2](#8.2) <a name='8.2'></a> 使用 `extends` 实现继承。
 
     ```javascript
     // bad
@@ -399,7 +396,7 @@
     }
     ```
 
-  - [9.3](#9.3) <a name='9.3'></a> 方法内可以使用return this实现链式调用
+  - [8.3](#8.3) <a name='8.3'></a> 方法内可以使用 `return this` 实现链式调用。
 
     ```javascript
     // bad
@@ -431,12 +428,10 @@
 
     const luke = new Jedi();
 
-    luke.jump()
-      .setHeight(20);
+    luke.jump().setHeight(20);
     ```
 
-
-  - [9.4](#9.4) <a name='9.4'></a> 可以重写类的toString方法，只要确保它可用且无副作用
+  - [8.4](#8.4) <a name='8.4'></a> 可以重写类的toString方法，只要确保它可用且无副作用。
 
     ```javascript
     class Jedi {
@@ -457,9 +452,9 @@
 **[返回列表](#table-of-contents)**
 
 
-## <a name="Modules">模块</a>
+## <a name="modules">模块</a>
 
-  - [10.1](#10.1) <a name='10.1'></a> 经常使用 (`import`/`export`) 在非标准的模块系统中，你可以迁移到你想要的模块系统。
+  - [9.1](#9.1) <a name='9.1'></a> 经常使用 (`import`/`export`) 在非标准的模块系统中，你可以迁移到你想要的模块系统。
 
   > 为什么? 模块是未来，现在就让我们开始使用。
 
@@ -477,7 +472,7 @@
     export default es6;
     ```
 
-  - [10.2](#10.2) <a name='10.2'></a> 不要使用通配符导入模块
+  - [9.2](#9.2) <a name='9.2'></a> 不要使用通配符导入模块。
 
   > 这确保你有一个简单的默认导出API的方式
 
@@ -489,9 +484,9 @@
     import AirbnbStyleGuide from './AirbnbStyleGuide';
     ```
 
-  - [10.3](#10.3) <a name='10.3'></a> 不要导入后立即导出模块
+  - [9.3](#9.3) <a name='9.3'></a> 不要导入后立即导出模块。
 
-  > Why? Although the one-liner is concise, having one clear way to import and one clear way to export makes things consistent.
+  > 为什么? 虽然写在一行简洁，但分开有一个清晰的进口和出口，让事情保持一致。
 
     ```javascript
     // bad
@@ -508,9 +503,9 @@
 
 ## <a name="iterators-and-generators">迭代器和生成器</a>
 
-  - [11.1](#11.1) <a name='11.1'></a> Don't use iterators. Prefer JavaScript's higher-order functions like `map()` and `reduce()` instead of loops like `for-of`.
+  - [10.1](#10.1) <a name='10.1'></a> 不要使用迭代器，使用 JavaScript 的高阶函数如 `map()` 和 `reduce()` 替代 `for-of`。
 
-  > Why? This enforces our immutable rule. Dealing with pure functions that return values is easier to reason about than side-effects.
+  > 为什么? 这能确保不变性，处理纯函数的返回值相对容易且无副作用。
 
     ```javascript
     const numbers = [1, 2, 3, 4, 5];
@@ -533,7 +528,7 @@
     sum === 15;
     ```
 
-  - [11.2](#11.2) <a name='11.2'></a> Don't use generators for now.
+  - [10.2](#10.2) <a name='10.2'></a> 目前不要使用生成器。
 
   > Why? They don't transpile well to ES5.
 
@@ -557,7 +552,7 @@
     const isJedi = luke.jedi;
     ```
 
-  - [11.2](#11.2) <a name='11.2'></a> Use subscript notation `[]` when accessing properties with a variable.
+  - [10.2](#10.2) <a name='10.2'></a> Use subscript notation `[]` when accessing properties with a variable.
 
     ```javascript
     const luke = {
@@ -973,7 +968,7 @@
 
 ## Whitespace
 
-  - [18.1](#18.1) <a name='18.1'></a> Use soft tabs set to 2 spaces.
+  - [17.1](#17.1) <a name='17.1'></a> Use soft tabs set to 2 spaces.
 
     ```javascript
     // bad
@@ -992,7 +987,7 @@
     }
     ```
 
-  - [18.2](#18.2) <a name='18.2'></a> Place 1 space before the leading brace.
+  - [17.2](#17.2) <a name='17.2'></a> Place 1 space before the leading brace.
 
     ```javascript
     // bad
@@ -1158,7 +1153,7 @@
 
 ## Commas
 
-  - [19.1](#19.1) <a name='19.1'></a> Leading commas: **Nope.**
+  - [18.1](#18.1) <a name='18.1'></a> Leading commas: **Nope.**
 
     ```javascript
     // bad
@@ -1192,7 +1187,7 @@
     };
     ```
 
-  - [19.2](#19.2) <a name='19.2'></a> Additional trailing comma: **Yup.**
+  - [18.2](#18.2) <a name='18.2'></a> Additional trailing comma: **Yup.**
 
   > Why? This leads to cleaner git diffs. Also, transpilers like Babel will remove the additional trailing comma in the transpiled code which means you don't have to worry about the [trailing comma problem](es5/README.md#commas) in legacy browsers.
 
@@ -1654,7 +1649,7 @@
 
 ## Testing
 
-  - [28.1](#28.1) <a name='28.1'></a> **Yup.**
+  - [27.1](#27.1) <a name='27.1'></a> **Yup.**
 
     ```javascript
     function() {
