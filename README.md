@@ -5,6 +5,7 @@
   1. [缩进](#indent)
   1. [分号](#semicolon)
   1. [引号](#quotation-marks)
+  1. [逗号](#commas)
   1. [大括号](#curly-brackets)
   1. [中括号](#square-brackets)
   1. [小括号](#parenthese)
@@ -13,6 +14,25 @@
   1. [注释](#comment)
 
 ## <a name='indent'>缩进</a>
+
+  - 将tab设为4个空格
+
+    ```javascript
+    // bad
+    function() {
+    ∙∙var name;
+    }
+
+    // bad
+    function() {
+    ∙var name;
+    }
+
+    // good
+    function() {
+    ∙∙∙∙var name;
+    }
+    ```  
 
   - if, else, switch, case, for, while和冒号后1个空格
 
@@ -145,6 +165,29 @@
     }
     ```
 
+## <a name='commas'>逗号</a>
+
+  - 不要将逗号放前面
+
+    ```javascript
+    // bad
+    var hero = {
+        firstName: 'Bob'
+      , lastName: 'Parr'
+      , heroName: 'Mr. Incredible'
+      , superPower: 'strength'
+    };
+
+    // good
+    var hero = {
+      firstName: 'Bob',
+      lastName: 'Parr',
+      heroName: 'Mr. Incredible',
+      superPower: 'strength'
+    };
+
+    ```
+    
 ## <a name='quotation-marks'>引号</a>
 
   - 引号多用来定义字符串，始终使用单引号
@@ -169,7 +212,7 @@
 
 ## <a name='curly-brackets'>大括号</a>
 
-  - 起首的大括号跟在关键字的后面，且留有一个空格。
+  - 起首的大括号跟在关键字的后面，且大括号前留有一个空格
 
     ```javascript
     // bad
@@ -177,12 +220,30 @@
     {
       //…
     }
-
     // good
     if (a > b) {
       //…
     }
 
+    // bad
+    function test(){
+      console.log('test');
+    }
+    // good
+    function test() {
+      console.log('test');
+    }
+
+    // bad
+    dog.set('attr',{
+      age: '1 year',
+      breed: 'Bernese Mountain Dog'
+    });
+    // good
+    dog.set('attr', {
+      age: '1 year',
+      breed: 'Bernese Mountain Dog'
+    });
     ```
 
 ## <a name='square-brackets'>中括号</a>
