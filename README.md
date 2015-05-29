@@ -143,7 +143,7 @@
 
 ## <a name='semicolon'>分号</a>
 
-  - 语句始终使用分号结尾，for, function, if, switch, try, while 除外，不要依赖于引擎隐式插入。
+  - 语句始终使用分号结尾，for, function, if, switch, try, while 除外，不要依赖于引擎隐式插入
 
     ```javascript
     // bad
@@ -187,7 +187,7 @@
     };
 
     ```
-    
+
 ## <a name='quotation-marks'>引号</a>
 
   - 引号多用来定义字符串，始终使用单引号
@@ -311,7 +311,7 @@
     }
     ```
 
-## <a name="variable-declaration">变量命名</a>
+## <a name="variable-declaration">变量声明</a>
 
   - 对象属性，方法名开始的第一个单词小写，之后的单词首字母大写（驼峰式）
 
@@ -322,6 +322,20 @@
 
     // good
     var nickName = 'John';
+    ```
+
+  - 避免单个字符名，让你的变量名有描述意义（计数器除外）
+
+    ```javascript
+    // bad
+    function q() {
+      // ...stuff...
+    }
+
+    // good
+    function query() {
+      // ..stuff..
+    }
     ```
 
   - 常量名全部用大写字母
