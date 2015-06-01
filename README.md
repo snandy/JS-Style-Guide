@@ -204,10 +204,10 @@
 
     ```javascript
     // bad
-    var html = “<a href=’http://www.jd.com’>京东</a>”;
-
+    var html = "<a href='http://www.jd.com'>京东</a>";
+    
     // good
-    var html = ‘<a href=”http://www.jd.com”>京东</a>’;
+    var html = '<a href="http://www.jd.com">京东</a>';
     ```
 
 ## <a name='curly-brackets'>大括号</a>
