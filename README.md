@@ -34,7 +34,7 @@
     }
     ```  
 
-  - if, else, switch, case, for, while和冒号后1个空格
+  - `if`、 `else`、 `switch`、 `case`、 `for`、 `while` 和 `:` 后1个空格
 
     ```javascript
     // bad
@@ -143,7 +143,7 @@
 
 ## <a name='semicolon'>分号</a>
 
-  - 语句始终使用分号结尾，for, function, if, switch, try, while 除外，不要依赖于引擎隐式插入
+  - 语句始终使用分号结尾，`for`、 `function`、 `if`、 `switch`、 `try`、 `while` 除外，不要依赖于引擎隐式插入
 
     ```javascript
     // bad
@@ -363,7 +363,7 @@
       this.age = age;
     }
 	```
-  - 多个变量，使用多个var关键字，不使用逗号分隔
+  - 多个变量，使用多个 `var` 关键字，不使用逗号分隔
 
     ```javascript
     // bad
@@ -383,10 +383,6 @@
 			<tr><td>前缀</td><td>类型</td><td>示例</td></tr>
 		</thead>
 		<tbody>
-			<tr><td>n</td><td>Number</td><td>nSum</td></tr>
-			<tr><td>s</td><td>String</td><td>sName</td></tr>
-			<tr><td>o</td><td>Object</td><td>oHash</td></tr>
-			<tr><td>a</td><td>Array</td><td>aColl</td></tr>
 			<tr><td>is, can has</td><td>Boolean</td><td>isPass</td></tr>
 			<tr><td>get</td><td>Getter</td><td>getName</td></tr>
 			<tr><td>set</td><td>Setter</td><td>setName</td></tr>
