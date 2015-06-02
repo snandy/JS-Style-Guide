@@ -14,7 +14,6 @@
   1. [构造器](#constructors)
   1. [模块](#modules)
   1. [迭代器和生成器](#iterators-and-generators)
-  1. [属性](#properties)
   1. [变量](#variables)
   1. [变量提升](#hoisting)
   1. [比较和等值运算符](#comparison-operators--equality)
@@ -451,8 +450,6 @@
 
   - [9.1](#9.1) <a name='9.1'></a> 经常使用 (`import`/`export`) 在非标准的模块系统中，你可以迁移到你想要的模块系统。
 
-  > 为什么? 模块是未来，现在就让我们开始使用。
-
     ```javascript
     // bad
     const AirbnbStyleGuide = require('./AirbnbStyleGuide');
@@ -468,8 +465,6 @@
     ```
 
   - [9.2](#9.2) <a name='9.2'></a> 不要使用通配符导入模块。
-
-  > 这确保你有一个简单的默认导出API的方式
 
     ```javascript
     // bad
@@ -530,44 +525,9 @@
 **[返回列表](#table-of-contents)**
 
 
-## Properties
+## <a name="variables">变量</a>
 
-  - [12.1](#12.1) <a name='12.1'></a> Use dot notation when accessing properties.
-
-    ```javascript
-    const luke = {
-      jedi: true,
-      age: 28,
-    };
-
-    // bad
-    const isJedi = luke['jedi'];
-
-    // good
-    const isJedi = luke.jedi;
-    ```
-
-  - [10.2](#10.2) <a name='10.2'></a> Use subscript notation `[]` when accessing properties with a variable.
-
-    ```javascript
-    const luke = {
-      jedi: true,
-      age: 28,
-    };
-
-    function getProp(prop) {
-      return luke[prop];
-    }
-
-    const isJedi = getProp('jedi');
-    ```
-
-**[返回列表](#table-of-contents)**
-
-
-## Variables
-
-  - [13.1](#13.1) <a name='13.1'></a> Always use `const` to declare variables. Not doing so will result in global variables. We want to avoid polluting the global namespace. Captain Planet warned us of that.
+  - [11.1](#11.1) <a name='11.1'></a> 总是使用 `const` 声明变量，使用 `var` 可能会导致全局变量，我们要避免污染全局命名空间。
 
     ```javascript
     // bad
@@ -577,9 +537,9 @@
     const superPower = new SuperPower();
     ```
 
-  - [13.2](#13.2) <a name='13.2'></a> Use one `const` declaration per variable.
+  - [11.2](#11.2) <a name='11.2'></a> 每一个变量都使用一个 `const` 声明。
 
-    > Why? It's easier to add new variable declarations this way, and you never have to worry about swapping out a `;` for a `,` or introducing punctuation-only diffs.
+    > 为什么? 这种方式新增一个变量更容易，不用费劲的去交换 `;` 和 `,` 又或有时遗漏了。
 
     ```javascript
     // bad
@@ -599,9 +559,9 @@
     const dragonball = 'z';
     ```
 
-  - [13.3](#13.3) <a name='13.3'></a> Group all your `const`s and then group all your `let`s.
+  - [11.3](#11.3) <a name='11.3'></a> 把所有使用 `const` 和 `let` 的变量分组。
 
-  > Why? This is helpful when later on you might need to assign a variable depending on one of the previous assigned variables.
+  > 为什么? 当变量随后需要赋值，但它又依赖前一个赋值的变量时将很有帮助。
 
     ```javascript
     // bad
@@ -624,9 +584,9 @@
     let length;
     ```
 
-  - [12.1](#12.1) <a name='12.1'></a> Assign variables where you need them, but place them in a reasonable place.
+  - [11.4](#11.4) <a name='11.4'></a> 在需要的时候给变量赋值，但注意把变量放在合理的位置。
 
-  > Why? `let` and `const` are block scoped and not function scoped.
+  > 为什么？ `let` 和 `const` 具有块级作用域而非函数级作用域。
 
     ```javascript
     // good
@@ -725,7 +685,7 @@
     }
     ```
 
-  - [13.1](#13.1) <a name='13.1'></a> Named function expressions hoist the variable name, not the function name or the function body.
+  - [11.1](#11.1) <a name='11.1'></a> Named function expressions hoist the variable name, not the function name or the function body.
 
     ```javascript
     function example() {
@@ -753,7 +713,7 @@
     }
     ```
 
-  - [13.2](#13.2) <a name='13.2'></a> Function declarations hoist their name and the function body.
+  - [11.2](#11.2) <a name='11.2'></a> Function declarations hoist their name and the function body.
 
     ```javascript
     function example() {
