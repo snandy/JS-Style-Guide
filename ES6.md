@@ -710,7 +710,6 @@
   - [ES6 Compatibility Table](https://kangax.github.io/compat-table/es6/)
   - [Comprehensive Overview of ES6 Features](http://es6-features.org/)
 
-**[返回列表](#table-of-contents)**
 
 
 ## License
@@ -739,5 +738,4 @@ SOFTWARE.
 
 **[返回列表](#table-of-contents)**
 
-# };
 
