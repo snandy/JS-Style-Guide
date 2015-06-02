@@ -539,7 +539,7 @@
 
   - [11.2](#11.2) <a name='11.2'></a> 每一个变量都使用一个 `const` 声明。
 
-    > 为什么? 这种方式新增一个变量更容易，不用费劲的去交换 `;` 和 `,` 又或有时遗漏了。
+    > 为什么? 这种方式新增一个变量更容易，不用费劲的去交换 `;` 和 `,`， 又或有时遗漏了。
 
     ```javascript
     // bad
@@ -634,29 +634,20 @@
 **[返回列表](#table-of-contents)**
 
 
-## Hoisting
+## <a name="hoisting">变量提升</a>
 
-  - [14.1](#14.1) <a name='14.1'></a> `var` declarations get hoisted to the top of their scope, their assignment does not. `const` and `let` declarations are blessed with a new concept called [Temporal Dead Zones (TDZ)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#Temporal_dead_zone_and_errors_with_let). It's important to know why [typeof is no longer safe](http://es-discourse.com/t/why-typeof-is-no-longer-safe/15).
+  - [12.1](#12.1) <a name='12.1'></a> `const` and `let` 声明的有一个新概念成为 [暂时性死区(TDZ)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#Temporal_dead_zone_and_errors_with_let)。这对于理解 [为什么typeof不在安全](http://es-discourse.com/t/why-typeof-is-no-longer-safe/15) 非常重要。
 
     ```javascript
-    // we know this wouldn't work (assuming there
-    // is no notDefined global variable)
     function example() {
       console.log(notDefined); // => throws a ReferenceError
     }
 
-    // creating a variable declaration after you
-    // reference the variable will work due to
-    // variable hoisting. Note: the assignment
-    // value of `true` is not hoisted.
     function example() {
       console.log(declaredButNotAssigned); // => undefined
       var declaredButNotAssigned = true;
     }
 
-    // The interpreter is hoisting the variable
-    // declaration to the top of the scope,
-    // which means our example could be rewritten as:
     function example() {
       let declaredButNotAssigned;
       console.log(declaredButNotAssigned); // => undefined
@@ -671,7 +662,7 @@
     }
     ```
 
-  - [14.2](#14.2) <a name='14.2'></a> Anonymous function expressions hoist their variable name, but not the function assignment.
+  - [12.2](#12.2) <a name='12.2'></a> 匿名函数表达式的变量名发生变量提升，它不是一个真正的函数（undefined），不能当函数去调用。
 
     ```javascript
     function example() {
@@ -685,7 +676,7 @@
     }
     ```
 
-  - [11.1](#11.1) <a name='11.1'></a> Named function expressions hoist the variable name, not the function name or the function body.
+  - [12.3](#12.3) <a name='12.3'></a> 具名函数表达式的变量名也会发生变量提升，无论是变量名还是具名函数名都不能当成真正的函数去调用。
 
     ```javascript
     function example() {
@@ -700,8 +691,6 @@
       };
     }
 
-    // the same is true when the function name
-    // is the same as the variable name.
     function example() {
       console.log(named); // => undefined
 
@@ -713,7 +702,7 @@
     }
     ```
 
-  - [11.2](#11.2) <a name='11.2'></a> Function declarations hoist their name and the function body.
+  - [12.4](#12.4) <a name='12.4'></a> 函数声明会提升变量名和函数自己，作用域内在声明前可以调用。
 
     ```javascript
     function example() {
@@ -725,7 +714,7 @@
     }
     ```
 
-  - For more information refer to [JavaScript Scoping & Hoisting](http://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting) by [Ben Cherry](http://www.adequatelygood.com/).
+  - 更多[JavaScript作用域和变量提升](http://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting) by [Ben Cherry](http://www.adequatelygood.com/).
 
 **[返回列表](#table-of-contents)**
 
