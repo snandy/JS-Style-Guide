@@ -251,9 +251,9 @@
 
 ## <a name="functions">函数</a>
 
-  - [6.1](#6.1) <a name='6.1'></a> 使用扩展运算符替代 “arguments”。
+  - [6.1](#6.1) <a name='6.1'></a> 使用扩展运算符替代 `arguments`。
 
-  > 为什么？ “...” 具有arguments的所有功能，并且它是一个真正的数组，`arguments` 则是一个伪数组。
+  > 为什么？ `...` 具有arguments的所有功能，并且它是一个真正的数组，`arguments` 则是一个伪数组。
 
     ```javascript
     // bad
@@ -273,9 +273,6 @@
     ```javascript
     // really bad
     function handleThings(opts) {
-      // No! We shouldn't mutate function arguments.
-      // Double bad: if opts is falsy it'll be set to an object which may
-      // be what you want but it can introduce subtle bugs.
       opts = opts || {};
       // ...
     }
@@ -328,11 +325,9 @@
     });
     ```
 
-  - [7.2](#7.2) <a name='7.2'></a> 如函数在一行且只有一个参数，可以省略括号和圆括号，并使用隐式返回。否则，加括号，括号，并使用`返回`声明。
+  - [7.2](#7.2) <a name='7.2'></a> 如函数在一行且只有一个参数，可以省略括号和圆括号，并使用隐式返回。否则，加括号并使用 `return` 声明。
 
   > 为什么？语法糖，它可读性更好，且可以把多个函数链接在一起。
-
-  > 为什么不？ 当返回一个对象时不要这么干。
 
     ```javascript
     // good
@@ -347,7 +342,7 @@
 **[返回首页](#table-of-contents)**
 
 
-## <a name="Constructors">构造器</a>
+## <a name="constructors">构造器</a>
 
   - [8.1](#8.1) <a name='8.1'></a> 使用 `class` 定义类，避免使用函数及其原型。
 
@@ -396,7 +391,7 @@
     }
     ```
 
-  - [8.3](#8.3) <a name='8.3'></a> 方法内可以使用 `return this` 实现链式调用。
+  - [8.3](#8.3) <a name='8.3'></a> 方法内可以返回 `this` 实现链式调用。
 
     ```javascript
     // bad
@@ -444,7 +439,7 @@
       }
 
       toString() {
-        return `Jedi - ${this.getName()}`;
+        return 'Jedi - ${this.getName()}';
       }
     }
     ```
