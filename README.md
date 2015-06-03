@@ -48,11 +48,11 @@
 
     // bad
     for(var i = 0; i < 5; i++) {
-      // ...
+        // ...
     }
     // good
     for (var i = 0; i < 5; i++) {
-      // ...
+        // ...
     }
     ```
 
@@ -85,12 +85,12 @@
     ```javascript
     // bad
     function ajax(url,param,success) {
-      // ...
+        // ...
     }
 
     // good
     function ajax(url, param, success) {
-      // ...
+        // ...
     }
     ```
 
@@ -99,7 +99,7 @@
     ```javascript
     // bad
     function ajax(url, param, success){
-      // ...
+        // ...
     }
     if (a > b){
 
@@ -107,7 +107,7 @@
 
     // good
     function ajax(url, param, success) {
-      // ...
+        // ...
     }
     if (a > b) {
 
@@ -125,7 +125,7 @@
     var name = 'John';
     var obj = {}; 
     if (name = 'Lily') {
-      login(name);
+        login(name);
     }
     ```  
 
@@ -148,20 +148,20 @@
     ```javascript
     // bad
     function fn() {
-      // ...
+        // ...
     };
     // good
     function fn() {
-      // ...
+        // ...
     }
 
     // bad
     for (var i = 0; i < 5; i++) {
-      // ...
+        // ...
     };
     // good
     for (var i = 0; i < 5; i++) {
-      // ...
+        // ...
     }
     ```
 
@@ -218,31 +218,31 @@
     // bad
     if (a > b)
     {
-      // ...
+        // ...
     }
     // good
     if (a > b) {
-      // ...
+        // ...
     }
 
     // bad
     function test(){
-      console.log('test');
+        console.log('test');
     }
     // good
     function test() {
-      console.log('test');
+        console.log('test');
     }
 
     // bad
     dog.set('attr',{
-      age: '1 year',
-      breed: 'Bernese Mountain Dog'
+        age: '1 year',
+        breed: 'Bernese Mountain Dog'
     });
     // good
     dog.set('attr', {
-      age: '1 year',
-      breed: 'Bernese Mountain Dog'
+        age: '1 year',
+        breed: 'Bernese Mountain Dog'
     });
     ```
 
@@ -264,7 +264,7 @@
     var obj = {name: 'John'};
 
     // bad
-	var name = obj['name'];
+	  var name = obj['name'];
 
     // good
     var name = obj.name;
@@ -300,14 +300,14 @@
     ```javascript
     // bad
     var obj = {
-      'name': 'John',
-      'age': 30
+        'name': 'John',
+        'age': 30
     }
 
     // good
     var obj = {
-      name: 'John',
-      age: 30
+        name: 'John',
+        age: 30
     }
     ```
 
@@ -329,12 +329,12 @@
     ```javascript
     // bad
     function q() {
-      // ...stuff...
+        // ...stuff...
     }
 
     // good
     function query() {
-      // ..stuff..
+        // ..stuff..
     }
     ```
 
@@ -353,14 +353,14 @@
     ```javascript
     // bad
     function person(name, age) {
-      this.name = name;
-      this.age = age;
+        this.name = name;
+        this.age = age;
     }
 
     // good
     function Person(name, age) {
-      this.name = name;
-      this.age = age;
+        this.name = name;
+        this.age = age;
     }
 	```
   - 多个变量，使用多个 `var` 关键字，不使用逗号分隔
@@ -447,13 +447,13 @@
     // bad
     // 未处理IE的兼容性
     function setOpacity(node, val) {
-      node.style.opacity = val;
+        node.style.opacity = val;
     }
     
     // good
     // TODO 未处理IE6-8的兼容性
     function setOpacity(node, val) {
-      node.style.opacity = val;
+        node.style.opacity = val;
     }
     ```
 
@@ -511,7 +511,7 @@
      * @param {ArrayLike<Element>} nodes 初始化节点
      */
     function Componetn(nodes) {
-      // ...
+        // ...
     }   
     ```  
 
@@ -524,7 +524,7 @@
      * @method
      */
     Component.prototype.getNode = function(i) {
-      // ...
+        // ...
     }
 
     // good
@@ -536,7 +536,7 @@
      * @return {Element} 指定元素
      */
     Component.prototype.getNode = function(i) {
-      // ...
+        // ...
     }
     ``` 
 
