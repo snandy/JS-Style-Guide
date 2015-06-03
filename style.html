@@ -1,452 +1,14 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-<head>
-
-   <meta http-equiv="content-type" content="text/html;charset=UTF-8">
-
-   <style type="text/css">
-
-   /*
-CSS stylesheet is based on killwing's flavored markdown style:
-https://gist.github.com/2937864
-*/
-body{
-    margin: 0 auto;
-    font: 13px/1.231 Helvetica, Arial, sans-serif;
-    color: #444444;
-    line-height: 1;
-    max-width: 960px;
-    padding: 5px;
-}
-h1, h2, h3, h4 {
-    color: #111111;
-    font-weight: 400;
-}
-h1, h2, h3, h4, h5, p {
-    margin-bottom: 16px;
-    padding: 0;
-}
-h1 {
-    font-size: 28px;
-}
-h2 {
-    font-size: 22px;
-    margin: 20px 0 6px;
-}
-h3 {
-    font-size: 21px;
-}
-h4 {
-    font-size: 18px;
-}
-h5 {
-    font-size: 16px;
-}
-a {
-    color: #0099ff;
-    margin: 0;
-    padding: 0;
-    vertical-align: baseline;
-}
-a:link,a:visited{
- text-decoration:none;
-}
-a:hover{
- text-decoration:underline;
-}
-ul, ol {
-    padding: 0;
-    margin: 0;
-}
-li {
-    line-height: 24px;
-    margin-left: 44px;
-}
-li ul, li ul {
-    margin-left: 24px;
-}
-ul, ol {
-    font-size: 14px;
-    line-height: 20px;
-    max-width: 540px;
-}
-
-p {
-    font-size: 14px;
-    line-height: 20px;
-    max-width: 540px;
-    margin-top: 3px;
-}
-
-pre {
-    padding: 0px 4px;
-    max-width: 800px;
-    white-space: pre-wrap;
-    font-family: Consolas, Monaco, Andale Mono, monospace;
-    line-height: 1.5;
-    font-size: 13px;
-    border: 1px solid #ddd;
-    background-color: #f7f7f7;
-    border-radius: 3px;
-}
-code {
-    font-family: Consolas, Monaco, Andale Mono, monospace;
-    line-height: 1.5;
-    font-size: 13px;
-    border: 1px solid #ddd;
-    background-color: #f7f7f7;
-    border-radius: 3px;
-}
-pre code {
-    border: 0px;
-}
-aside {
-    display: block;
-    float: right;
-    width: 390px;
-}
-blockquote {
-    border-left:.5em solid #40AA53;
-    padding: 0 2em;
-    margin-left:0;
-    max-width: 476px;
-}
-blockquote  cite {
-    font-size:14px;
-    line-height:20px;
-    color:#bfbfbf;
-}
-blockquote cite:before {
-    content: '\2014 \00A0';
-}
-
-blockquote p {  
-    color: #666;
-    max-width: 460px;
-}
-hr {
-    height: 1px;
-    border: none;
-    border-top: 1px dashed #0066CC
-}
-
-button,
-input,
-select,
-textarea {
-  font-size: 100%;
-  margin: 0;
-  vertical-align: baseline;
-  *vertical-align: middle;
-}
-button, input {
-  line-height: normal;
-  *overflow: visible;
-}
-button::-moz-focus-inner, input::-moz-focus-inner {
-  border: 0;
-  padding: 0;
-}
-button,
-input[type="button"],
-input[type="reset"],
-input[type="submit"] {
-  cursor: pointer;
-  -webkit-appearance: button;
-}
-input[type=checkbox], input[type=radio] {
-  cursor: pointer;
-}
-/* override default chrome & firefox settings */
-input:not([type="image"]), textarea {
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-}
-
-input[type="search"] {
-  -webkit-appearance: textfield;
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-}
-input[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-label,
-input,
-select,
-textarea {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 13px;
-  font-weight: normal;
-  line-height: normal;
-  margin-bottom: 18px;
-}
-input[type=checkbox], input[type=radio] {
-  cursor: pointer;
-  margin-bottom: 0;
-}
-input[type=text],
-input[type=password],
-textarea,
-select {
-  display: inline-block;
-  width: 210px;
-  padding: 4px;
-  font-size: 13px;
-  font-weight: normal;
-  line-height: 18px;
-  height: 18px;
-  color: #808080;
-  border: 1px solid #ccc;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-}
-select, input[type=file] {
-  height: 27px;
-  line-height: 27px;
-}
-textarea {
-  height: auto;
-}
-
-/* grey out placeholders */
-:-moz-placeholder {
-  color: #bfbfbf;
-}
-::-webkit-input-placeholder {
-  color: #bfbfbf;
-}
-
-input[type=text],
-input[type=password],
-select,
-textarea {
-  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
-  -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
-  transition: border linear 0.2s, box-shadow linear 0.2s;
-  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-input[type=text]:focus, input[type=password]:focus, textarea:focus {
-  outline: none;
-  border-color: rgba(82, 168, 236, 0.8);
-  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
-  -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
-}
-
-/* buttons */
-button {
-  display: inline-block;
-  padding: 4px 14px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-  background-color: #0064cd;
-  background-repeat: repeat-x;
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#049cdb), to(#0064cd));
-  background-image: -moz-linear-gradient(top, #049cdb, #0064cd);
-  background-image: -ms-linear-gradient(top, #049cdb, #0064cd);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #049cdb), color-stop(100%, #0064cd));
-  background-image: -webkit-linear-gradient(top, #049cdb, #0064cd);
-  background-image: -o-linear-gradient(top, #049cdb, #0064cd);
-  background-image: linear-gradient(top, #049cdb, #0064cd);
-  color: #fff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  border: 1px solid #004b9a;
-  border-bottom-color: #003f81;
-  -webkit-transition: 0.1s linear all;
-  -moz-transition: 0.1s linear all;
-  transition: 0.1s linear all;
-  border-color: #0064cd #0064cd #003f81;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-}
-button:hover {
-  color: #fff;
-  background-position: 0 -15px;
-  text-decoration: none;
-}
-button:active {
-  -webkit-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
-  -moz-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
-  box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
-}
-button::-moz-focus-inner {
-  padding: 0;
-  border: 0;
-}
-/* table  */
-table {
-    border-spacing: 0;
-    border: 1px solid #ccc;
-}
-td, th{
-    border: 1px solid #ccc;
-    padding: 5px;
-}
-/* code syntax highlight.
-Documentation: http://www.mdcharm.com/documentation/code_syntax_highlighting.html#custom_your_own
- */
-pre .literal,
-pre .comment,
-pre .template_comment,
-pre .diff .header,
-pre .javadoc {
-    color: #008000;
-}
-
-pre .keyword,
-pre .css .rule .keyword,
-pre .winutils,
-pre .javascript .title,
-pre .nginx .title,
-pre .subst,
-pre .request,
-pre .status {
-    color: #0000FF;
-    font-weight: bold
-}
-
-pre .number,
-pre .hexcolor,
-pre .python .decorator,
-pre .ruby .constant {
-    color: #0000FF;
-}
-
-pre .string,
-pre .tag .value,
-pre .phpdoc,
-pre .tex .formula {
-    color: #D14
-}
-
-pre .title,
-pre .id {
-    color: #900;
-    font-weight: bold
-}
-
-pre .javascript .title,
-pre .lisp .title,
-pre .clojure .title,
-pre .subst {
-    font-weight: normal
-}
-
-pre .class .title,
-pre .haskell .type,
-pre .vhdl .literal,
-pre .tex .command {
-    color: #458;
-    font-weight: bold
-}
-
-pre .tag,
-pre .tag .title,
-pre .rules .property,
-pre .django .tag .keyword {
-    color: #000080;
-    font-weight: normal
-}
-
-pre .attribute,
-pre .variable,
-pre .lisp .body {
-    color: #008080
-}
-
-pre .regexp {
-    color: #009926
-}
-
-pre .class {
-    color: #458;
-    font-weight: bold
-}
-
-pre .symbol,
-pre .ruby .symbol .string,
-pre .lisp .keyword,
-pre .tex .special,
-pre .prompt {
-    color: #990073
-}
-
-pre .built_in,
-pre .lisp .title,
-pre .clojure .built_in {
-    color: #0086b3
-}
-
-pre .preprocessor,
-pre .pi,
-pre .doctype,
-pre .shebang,
-pre .cdata {
-    color: #999;
-    font-weight: bold
-}
-
-pre .deletion {
-    background: #fdd
-}
-
-pre .addition {
-    background: #dfd
-}
-
-pre .diff .change {
-    background: #0086b3
-}
-
-pre .chunk {
-    color: #aaa
-}
-
-pre .markdown .header {
-    color: #800;
-    font-weight: bold;
-}
-
-pre .markdown .blockquote {
-    color: #888;
-}
-
-pre .markdown .link_label {
-    color: #88F;
-}
-
-pre .markdown .strong {
-    font-weight: bold;
-}
-
-pre .markdown .emphasis {
-    font-style: italic;
-}
-
-   </style>
-
-   
-
-   
-
-</head>
-
-<body>
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+   <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+   <style type="text/css">
+   /*CSS stylesheet is based on killwing's flavored markdown style:https://gist.github.com/2937864*/body{    margin: 0 auto;    font: 13px/1.231 Helvetica, Arial, sans-serif;    color: #444444;    line-height: 1;    max-width: 960px;    padding: 5px;}h1, h2, h3, h4 {    color: #111111;    font-weight: 400;}h1, h2, h3, h4, h5, p {    margin-bottom: 16px;    padding: 0;}h1 {    font-size: 28px;}h2 {    font-size: 22px;    margin: 20px 0 6px;}h3 {    font-size: 21px;}h4 {    font-size: 18px;}h5 {    font-size: 16px;}a {    color: #0099ff;    margin: 0;    padding: 0;    vertical-align: baseline;}a:link,a:visited{ text-decoration:none;}a:hover{ text-decoration:underline;}ul, ol {    padding: 0;    margin: 0;}li {    line-height: 24px;    margin-left: 44px;}li ul, li ul {    margin-left: 24px;}ul, ol {    font-size: 14px;    line-height: 20px;    max-width: 540px;}p {    font-size: 14px;    line-height: 20px;    max-width: 540px;    margin-top: 3px;}pre {    padding: 0px 4px;    max-width: 800px;    white-space: pre-wrap;    font-family: Consolas, Monaco, Andale Mono, monospace;    line-height: 1.5;    font-size: 13px;    border: 1px solid #ddd;    background-color: #f7f7f7;    border-radius: 3px;}code {    font-family: Consolas, Monaco, Andale Mono, monospace;    line-height: 1.5;    font-size: 13px;    border: 1px solid #ddd;    background-color: #f7f7f7;    border-radius: 3px;}pre code {    border: 0px;}aside {    display: block;    float: right;    width: 390px;}blockquote {    border-left:.5em solid #40AA53;    padding: 0 2em;    margin-left:0;    max-width: 476px;}blockquote  cite {    font-size:14px;    line-height:20px;    color:#bfbfbf;}blockquote cite:before {    content: '\2014 \00A0';}blockquote p {      color: #666;    max-width: 460px;}hr {    height: 1px;    border: none;    border-top: 1px dashed #0066CC}button,input,select,textarea {  font-size: 100%;  margin: 0;  vertical-align: baseline;  *vertical-align: middle;}button, input {  line-height: normal;  *overflow: visible;}button::-moz-focus-inner, input::-moz-focus-inner {  border: 0;  padding: 0;}button,input[type="button"],input[type="reset"],input[type="submit"] {  cursor: pointer;  -webkit-appearance: button;}input[type=checkbox], input[type=radio] {  cursor: pointer;}/* override default chrome & firefox settings */input:not([type="image"]), textarea {  -webkit-box-sizing: content-box;  -moz-box-sizing: content-box;  box-sizing: content-box;}input[type="search"] {  -webkit-appearance: textfield;  -webkit-box-sizing: content-box;  -moz-box-sizing: content-box;  box-sizing: content-box;}input[type="search"]::-webkit-search-decoration {  -webkit-appearance: none;}label,input,select,textarea {  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;  font-size: 13px;  font-weight: normal;  line-height: normal;  margin-bottom: 18px;}input[type=checkbox], input[type=radio] {  cursor: pointer;  margin-bottom: 0;}input[type=text],input[type=password],textarea,select {  display: inline-block;  width: 210px;  padding: 4px;  font-size: 13px;  font-weight: normal;  line-height: 18px;  height: 18px;  color: #808080;  border: 1px solid #ccc;  -webkit-border-radius: 3px;  -moz-border-radius: 3px;  border-radius: 3px;}select, input[type=file] {  height: 27px;  line-height: 27px;}textarea {  height: auto;}/* grey out placeholders */:-moz-placeholder {  color: #bfbfbf;}::-webkit-input-placeholder {  color: #bfbfbf;}input[type=text],input[type=password],select,textarea {  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;  -moz-transition: border linear 0.2s, box-shadow linear 0.2s;  transition: border linear 0.2s, box-shadow linear 0.2s;  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);  -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);}input[type=text]:focus, input[type=password]:focus, textarea:focus {  outline: none;  border-color: rgba(82, 168, 236, 0.8);  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);  -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);}/* buttons */button {  display: inline-block;  padding: 4px 14px;  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;  font-size: 13px;  line-height: 18px;  -webkit-border-radius: 4px;  -moz-border-radius: 4px;  border-radius: 4px;  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);  background-color: #0064cd;  background-repeat: repeat-x;  background-image: -khtml-gradient(linear, left top, left bottom, from(#049cdb), to(#0064cd));  background-image: -moz-linear-gradient(top, #049cdb, #0064cd);  background-image: -ms-linear-gradient(top, #049cdb, #0064cd);  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #049cdb), color-stop(100%, #0064cd));  background-image: -webkit-linear-gradient(top, #049cdb, #0064cd);  background-image: -o-linear-gradient(top, #049cdb, #0064cd);  background-image: linear-gradient(top, #049cdb, #0064cd);  color: #fff;  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);  border: 1px solid #004b9a;  border-bottom-color: #003f81;  -webkit-transition: 0.1s linear all;  -moz-transition: 0.1s linear all;  transition: 0.1s linear all;  border-color: #0064cd #0064cd #003f81;  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);}button:hover {  color: #fff;  background-position: 0 -15px;  text-decoration: none;}button:active {  -webkit-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);  -moz-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);  box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);}button::-moz-focus-inner {  padding: 0;  border: 0;}/* table  */table {    border-spacing: 0;    border: 1px solid #ccc;}td, th{    border: 1px solid #ccc;    padding: 5px;}/* code syntax highlight.Documentation: http://www.mdcharm.com/documentation/code_syntax_highlighting.html#custom_your_own */pre .literal,pre .comment,pre .template_comment,pre .diff .header,pre .javadoc {    color: #008000;}pre .keyword,pre .css .rule .keyword,pre .winutils,pre .javascript .title,pre .nginx .title,pre .subst,pre .request,pre .status {    color: #0000FF;    font-weight: bold}pre .number,pre .hexcolor,pre .python .decorator,pre .ruby .constant {    color: #0000FF;}pre .string,pre .tag .value,pre .phpdoc,pre .tex .formula {    color: #D14}pre .title,pre .id {    color: #900;    font-weight: bold}pre .javascript .title,pre .lisp .title,pre .clojure .title,pre .subst {    font-weight: normal}pre .class .title,pre .haskell .type,pre .vhdl .literal,pre .tex .command {    color: #458;    font-weight: bold}pre .tag,pre .tag .title,pre .rules .property,pre .django .tag .keyword {    color: #000080;    font-weight: normal}pre .attribute,pre .variable,pre .lisp .body {    color: #008080}pre .regexp {    color: #009926}pre .class {    color: #458;    font-weight: bold}pre .symbol,pre .ruby .symbol .string,pre .lisp .keyword,pre .tex .special,pre .prompt {    color: #990073}pre .built_in,pre .lisp .title,pre .clojure .built_in {    color: #0086b3}pre .preprocessor,pre .pi,pre .doctype,pre .shebang,pre .cdata {    color: #999;    font-weight: bold}pre .deletion {    background: #fdd}pre .addition {    background: #dfd}pre .diff .change {    background: #0086b3}pre .chunk {    color: #aaa}pre .markdown .header {    color: #800;    font-weight: bold;}pre .markdown .blockquote {    color: #888;}pre .markdown .link_label {    color: #88F;}pre .markdown .strong {    font-weight: bold;}pre .markdown .emphasis {    font-style: italic;}
+   </style>
+   
+   
+</head>
+<body>
     <h1>JavaScript代码风格</h1>
 
 <h2><a name='table-of-contents'>内容列表</a></h2>
@@ -497,11 +59,11 @@ function() {
 
 <span class="comment">// bad</span>
 <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) {
-  <span class="comment">// ...</span>
+    <span class="comment">// ...</span>
 }
 <span class="comment">// good</span>
 <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) {
-  <span class="comment">// ...</span>
+    <span class="comment">// ...</span>
 }
 </code></pre></li>
 <li><p>赋值语句两边各1个空格</p>
@@ -528,19 +90,19 @@ name = <span class="string">'John'</span>;
 
 <pre><code class="javascript"><span class="comment">// bad</span>
 <span class="function"><span class="keyword">function</span> <span class="title">ajax</span><span class="params">(url,param,success)</span> {</span>
-  <span class="comment">// ...</span>
+    <span class="comment">// ...</span>
 }
 
 <span class="comment">// good</span>
 <span class="function"><span class="keyword">function</span> <span class="title">ajax</span><span class="params">(url, param, success)</span> {</span>
-  <span class="comment">// ...</span>
+    <span class="comment">// ...</span>
 }
 </code></pre></li>
 <li><p>左大括号前1个空格</p>
 
 <pre><code class="javascript"><span class="comment">// bad</span>
 <span class="function"><span class="keyword">function</span> <span class="title">ajax</span><span class="params">(url, param, success)</span>{</span>
-  <span class="comment">// ...</span>
+    <span class="comment">// ...</span>
 }
 <span class="keyword">if</span> (a &gt; b){
 
@@ -548,7 +110,7 @@ name = <span class="string">'John'</span>;
 
 <span class="comment">// good</span>
 <span class="function"><span class="keyword">function</span> <span class="title">ajax</span><span class="params">(url, param, success)</span> {</span>
-  <span class="comment">// ...</span>
+    <span class="comment">// ...</span>
 }
 <span class="keyword">if</span> (a &gt; b) {
 
@@ -564,7 +126,7 @@ name = <span class="string">'John'</span>;
 <span class="keyword">var</span> name = <span class="string">'John'</span>;
 <span class="keyword">var</span> obj = {}; 
 <span class="keyword">if</span> (name = <span class="string">'Lily'</span>) {
-  login(name);
+    login(name);
 }
 </code></pre></li>
 <li><p>一元运算符（++，--）前后不加空格</p>
@@ -586,20 +148,20 @@ total--;
 
 <pre><code class="javascript"><span class="comment">// bad</span>
 <span class="function"><span class="keyword">function</span> <span class="title">fn</span><span class="params">()</span> {</span>
-  <span class="comment">// ...</span>
+    <span class="comment">// ...</span>
 };
 <span class="comment">// good</span>
 <span class="function"><span class="keyword">function</span> <span class="title">fn</span><span class="params">()</span> {</span>
-  <span class="comment">// ...</span>
+    <span class="comment">// ...</span>
 }
 
 <span class="comment">// bad</span>
 <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) {
-  <span class="comment">// ...</span>
+    <span class="comment">// ...</span>
 };
 <span class="comment">// good</span>
 <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) {
-  <span class="comment">// ...</span>
+    <span class="comment">// ...</span>
 }
 </code></pre></li>
 </ul>
@@ -657,31 +219,31 @@ var html = '&lt;a href="http://www.jd.com"&gt;京东&lt;/a&gt;';
 <pre><code class="javascript"><span class="comment">// bad</span>
 <span class="keyword">if</span> (a &gt; b)
 {
-  <span class="comment">// ...</span>
+    <span class="comment">// ...</span>
 }
 <span class="comment">// good</span>
 <span class="keyword">if</span> (a &gt; b) {
-  <span class="comment">// ...</span>
+    <span class="comment">// ...</span>
 }
 
 <span class="comment">// bad</span>
 <span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">()</span>{</span>
-  console.log(<span class="string">'test'</span>);
+    console.log(<span class="string">'test'</span>);
 }
 <span class="comment">// good</span>
 <span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">()</span> {</span>
-  console.log(<span class="string">'test'</span>);
+    console.log(<span class="string">'test'</span>);
 }
 
 <span class="comment">// bad</span>
 dog.set(<span class="string">'attr'</span>,{
-  age: <span class="string">'1 year'</span>,
-  breed: <span class="string">'Bernese Mountain Dog'</span>
+    age: <span class="string">'1 year'</span>,
+    breed: <span class="string">'Bernese Mountain Dog'</span>
 });
 <span class="comment">// good</span>
 dog.set(<span class="string">'attr'</span>, {
-  age: <span class="string">'1 year'</span>,
-  breed: <span class="string">'Bernese Mountain Dog'</span>
+    age: <span class="string">'1 year'</span>,
+    breed: <span class="string">'Bernese Mountain Dog'</span>
 });
 </code></pre></li>
 </ul>
@@ -702,7 +264,7 @@ dog.set(<span class="string">'attr'</span>, {
 <pre><code class="javascript"><span class="keyword">var</span> obj = {name: <span class="string">'John'</span>};
 
 <span class="comment">// bad</span>
-<span class="keyword">var</span> name = obj[<span class="string">'name'</span>];
+  <span class="keyword">var</span> name = obj[<span class="string">'name'</span>];
 
 <span class="comment">// good</span>
 <span class="keyword">var</span> name = obj.name;
@@ -737,14 +299,14 @@ func();
 
 <pre><code class="javascript"><span class="comment">// bad</span>
 <span class="keyword">var</span> obj = {
-  <span class="string">'name'</span>: <span class="string">'John'</span>,
-  <span class="string">'age'</span>: <span class="number">30</span>
+    <span class="string">'name'</span>: <span class="string">'John'</span>,
+    <span class="string">'age'</span>: <span class="number">30</span>
 }
 
 <span class="comment">// good</span>
 <span class="keyword">var</span> obj = {
-  name: <span class="string">'John'</span>,
-  age: <span class="number">30</span>
+    name: <span class="string">'John'</span>,
+    age: <span class="number">30</span>
 }
 </code></pre></li>
 </ul>
@@ -765,12 +327,12 @@ func();
 
 <pre><code class="javascript"><span class="comment">// bad</span>
 <span class="function"><span class="keyword">function</span> <span class="title">q</span><span class="params">()</span> {</span>
-  <span class="comment">// ...stuff...</span>
+    <span class="comment">// ...stuff...</span>
 }
 
 <span class="comment">// good</span>
 <span class="function"><span class="keyword">function</span> <span class="title">query</span><span class="params">()</span> {</span>
-  <span class="comment">// ..stuff..</span>
+    <span class="comment">// ..stuff..</span>
 }
 </code></pre></li>
 <li><p>常量名全部用大写字母</p>
@@ -785,14 +347,14 @@ func();
 
 <pre><code class="javascript"><span class="comment">// bad</span>
 <span class="function"><span class="keyword">function</span> <span class="title">person</span><span class="params">(name, age)</span> {</span>
-  <span class="keyword">this</span>.name = name;
-  <span class="keyword">this</span>.age = age;
+    <span class="keyword">this</span>.name = name;
+    <span class="keyword">this</span>.age = age;
 }
 
 <span class="comment">// good</span>
 <span class="function"><span class="keyword">function</span> <span class="title">Person</span><span class="params">(name, age)</span> {</span>
-  <span class="keyword">this</span>.name = name;
-  <span class="keyword">this</span>.age = age;
+    <span class="keyword">this</span>.name = name;
+    <span class="keyword">this</span>.age = age;
 }
 </code></pre></li>
 <li><p>多个变量，使用多个 <code>var</code> 关键字，不使用逗号分隔</p>
@@ -873,13 +435,13 @@ here is line 2
 <pre><code class="javascript"><span class="comment">// bad</span>
 <span class="comment">// 未处理</span>IE的兼容性
 function setOpacity(node, val) {
-  node.style.opacity = val;
+    node.style.opacity = val;
 }
 
 // good
 // TODO 未处理IE6-8的兼容性
 function setOpacity(node, val) {
-  node.style.opacity = val;
+    node.style.opacity = val;
 }
 </code></pre></li>
 <li><p>文档注释会以预定格式出现在API文档中。以“/*<em>”开头，“</em>/”结束，其间的每一行均以“*”开头且与开始符的第一个“*”对齐，注释内容与“*”间留一个空格</p>
@@ -931,7 +493,7 @@ function Componetn(nodes) {
  * @param {ArrayLike&lt;Element&gt;} nodes 初始化节点
  */
 function Componetn(nodes) {
-  // ...
+    // ...
 }   
 </code></pre></li>
 <li><p>声明函数或类方法，没有指定@for时，表示此函数为全局或顶层函数。当函数为静态函数时，必须添加@static；当函数有参数时，必须使用@param；当函数有返回值时，必须使用@return</p>
@@ -942,7 +504,7 @@ function Componetn(nodes) {
  * @method
  */
 Component.prototype.getNode = function(i) {
-  // ...
+    // ...
 }
 
 // good
@@ -954,7 +516,7 @@ Component.prototype.getNode = function(i) {
  * @return {Element} 指定元素
  */
 Component.prototype.getNode = function(i) {
-  // ...
+    // ...
 }
 </code></pre></li>
 <li><p>声明对象属性，@property</p>
@@ -1002,9 +564,31 @@ htmlOptions.classNames = "arrow area";
 </code></pre></li>
 </ul>
 
+<h2>License</h2>
+
+<p>The MIT License (MIT)</p>
+
+<p>Copyright (c) 2015 snandy</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</p>
+
 <p><strong><a href="#table-of-contents">返回列表</a></strong></p>
-
-
-</body>
-
+
+</body>
 </html>
