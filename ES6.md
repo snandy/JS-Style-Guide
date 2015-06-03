@@ -702,8 +702,7 @@
 **[返回列表](#table-of-contents)**
 
 
-
-## Learning ES6
+## <a name="resources">ES6资源</a>
 
   - [Draft ECMA 2015 (ES6) Spec](https://people.mozilla.org/~jorendorff/es6-draft.html)
   - [ExploringJS](http://exploringjs.com/)
