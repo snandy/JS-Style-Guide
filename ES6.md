@@ -24,7 +24,7 @@
 
 ## <a name='references'>引用</a>
 
-  - [1.1](#1.1) <a name='1.1'></a> 使用关键字 `const` 声明变量，避免使用 `var`。
+  - [1.1](#1.1) <a name='1.1'></a> 常量使用关键字 `const`。
 
   > 为什么？这可以确保该变量不能二次赋值，可以减少bug及晦涩代码的。
 
@@ -72,7 +72,7 @@
 
 ## <a name='objects'>对象</a>
 
-  - [2.1](#2.1) <a name='2.1'></a> 使用简写的属性
+  - [2.1](#2.1) <a name='2.1'></a> 使用简写的属性。
 
     ```javascript
     const lukeSkywalker = 'Luke Skywalker';
@@ -88,7 +88,7 @@
     };
     ```
 
-  - [2.2](#2.2) <a name='2.2'></a> 简写属性放在开头并分组
+  - [2.2](#2.2) <a name='2.2'></a> 简写属性放在开头并分组。
 
     ```javascript
     const anakinSkywalker = 'Anakin Skywalker'
@@ -119,7 +119,7 @@
 
 ## <a name='arrays'>数组</a>
 
-  - [3.1](#3.1) <a name='3.1'></a> 使用扩展运算符 `...` 复制数组
+  - [3.1](#3.1) <a name='3.1'></a> 使用扩展运算符 `...` 复制数组。
 
     ```javascript
     // bad
@@ -135,7 +135,7 @@
     const itemsCopy = [...items]
     ```
 
-  - [3.2](#3.2) <a name='3.2'></a> 使用Array.from将伪数组转成数组
+  - [3.2](#3.2) <a name='3.2'></a> 使用Array.from将伪数组转成数组。
 
     ```javascript
     const foo = document.querySelectorAll('.foo');
@@ -146,7 +146,7 @@
 
 ## <a name='destructuring'>解构</a>
 
-  - [4.1](#4.1) <a name='4.1'></a> 使用对象解构
+  - [4.1](#4.1) <a name='4.1'></a> 使用对象解构。
 
     ```javascript
     // bad
@@ -169,7 +169,7 @@
     }
     ```
 
-  - [4.2](#4.2) <a name='4.2'></a> 使用数组解构
+  - [4.2](#4.2) <a name='4.2'></a> 使用数组解构。
 
     ```javascript
     const arr = [1, 2, 3, 4]
@@ -697,7 +697,7 @@
     }
     ```
 
-  - 更多[JavaScript作用域和变量提升](http://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting) by [Ben Cherry](http://www.adequatelygood.com/).
+  - 更多[JavaScript作用域和变量提升](http://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting) by [Ben Cherry](http://www.adequatelygood.com/)。
 
 **[返回列表](#table-of-contents)**
 
