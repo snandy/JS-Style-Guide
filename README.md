@@ -25,7 +25,6 @@
 
   - JavaScript 文件结尾处留有一个换行符。
 
-
 ## <a name='indent'>缩进</a>
 
   - 将 tab 设为 4 个空格。
@@ -127,7 +126,7 @@
     }
     ```
 
-  - 一行一条语句，语句行之间 4 个空格缩进，不使用Tab（可将编辑器的 tab 设置为 4 个空格）。
+  - 语句行之间 4 个空格缩进，不使用Tab（可将编辑器的 tab 设置为 4 个空格）。
 
     ```javascript
     // bad
@@ -153,9 +152,11 @@
     ++sum;
     total--;
     ```
+
 ## <a name='new-line'>换行</a>
 
   - 每个独立语句结束后必须换行。
+  
     ```javascript
     // bad
     user.setCode(1); user.setName('admin'); user.setPwd('123456');
@@ -164,11 +165,9 @@
     user.setCode(1);
     user.setName('admin');
     user.setPwd('123456');
-    ```  
+    ```
 
   - 每行不得超过 120 个字符。超长的不可分割的代码允许例外，比如复杂的正则表达式。长字符串不在例外之列。
-
-
 
 ## <a name='semicolon'>分号</a>
 
@@ -421,7 +420,6 @@
 		</tbody>
     </table>
 
-
 ## <a name="functions">函数</a>
 
   - 函数的长度控制在 50 行以内。
@@ -435,8 +433,6 @@
   > 为什么？ 有些函数的参数并非作为算法的输入，而是对算法的某些分支条件判断之用，此类参数建议通过一个JS对象 options 传递。
 
   > 某些情况下，如使用 AMD/CMD Loader 的 require 加载多个模块时，其 callback 可能会存在较多参数，因此对函数参数的个数不做强制限制。
-
-
 
 ## <a name="comment">注释</a>
 
