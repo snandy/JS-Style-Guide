@@ -4,6 +4,7 @@
 
   1. [文件](#jsFile)
   1. [缩进](#indent)
+  1. [换行](#new-line)
   1. [分号](#semicolon)
   1. [引号](#quotation-marks)
   1. [逗号](#commas)
@@ -12,13 +13,14 @@
   1. [小括号](#parenthese)
   1. [对象属性](#attribute)
   1. [变量声明](#variable-declaration)
+  1. [函数](#functions)  
   1. [注释](#comment)
 
 ## <a name='indent'>文件</a>
 
   - JavaScript 文件使用无 BOM 的 UTF-8 编码。
 
-  > Why? UTF-8 编码具有更广泛的适应性。BOM 在使用程序或工具处理文件时可能造成不必要的干扰，比如Mac系统中的[换行符问题](http://www.cnblogs.com/snandy/p/4424970.html)。
+  > Why? UTF-8 编码具有更广泛的适应性。BOM 在使用程序或工具处理文件时可能造成不必要的干扰，比如Mac系统中的<a href="http://www.cnblogs.com/snandy/p/4424970.html" target="_blank">换行符问题</a>。
 
 
   - JavaScript 文件结尾处留有一个换行符。
@@ -151,6 +153,22 @@
     ++sum;
     total--;
     ```
+## <a name='new-line'>换行</a>
+
+  - 每个独立语句结束后必须换行。
+    ```javascript
+    // bad
+    user.setCode(1); user.setName('admin'); user.setPwd('123456');
+
+    // good
+    user.setCode(1);
+    user.setName('admin');
+    user.setPwd('123456');
+    ```  
+
+  - 每行不得超过 120 个字符。超长的不可分割的代码允许例外，比如复杂的正则表达式。长字符串不在例外之列。
+
+
 
 ## <a name='semicolon'>分号</a>
 
@@ -402,6 +420,22 @@
 			<tr><td>$</td><td>jQuery Object</td><td>$nav</td></tr>
 		</tbody>
     </table>
+
+
+## <a name="functions">函数</a>
+
+  - 函数的长度控制在 50 行以内。
+
+  > 为什么？将过多的逻辑单元混在一个大函数中，难以维护。一个清晰易懂的函数应该完成单一的逻辑单元。复杂的操作应进一步分解，通过函数的调用来体现流程。
+
+  > 不可分割的特定算法逻辑允许例外。
+
+  - 函数的参数控制在 5 个以内，过多参数会导致维护难度增大。
+
+  > 某些情况下，如使用 AMD Loader 的 require 加载多个模块时，其 callback 可能会存在较多参数，因此对函数参数的个数不做强制限制。
+
+  > 为什么？ 有些函数的参数并非作为算法的输入，而是对算法的某些分支条件判断之用，此类参数建议通过一个JS对象 options 传递。
+
 
 
 ## <a name="comment">注释</a>
