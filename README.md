@@ -16,7 +16,7 @@
   1. [函数](#functions)  
   1. [注释](#comment)
 
-## <a name='indent'>文件</a>
+## <a name='jsFile'>文件</a>
 
   - JavaScript 文件使用无 BOM 的 UTF-8 编码。
 
@@ -432,10 +432,9 @@
 
   - 函数的参数控制在 5 个以内，过多参数会导致维护难度增大。
 
-  > 某些情况下，如使用 AMD Loader 的 require 加载多个模块时，其 callback 可能会存在较多参数，因此对函数参数的个数不做强制限制。
-
   > 为什么？ 有些函数的参数并非作为算法的输入，而是对算法的某些分支条件判断之用，此类参数建议通过一个JS对象 options 传递。
 
+  > 某些情况下，如使用 AMD Loader 的 require 加载多个模块时，其 callback 可能会存在较多参数，因此对函数参数的个数不做强制限制。
 
 
 ## <a name="comment">注释</a>
