@@ -20,10 +20,10 @@
 
   - JavaScript 文件使用无 BOM 的 UTF-8 编码。
 
-  > Why? UTF-8 编码具有更广泛的适应性。BOM 在使用程序或工具处理文件时可能造成不必要的干扰，比如Mac系统中的<a href="http://www.cnblogs.com/snandy/p/4424970.html" target="_blank">换行符问题</a>。
-
+  > 为什么? UTF-8 编码具有更广泛的适应性。BOM 在使用程序或工具处理文件时可能造成不必要的干扰，比如Mac系统中的<a href="http://www.cnblogs.com/snandy/p/4424970.html" target="_blank">换行符问题</a>。
 
   - JavaScript 文件结尾处留有一个换行符。
+  
 
 ## <a name='indent'>缩进</a>
 
