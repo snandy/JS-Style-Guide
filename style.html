@@ -14,7 +14,9 @@
 <h2><a name='table-of-contents'>内容列表</a></h2>
 
 <ol>
+<li><a href="#jsFile">文件</a></li>
 <li><a href="#indent">缩进</a></li>
+<li><a href="#new-line">换行</a></li>
 <li><a href="#semicolon">分号</a></li>
 <li><a href="#quotation-marks">引号</a></li>
 <li><a href="#commas">逗号</a></li>
@@ -23,13 +25,25 @@
 <li><a href="#parenthese">小括号</a></li>
 <li><a href="#attribute">对象属性</a></li>
 <li><a href="#variable-declaration">变量声明</a></li>
+<li><a href="#functions">函数</a><br></li>
 <li><a href="#comment">注释</a></li>
 </ol>
+
+<h2><a name='jsFile'>文件</a></h2>
+
+<ul>
+<li><p>JavaScript 文件使用无 BOM 的 UTF-8 编码。</p>
+
+<blockquote>
+<p>为什么? UTF-8 编码具有更广泛的适应性。BOM 在使用程序或工具处理文件时可能造成不必要的干扰，比如Mac系统中的<a href="http://www.cnblogs.com/snandy/p/4424970.html" target="_blank">换行符问题</a>。</p>
+</blockquote></li>
+<li><p>JavaScript 文件结尾处留有一个换行符。</p></li>
+</ul>
 
 <h2><a name='indent'>缩进</a></h2>
 
 <ul>
-<li><p>将tab设为4个空格。</p>
+<li><p>将 tab 设为 4 个空格。</p>
 
 <pre><code class="javascript"><span class="comment">// bad</span>
 <span class="keyword">function</span>() {
@@ -66,7 +80,7 @@ function() {
     <span class="comment">// ...</span>
 }
 </code></pre></li>
-<li><p>赋值语句两边各1个空格</p>
+<li><p>赋值语句两边各 1 个空格</p>
 
 <pre><code class="javascript"><span class="comment">// bad</span>
 name=<span class="string">'John'</span>;
@@ -74,7 +88,7 @@ name=<span class="string">'John'</span>;
 <span class="comment">// good</span>
 name = <span class="string">'John'</span>;
 </code></pre></li>
-<li><p>两元运算符（<code>==</code>, <code>&gt;</code>, <code>&lt;</code>等）两边各1个空格。</p>
+<li><p>两元运算符（<code>==</code>, <code>&gt;</code>, <code>&lt;</code>等）两边各 1 个空格。</p>
 
 <pre><code class="javascript"><span class="comment">// bad</span>
 <span class="keyword">if</span> (a==b) {
@@ -86,7 +100,7 @@ name = <span class="string">'John'</span>;
 
 }
 </code></pre></li>
-<li><p>函数参数之间1个空格。</p>
+<li><p>函数参数之间 1 个空格。</p>
 
 <pre><code class="javascript"><span class="comment">// bad</span>
 <span class="function"><span class="keyword">function</span> <span class="title">ajax</span><span class="params">(url,param,success)</span> {</span>
@@ -98,7 +112,7 @@ name = <span class="string">'John'</span>;
     <span class="comment">// ...</span>
 }
 </code></pre></li>
-<li><p>左大括号前1个空格。</p>
+<li><p>左大括号前 1 个空格。</p>
 
 <pre><code class="javascript"><span class="comment">// bad</span>
 <span class="function"><span class="keyword">function</span> <span class="title">ajax</span><span class="params">(url, param, success)</span>{</span>
@@ -116,7 +130,7 @@ name = <span class="string">'John'</span>;
 
 }
 </code></pre></li>
-<li><p>一行一条语句，语句行之间4个空格缩进，不使用Tab（可将编辑器的tab设置为4个空格）。</p>
+<li><p>语句行之间 4 个空格缩进，不使用Tab（可将编辑器的 tab 设置为 4 个空格）。</p>
 
 <pre><code class="javascript"><span class="comment">// bad</span>
 <span class="keyword">var</span> name = <span class="string">'John'</span>; <span class="keyword">var</span> obj = {};
@@ -139,6 +153,22 @@ total --;
 ++sum;
 total--;
 </code></pre></li>
+</ul>
+
+<h2><a name='new-line'>换行</a></h2>
+
+<ul>
+<li><p>每个独立语句结束后必须换行。</p>
+
+<pre><code class="javascript"><span class="comment">// bad</span>
+user.setCode(<span class="number">1</span>); user.setName(<span class="string">'admin'</span>); user.setPwd(<span class="string">'123456'</span>);
+
+<span class="comment">// good</span>
+user.setCode(<span class="number">1</span>);
+user.setName(<span class="string">'admin'</span>);
+user.setPwd(<span class="string">'123456'</span>);
+</code></pre></li>
+<li><p>每行不得超过 120 个字符。超长的不可分割的代码允许例外，比如复杂的正则表达式。长字符串不在例外之列。</p></li>
 </ul>
 
 <h2><a name='semicolon'>分号</a></h2>
@@ -251,7 +281,7 @@ dog.set(<span class="string">'attr'</span>, {
 <h2><a name='square-brackets'>中括号</a></h2>
 
 <ul>
-<li><p>定义数组，成员以逗号分隔，逗号后加1个空格。</p>
+<li><p>定义数组，成员以逗号分隔，逗号后加 1 个空格。</p>
 
 <pre><code class="javascript"><span class="comment">// bad</span>
 <span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];
@@ -323,7 +353,7 @@ func();
 <span class="comment">// good</span>
 <span class="keyword">var</span> nickName = <span class="string">'John'</span>;
 </code></pre></li>
-<li><p>避免单个字符名，让你的变量名有描述意义（计数器除外）。</p>
+<li><p>避免单个字符名，变量名应具有描述意义（计数器除外）。</p>
 
 <pre><code class="javascript"><span class="comment">// bad</span>
 <span class="function"><span class="keyword">function</span> <span class="title">q</span><span class="params">()</span> {</span>
@@ -386,6 +416,25 @@ func();
 </table></li>
 </ul>
 
+<h2><a name="functions">函数</a></h2>
+
+<ul>
+<li><p>函数的长度控制在 50 行以内。</p>
+
+<blockquote>
+<p>为什么？将过多的逻辑单元混在一个大函数中，难以维护。一个清晰易懂的函数应该完成单一的逻辑单元。复杂的操作应进一步分解，通过函数的调用来体现流程。</p>
+
+<p>不可分割的特定算法逻辑允许例外。</p>
+</blockquote></li>
+<li><p>函数的参数控制在 5 个以内，过多参数会导致维护难度增大。</p>
+
+<blockquote>
+<p>为什么？ 有些函数的参数并非作为算法的输入，而是对算法的某些分支条件判断之用，此类参数建议通过一个JS对象 options 传递。</p>
+
+<p>某些情况下，如使用 AMD/CMD Loader 的 require 加载多个模块时，其 callback 可能会存在较多参数，因此对函数参数的个数不做强制限制。</p>
+</blockquote></li>
+</ul>
+
 <h2><a name="comment">注释</a></h2>
 
 <ul>
@@ -430,7 +479,7 @@ here is line 2
    here is line 2
  */</span>         
 </code></pre></li>
-<li><p>如果某段代码有功能未实现或有待完善，必须添加“TODO”标记，“TODO”前后应留一个空格。</p>
+<li><p>如果某段代码有功能未实现或有待完善，必须添加“TODO”标记，“TODO” 前后应留一个空格。</p>
 
 <pre><code class="javascript"><span class="comment">// bad</span>
 <span class="comment">// 未处理</span>IE的兼容性
@@ -444,7 +493,7 @@ function setOpacity(node, val) {
     node.style.opacity = val;
 }
 </code></pre></li>
-<li><p>文档注释会以预定格式出现在API文档中。以“/*<em>”开头，“</em>/”结束，其间的每一行均以“*”开头且与开始符的第一个“*”对齐，注释内容与“*”间留一个空格。</p>
+<li><p>文档注释会以预定格式出现在API文档中。以 “/*<em>” 开头，“</em>/” 结束，其间的每一行均以 “*” 开头且与开始符的第一个 “*” 对齐，注释内容与 “*” 间留一个空格。</p>
 
 <pre><code class="javascript"><span class="comment">// bad</span>
 <span class="comment">/*
@@ -474,7 +523,7 @@ function setOpacity(node, val) {
  * @module Core
  */   
 </code></pre></li>
-<li><p>class必须搭配@constructor或@static使用，分别标记非静态类与静态类。</p>
+<li><p>class 必须搭配@constructor或@static使用，分别标记非静态类与静态类。</p>
 
 <pre><code class="javascript"><span class="comment">// bad</span>
 <span class="comment">/**
@@ -563,30 +612,6 @@ htmlOptions.classNames = "arrow area";
 
 </code></pre></li>
 </ul>
-
-<h2>License</h2>
-
-<p>The MIT License (MIT)</p>
-
-<p>Copyright (c) 2015 snandy</p>
-
-<p>Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the &quot;Software&quot;), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:</p>
-
-<p>The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.</p>
-
-<p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.</p>
 
 <p><strong><a href="#table-of-contents">返回列表</a></strong></p>
 
