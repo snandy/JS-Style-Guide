@@ -9,27 +9,41 @@
    
 </head>
 <body>
-    <h1>JavaScript代码风格</h1>
+    <h1>JDC 前端 JavaScript 代码规范</h1>
+
+<p>本规范的目标是使 JavaScript 代码风格保持一致，有助于写出质量高、错误少、易于维护及团队协作的程序。</p>
+
+<p>标准委员会（<a href="mailto:fe-codestyle@jd.com">fe-codestyle@jd.com</a>）参与规则制定人员：</p>
+
+<ul>
+<li>罗均波 （<a href="mailto:luojunbo@jd.com">luojunbo@jd.com</a>）</li>
+<li>刘威 （<a href="mailto:liuwei1@jd.com">liuwei1@jd.com</a>）</li>
+<li>陈晓春 （<a href="mailto:chenxiaochun@jd.com">chenxiaochun@jd.com</a>）</li>
+<li>巫燿恒 （<a href="mailto:wuyaoheng@jd.com">wuyaoheng@jd.com</a>）</li>
+<li>王少星 （<a href="mailto:wangshaoxing@jd.com">wangshaoxing@jd.com</a>）</li>
+<li>冯伟平 （<a href="mailto:fengweiping@jd.com">fengweiping@jd.com</a>）</li>
+<li>佟恩 （<a href="mailto:tongen@jd.com">tongen@jd.com</a>）</li>
+<li>李春来 （<a href="mailto:lichunlai@jd.com">lichunlai@jd.com</a>）</li>
+<li>石建国 （<a href="mailto:bjshijianguo@jd.com">bjshijianguo@jd.com</a>）</li>
+<li>王戈 （<a href="mailto:wangge1@jd.com">wangge1@jd.com</a>）</li>
+<li>周涛 （<a href="mailto:yfzhoutao@jd.com">yfzhoutao@jd.com</a>）</li>
+</ul>
 
 <h2><a name='table-of-contents'>内容列表</a></h2>
 
 <ol>
-<li><a href="#jsFile">文件</a></li>
+<li><a href="#file">文件</a></li>
 <li><a href="#indent">缩进</a></li>
-<li><a href="#new-line">换行</a></li>
-<li><a href="#semicolon">分号</a></li>
-<li><a href="#quotation-marks">引号</a></li>
-<li><a href="#commas">逗号</a></li>
-<li><a href="#curly-brackets">大括号</a></li>
-<li><a href="#square-brackets">中括号</a></li>
-<li><a href="#parenthese">小括号</a></li>
-<li><a href="#attribute">对象属性</a></li>
-<li><a href="#variable-declaration">变量声明</a></li>
-<li><a href="#functions">函数</a><br></li>
-<li><a href="#comment">注释</a></li>
+<li><a href="#space">空格</a></li>
+<li><a href="#newline">换行</a></li>
+<li><a href="#statement">语句</a></li>
+<li><a href="#variables">变量</a></li>
+<li><a href="#functions">函数</a></li>
+<li><a href="#comments">注释</a></li>
+<li><a href="#others">其它</a></li>
 </ol>
 
-<h2><a name='jsFile'>文件</a></h2>
+<h2><a name='file'>文件</a></h2>
 
 <ul>
 <li><p>JavaScript 文件使用无 BOM 的 UTF-8 编码。</p>
@@ -37,30 +51,57 @@
 <blockquote>
 <p>为什么? UTF-8 编码具有更广泛的适应性。BOM 在使用程序或工具处理文件时可能造成不必要的干扰，比如Mac系统中的<a href="http://www.cnblogs.com/snandy/p/4424970.html" target="_blank">换行符问题</a>。</p>
 </blockquote></li>
-<li><p>JavaScript 文件结尾处留有一个换行符。</p></li>
 </ul>
 
-<h2><a name='indent'>缩进</a></h2>
+<h2><a name='indent'>缩进层次</a></h2>
 
 <ul>
-<li><p>将 tab 设为 4 个空格。</p>
+<li><p>缩进层级：使用 4 个空格， 不允许使用 2 个空格或 tab。</p>
+
+<blockquote>
+<p>switch 下的 case 和 default 必须增加一个缩进层级。</p>
+</blockquote>
 
 <pre><code class="javascript"><span class="comment">// bad</span>
-<span class="keyword">function</span>() {
+<span class="function"><span class="keyword">function</span> <span class="title">fn</span><span class="params">()</span> {</span>
 ∙∙var name;
 }
-
-// bad
-function() {
-∙var name;
-}
-
 // good
-<span class="keyword">function</span>() {
+<span class="keyword">function</span> fn() {
 ∙∙∙∙var name;
 }
+</code></pre>
+
+<pre><code class="javascript"><span class="comment">// bad</span>
+<span class="keyword">switch</span> (vs) {
+<span class="keyword">case</span> <span class="string">'1'</span>:
+    <span class="comment">// do...</span>
+    <span class="keyword">break</span>;
+<span class="keyword">case</span> <span class="string">'2'</span>:
+    <span class="comment">// do...</span>
+    <span class="keyword">break</span>;
+<span class="keyword">default</span>:
+    <span class="comment">// do...</span>
+}
+
+<span class="comment">// good</span>
+<span class="keyword">switch</span> (vs) {
+    <span class="keyword">case</span> <span class="string">'1'</span>:
+        <span class="comment">// do...</span>
+        <span class="keyword">break</span>;
+    <span class="keyword">case</span> <span class="string">'2'</span>:
+        <span class="comment">// do...</span>
+        <span class="keyword">break</span>;
+    <span class="keyword">default</span>:
+        <span class="comment">// do...</span>
+}
 </code></pre></li>
-<li><p><code>if</code>、 <code>else</code>、 <code>switch</code>、 <code>case</code>、 <code>for</code>、 <code>while</code> 和 <code>:</code> 后1个空格。</p>
+</ul>
+
+<h2><a name='space'>空格</a></h2>
+
+<ul>
+<li><p>关键字 <code>if</code>、 <code>else</code>、 <code>switch</code>、 <code>case</code>、 <code>for</code>、 <code>while</code> 和 <code>:</code> 后加 1 个空格。</p>
 
 <pre><code class="javascript"><span class="comment">// bad</span>
 <span class="keyword">if</span>(a &gt; b) {
@@ -80,7 +121,7 @@ function() {
     <span class="comment">// ...</span>
 }
 </code></pre></li>
-<li><p>赋值语句两边各 1 个空格</p>
+<li><p>赋值运算符 <code>=</code> 两边各加 1 个空格。</p>
 
 <pre><code class="javascript"><span class="comment">// bad</span>
 name=<span class="string">'John'</span>;
@@ -88,7 +129,7 @@ name=<span class="string">'John'</span>;
 <span class="comment">// good</span>
 name = <span class="string">'John'</span>;
 </code></pre></li>
-<li><p>两元运算符（<code>==</code>, <code>&gt;</code>, <code>&lt;</code>等）两边各 1 个空格。</p>
+<li><p>两元运算符（<code>==</code>, <code>&gt;</code>, <code>&lt;</code>等）两边各加 1 个空格。</p>
 
 <pre><code class="javascript"><span class="comment">// bad</span>
 <span class="keyword">if</span> (a==b) {
@@ -100,7 +141,7 @@ name = <span class="string">'John'</span>;
 
 }
 </code></pre></li>
-<li><p>函数参数之间 1 个空格。</p>
+<li><p>函数参数之间加 1 个空格。</p>
 
 <pre><code class="javascript"><span class="comment">// bad</span>
 <span class="function"><span class="keyword">function</span> <span class="title">ajax</span><span class="params">(url,param,success)</span> {</span>
@@ -112,7 +153,17 @@ name = <span class="string">'John'</span>;
     <span class="comment">// ...</span>
 }
 </code></pre></li>
-<li><p>左大括号前 1 个空格。</p>
+<li><p>一元运算符（<code>++</code>，<code>--</code>）前后不加空格。</p>
+
+<pre><code class="javascript"><span class="comment">// bad</span>
+++ sum;
+total --;
+
+<span class="comment">// good</span>
+++sum;
+total--;
+</code></pre></li>
+<li><p>左大括号前加 1 个空格。</p>
 
 <pre><code class="javascript"><span class="comment">// bad</span>
 <span class="function"><span class="keyword">function</span> <span class="title">ajax</span><span class="params">(url, param, success)</span>{</span>
@@ -130,121 +181,31 @@ name = <span class="string">'John'</span>;
 
 }
 </code></pre></li>
-<li><p>语句行之间 4 个空格缩进，不使用Tab（可将编辑器的 tab 设置为 4 个空格）。</p>
+<li><p>数组成员间 <code>,</code> 后加 1 个空格。</p>
 
 <pre><code class="javascript"><span class="comment">// bad</span>
-<span class="keyword">var</span> name = <span class="string">'John'</span>; <span class="keyword">var</span> obj = {};
-<span class="keyword">if</span> (name = <span class="string">'Lily'</span>) { login(name); }
+<span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];
 
 <span class="comment">// good</span>
-<span class="keyword">var</span> name = <span class="string">'John'</span>;
-<span class="keyword">var</span> obj = {}; 
-<span class="keyword">if</span> (name = <span class="string">'Lily'</span>) {
-    login(name);
-}
+<span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];
 </code></pre></li>
-<li><p>一元运算符（<code>++</code>，<code>--</code>）前后不加空格。</p>
+<li><p>小括号作为函数调用时 <code>函数名</code> 与 <code>左小括号</code> 之间不加空格。</p>
 
 <pre><code class="javascript"><span class="comment">// bad</span>
-++ sum;
-total --;
+func ();
 
 <span class="comment">// good</span>
-++sum;
-total--;
+func();
 </code></pre></li>
-</ul>
-
-<h2><a name='new-line'>换行</a></h2>
-
-<ul>
-<li><p>每个独立语句结束后必须换行。</p>
+<li><p>小括号作为强制运算符时左括号前加 1 个空格。</p>
 
 <pre><code class="javascript"><span class="comment">// bad</span>
-user.setCode(<span class="number">1</span>); user.setName(<span class="string">'admin'</span>); user.setPwd(<span class="string">'123456'</span>);
+<span class="keyword">return</span>(x + y);
 
 <span class="comment">// good</span>
-user.setCode(<span class="number">1</span>);
-user.setName(<span class="string">'admin'</span>);
-user.setPwd(<span class="string">'123456'</span>);
+<span class="keyword">return</span> (x + y);
 </code></pre></li>
-<li><p>每行不得超过 120 个字符。超长的不可分割的代码允许例外，比如复杂的正则表达式。长字符串不在例外之列。</p></li>
-</ul>
-
-<h2><a name='semicolon'>分号</a></h2>
-
-<ul>
-<li><p>语句始终使用分号结尾，<code>for</code>、 <code>function</code>、 <code>if</code>、 <code>switch</code>、 <code>try</code>、 <code>while</code> 除外，不要依赖于引擎隐式插入。</p>
-
-<pre><code class="javascript"><span class="comment">// bad</span>
-<span class="function"><span class="keyword">function</span> <span class="title">fn</span><span class="params">()</span> {</span>
-    <span class="comment">// ...</span>
-};
-<span class="comment">// good</span>
-<span class="function"><span class="keyword">function</span> <span class="title">fn</span><span class="params">()</span> {</span>
-    <span class="comment">// ...</span>
-}
-
-<span class="comment">// bad</span>
-<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) {
-    <span class="comment">// ...</span>
-};
-<span class="comment">// good</span>
-<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) {
-    <span class="comment">// ...</span>
-}
-</code></pre></li>
-</ul>
-
-<h2><a name='commas'>逗号</a></h2>
-
-<ul>
-<li><p>不要将逗号放前面。</p>
-
-<pre><code class="javascript"><span class="comment">// bad</span>
-<span class="keyword">var</span> hero = {
-    firstName: <span class="string">'Bob'</span>
-  , lastName: <span class="string">'Parr'</span>
-  , heroName: <span class="string">'Mr. Incredible'</span>
-  , superPower: <span class="string">'strength'</span>
-};
-
-<span class="comment">// good</span>
-<span class="keyword">var</span> hero = {
-  firstName: <span class="string">'Bob'</span>,
-  lastName: <span class="string">'Parr'</span>,
-  heroName: <span class="string">'Mr. Incredible'</span>,
-  superPower: <span class="string">'strength'</span>
-};
-
-</code></pre></li>
-</ul>
-
-<h2><a name='quotation-marks'>引号</a></h2>
-
-<ul>
-<li><p>引号多用来定义字符串，始终使用单引号。</p>
-
-<pre><code class="javascript"><span class="comment">// bad</span>
-<span class="keyword">var</span> name = <span class="string">"John"</span>;
-
-<span class="comment">// good</span>
-<span class="keyword">var</span> name = <span class="string">'John'</span>;
-</code></pre></li>
-<li><p>HTML属性使用双引号，即单引号在外层，双引号在内层。</p>
-
-<pre><code class="javascript"><span class="comment">// bad</span>
-<span class="keyword">var</span> html = <span class="string">"&lt;a href='http://www.jd.com'&gt;京东&lt;/a&gt;";
-
-// good
-var html = '&lt;a href="http://www.jd.com"&gt;京东&lt;/a&gt;';
-</code></pre></li>
-</ul>
-
-<h2><a name='curly-brackets'>大括号</a></h2>
-
-<ul>
-<li><p>起首的大括号跟在关键字的后面，且大括号前留有一个空格。</p>
+<li><p>起首的大括号跟在关键字的后面，且大括号前留有 1 个空格。</p>
 
 <pre><code class="javascript"><span class="comment">// bad</span>
 <span class="keyword">if</span> (a &gt; b)
@@ -254,15 +215,6 @@ var html = '&lt;a href="http://www.jd.com"&gt;京东&lt;/a&gt;';
 <span class="comment">// good</span>
 <span class="keyword">if</span> (a &gt; b) {
     <span class="comment">// ...</span>
-}
-
-<span class="comment">// bad</span>
-<span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">()</span>{</span>
-    console.log(<span class="string">'test'</span>);
-}
-<span class="comment">// good</span>
-<span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">()</span> {</span>
-    console.log(<span class="string">'test'</span>);
 }
 
 <span class="comment">// bad</span>
@@ -278,73 +230,123 @@ dog.set(<span class="string">'attr'</span>, {
 </code></pre></li>
 </ul>
 
-<h2><a name='square-brackets'>中括号</a></h2>
+<h2><a name='newline'>换行</a></h2>
 
 <ul>
-<li><p>定义数组，成员以逗号分隔，逗号后加 1 个空格。</p>
+<li><p>每个独立语句结束后必须换行。</p>
 
 <pre><code class="javascript"><span class="comment">// bad</span>
-<span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];
+user.setCode(<span class="number">1</span>); user.setName(<span class="string">'admin'</span>); user.setPwd(<span class="string">'123456'</span>);
 
 <span class="comment">// good</span>
-<span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];
+user.setCode(<span class="number">1</span>);
+user.setName(<span class="string">'admin'</span>);
+user.setPwd(<span class="string">'123456'</span>);
 </code></pre></li>
-<li><p>取对象属性用点号，非标准属性才使用中括号。</p>
+<li><p>行的长度不应超过80个字符，超过后需要手动将一行拆成两行。下一行增加两级缩进（8个空格）。</p>
 
-<pre><code class="javascript"><span class="keyword">var</span> obj = {name: <span class="string">'John'</span>};
+<pre><code class="javascript"><span class="comment">// bad</span>
+doSomething(argument1, argument2, argument3, argument4, argument5);
+doSomething(argument1, argument2, argument3, argument4, 
+    argument5);
+
+<span class="comment">// good</span>
+doSomething(argument1, argument2, argument3, argument4, 
+        argument5);
+</code></pre></li>
+<li><p>空行，函数之间、函数的局部变量和第一条语句之间加空行。</p>
+
+<pre><code class="javascript"><span class="comment">// bad</span>
+<span class="function"><span class="keyword">function</span> <span class="title">fetch</span><span class="params">()</span> {</span>
+}
+<span class="function"><span class="keyword">function</span> <span class="title">getUser</span> {</span>
+}
+
+<span class="comment">// good</span>
+<span class="function"><span class="keyword">function</span> <span class="title">fetch</span><span class="params">()</span> {</span>
+}
+
+<span class="function"><span class="keyword">function</span> <span class="title">getUser</span> {</span>
+}
+</code></pre>
+
+<blockquote>
+<p>[建议] 把不同业务逻辑的语句使用空行隔开，更易阅读。</p>
+</blockquote></li>
+</ul>
+
+<h2><a name='statement'>语句</a></h2>
+
+<ul>
+<li><p>语句末尾始终使用分号，不要依赖于引擎隐式插入（Automatic Semicolon Insertion，ASI）。</p>
+
+<blockquote>
+<p><code>function</code>、 <code>for</code>、 <code>if</code>、 <code>switch</code>、 <code>try</code>、 <code>while</code> 语句块末尾不需要加分号。</p>
+</blockquote>
+
+<pre><code class="javascript"><span class="comment">// bad</span>
+<span class="function"><span class="keyword">function</span> <span class="title">fn</span><span class="params">()</span> {</span>
+    <span class="comment">// ...</span>
+};
+<span class="comment">// good</span>
+<span class="function"><span class="keyword">function</span> <span class="title">fn</span><span class="params">()</span> {</span>
+    <span class="comment">// ...</span>
+}
 
 <span class="comment">// bad</span>
-  <span class="keyword">var</span> name = obj[<span class="string">'name'</span>];
-
+<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) {
+    <span class="comment">// ...</span>
+};
 <span class="comment">// good</span>
-<span class="keyword">var</span> name = obj.name;
+<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) {
+    <span class="comment">// ...</span>
+}
 </code></pre></li>
-</ul>
-
-<h2><a name="parenthese">小括号</a></h2>
-
-<ul>
-<li><p>作为函数调用时函数名与左小括号之间没有空格。</p>
+<li><p>花括号对齐方式，将花括号放置在第一句代码的末尾。</p>
 
 <pre><code class="javascript"><span class="comment">// bad</span>
-func ();
-
-<span class="comment">// good</span>
-func();
-</code></pre></li>
-<li><p>作为强制运算符时左括号前加1个空格。</p>
-
-<pre><code class="javascript"><span class="comment">// bad</span>
-<span class="keyword">return</span>(x + y);
-
-<span class="comment">// good</span>
-<span class="keyword">return</span> (x + y);
-</code></pre></li>
-</ul>
-
-<h2><a name="attribute">对象属性</a></h2>
-
-<ul>
-<li><p>不加引号（除非一些特殊关键字或非合法标识符）。</p>
-
-<pre><code class="javascript"><span class="comment">// bad</span>
-<span class="keyword">var</span> obj = {
-    <span class="string">'name'</span>: <span class="string">'John'</span>,
-    <span class="string">'age'</span>: <span class="number">30</span>
+<span class="keyword">if</span> (boo) 
+{
+    <span class="comment">// do...</span>
+}
+<span class="keyword">else</span>
+{
+    <span class="comment">// do...</span>
 }
 
 <span class="comment">// good</span>
-<span class="keyword">var</span> obj = {
-    name: <span class="string">'John'</span>,
-    age: <span class="number">30</span>
+<span class="keyword">if</span> (boo) {
+    <span class="comment">// do...</span>
+} <span class="keyword">else</span> {
+    <span class="comment">// do...</span>
+}
+</code></pre></li>
+<li><p>所有的语句块，即使只有一行，也不得省略块 {...}。</p>
+
+<pre><code class="javascript"><span class="comment">// bad</span>
+<span class="keyword">if</span> (condition) callFunc();
+<span class="keyword">if</span> (condition)
+    callFunc();
+
+<span class="comment">// good</span>
+<span class="keyword">if</span> (condition) {
+    callFunc();
 }
 </code></pre></li>
 </ul>
 
-<h2><a name="variable-declaration">变量声明</a></h2>
+<h2><a name="variables">变量</a></h2>
 
 <ul>
-<li><p>驼峰式：变量、属性、方法名开始的第一个单词小写，之后的单词首字母大写。</p>
+<li><p>始终使用 <code>var</code> 来声明变量，否则会产生全局变量，避免污染全局命名空间。</p>
+
+<pre><code class="javascript"><span class="comment">// bad</span>
+superPower = <span class="keyword">new</span> SuperPower();
+
+<span class="comment">// good</span>
+<span class="keyword">var</span> superPower = <span class="keyword">new</span> SuperPower();
+</code></pre></li>
+<li><p>命名采用驼峰式，第一个单词小写，之后的单词首字母大写。</p>
 
 <pre><code class="javascript"><span class="comment">// bad</span>
 <span class="keyword">var</span> nickname = <span class="string">'John'</span>;
@@ -353,26 +355,22 @@ func();
 <span class="comment">// good</span>
 <span class="keyword">var</span> nickName = <span class="string">'John'</span>;
 </code></pre></li>
-<li><p>避免单个字符名，变量名应具有描述意义（计数器除外）。</p>
-
-<pre><code class="javascript"><span class="comment">// bad</span>
-<span class="function"><span class="keyword">function</span> <span class="title">q</span><span class="params">()</span> {</span>
-    <span class="comment">// ...stuff...</span>
-}
-
-<span class="comment">// good</span>
-<span class="function"><span class="keyword">function</span> <span class="title">query</span><span class="params">()</span> {</span>
-    <span class="comment">// ..stuff..</span>
-}
-</code></pre></li>
-<li><p>常量名全部用大写字母。</p>
+<li><p>常量名全部用大写字母，多个单词使用下划线 <code>_</code> 连接。</p>
 
 <pre><code class="javascript"><span class="comment">// bad</span>
 <span class="keyword">var</span> pi = <span class="number">3.1415926</span>;
-
 <span class="comment">// good</span>
 <span class="keyword">var</span> PI = <span class="number">3.1415926</span>;
-</code></pre></li>
+
+<span class="comment">// bad</span>
+<span class="keyword">var</span> maxCount = <span class="number">100</span>;
+<span class="comment">// good</span>
+<span class="keyword">var</span> MAX_COUNT = <span class="number">100</span>;
+</code></pre>
+
+<blockquote>
+<p>常量：指数学(圆周率/自然对数)，物理领域（光速/质子磁矩/元电荷），计算机领域（HTTP状态码/URL），这些变量声明后不再改变。</p>
+</blockquote></li>
 <li><p>类（构造器）名首字母大写，用名词。</p>
 
 <pre><code class="javascript"><span class="comment">// bad</span>
@@ -387,26 +385,115 @@ func();
     <span class="keyword">this</span>.age = age;
 }
 </code></pre></li>
-<li><p>多个变量，使用多个 <code>var</code> 关键字，不使用逗号分隔。</p>
+<li><p>避免单个字符名，变量名应具有描述意义（计数器 <code>i,j,k</code> 除外）。</p>
 
 <pre><code class="javascript"><span class="comment">// bad</span>
-<span class="keyword">var</span> name = <span class="string">'John'</span>,
-    age = <span class="number">30</span>,
-    gender = <span class="string">'male'</span>;
+<span class="function"><span class="keyword">function</span> <span class="title">q</span><span class="params">()</span> {</span>
+    <span class="comment">// ...stuff...</span>
+}
 
 <span class="comment">// good</span>
-<span class="keyword">var</span> name = <span class="string">'John'</span>;
-<span class="keyword">var</span> age = <span class="number">30</span>;
-<span class="keyword">var</span> gender = <span class="string">'male'</span>;
+<span class="function"><span class="keyword">function</span> <span class="title">query</span><span class="params">()</span> {</span>
+    <span class="comment">// ..stuff..</span>
+}
 </code></pre></li>
-<li><p>前缀参考</p>
+<li><p>声明且赋值时使用多个 <code>var</code> 及换行。</p>
+
+<pre><code class="javascript"><span class="comment">// bad</span>
+<span class="keyword">var</span> items = getItems(),
+    goSportsTeam = <span class="literal">true</span>,
+    dragonball = <span class="string">'z'</span>;
+
+<span class="comment">// good</span>
+<span class="keyword">var</span> items = getItems();
+<span class="keyword">var</span> goSportsTeam = <span class="literal">true</span>;
+<span class="keyword">var</span> dragonball = <span class="string">'z'</span>;
+</code></pre></li>
+<li><p>只声明不赋值时可以使用单个 <code>var</code> 。</p>
+
+<pre><code class="javascript"><span class="comment">// bad</span>
+<span class="keyword">var</span> top;
+<span class="keyword">var</span> left;   
+<span class="keyword">var</span> width;
+<span class="keyword">var</span> height;
+
+<span class="comment">// good</span>
+<span class="keyword">var</span> top, left, width, height;
+</code></pre></li>
+<li><p>分组变量声明，变量多且有明显相关性时。</p>
+
+<pre><code class="javascript"><span class="comment">// bad</span>
+<span class="keyword">var</span> x, y, z, width, height;
+
+<span class="comment">// good</span>
+<span class="keyword">var</span> x, y, z;
+<span class="keyword">var</span> width, height;
+</code></pre></li>
+<li><p>就近声明，用时声明，更自然的在视角范围内。</p>
+
+<blockquote>
+<p>为什么？ 当函数行数较多时，如果把变量声明全部放在顶部，阅读或修改时还需要滚动到顶部，甚为不便。</p>
+</blockquote>
+
+<pre><code class="javascript"><span class="comment">// bad</span>
+<span class="keyword">var</span> i, len;
+<span class="keyword">var</span> goSportsTeam = <span class="literal">true</span>;
+<span class="keyword">var</span> dragonball = <span class="string">'z'</span>;
+
+<span class="comment">// ...</span>
+
+<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; i++) {
+    <span class="comment">// ...</span>
+}
+
+<span class="comment">// good</span>
+<span class="keyword">var</span> goSportsTeam = <span class="literal">true</span>;
+<span class="keyword">var</span> dragonball = <span class="string">'z'</span>;
+
+<span class="comment">// ...</span>
+
+<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, len = arr.length; i &lt; len; i++) {
+    <span class="comment">// ...</span>
+}
+</code></pre></li>
+<li><p>声明时变量之间存在依赖关系时，最后声明未赋值的变量，当你想引用之前已赋值变量的时候很有用。</p>
+
+<pre><code class="javascript"><span class="comment">// bad</span>
+<span class="keyword">var</span> width;
+<span class="keyword">var</span> height;
+<span class="keyword">var</span> $div = $(<span class="string">'#nav'</span>);
+
+<span class="comment">// good</span>
+<span class="keyword">var</span> $div = $(<span class="string">'#nav'</span>);
+<span class="keyword">var</span> width = $div.width();
+<span class="keyword">var</span> height = $div.height();
+
+</code></pre></li>
+<li><p>变量应先声明后使用，避免 <code>变量提升</code> 现象产生。</p>
+
+<pre><code class="javascript"><span class="comment">// bad</span>
+<span class="function"><span class="keyword">function</span> <span class="title">fn</span><span class="params">()</span> {</span>
+    doStaff(width, height);
+    <span class="keyword">var</span> width = $div.width() || <span class="number">0</span>;
+    <span class="keyword">var</span> height = $div.height() || <span class="number">0</span>;
+}
+
+<span class="comment">// good</span>
+<span class="function"><span class="keyword">function</span> <span class="title">fn</span><span class="params">()</span> {</span>
+    <span class="keyword">var</span> width = $div.width() || <span class="number">0</span>;
+    <span class="keyword">var</span> height = $div.height() || <span class="number">0</span>;
+    doStaff(width, height);
+}
+</code></pre></li>
+<li><p>使用前缀，不采用后缀。常见前缀参考</p>
 
 <table>
     <thead>
         <tr><td>前缀</td><td>类型</td><td>示例</td></tr>
     </thead>
     <tbody>
-        <tr><td>is, can has</td><td>Boolean</td><td>isPass</td></tr>
+        <tr><td>is, can, has</td><td>Boolean</td><td>isPass</td></tr>
+        <tr><td>reg</td><td>RegExp</td><td>regNum</td></tr>
         <tr><td>get</td><td>Getter</td><td>getName</td></tr>
         <tr><td>set</td><td>Setter</td><td>setName</td></tr>
         <tr><td>i, j, k</td><td>iterator</td><td></td></tr>
@@ -415,6 +502,8 @@ func();
     </tbody>
 </table></li>
 </ul>
+
+<p><strong><a href="#table-of-contents">返回列表</a></strong></p>
 
 <h2><a name="functions">函数</a></h2>
 
@@ -435,7 +524,9 @@ func();
 </blockquote></li>
 </ul>
 
-<h2><a name="comment">注释</a></h2>
+<p><strong><a href="#table-of-contents">返回列表</a></strong> </p>
+
+<h2><a name='comments'>注释</a></h2>
 
 <ul>
 <li><p>在单行注释符后留一个空格。</p>
@@ -450,166 +541,128 @@ func();
 
 <pre><code class="javascript"><span class="comment">// bad</span>
 <span class="comment">/*
-  this is comment
+ * this is comment
 */</span>
 
 <span class="comment">// good</span>
 <span class="comment">/*
-   this is comment
+ * this is comment
  */</span>
 </code></pre></li>
-<li><p>不要把注释写在多行注释的开始符、结束符所在行。</p>
+<li><p>文档或API使用双星号 <code>/**</code> 开始，用 <code>@</code> 符号表示属性（方法名/参数/返回值等）</p>
+
+<blockquote>
+<p>@ 的常见属性： class, constructor, method, param, return 等</p>
+</blockquote>
+
+<pre><code class="javascript"><span class="comment">/**
+ * @method merge
+ * @param  {Object} 被合并的对象，一个或多个
+ * @return {Object} 返回新的合并后的对象
+ *
+ */
+Y.merge = function() {
+    // ...
+    return dest;
+}
+</code></pre></li>
+</ul>
+
+<p><strong><a href="#table-of-contents">返回列表</a></strong></p>
+
+<h2><a name='others'>其它</a></h2>
+
+<ul>
+<li><p>定义对象时将逗号放后面。</p>
 
 <pre><code class="javascript"><span class="comment">// bad</span>
-<span class="comment">/* start
-
-end */</span>
-<span class="comment">/*
-here is line 1
-here is line 2
- */</span>    
+<span class="keyword">var</span> hero = {
+    firstName: <span class="string">'Bob'</span>
+  , lastName: <span class="string">'Parr'</span>
+  , heroName: <span class="string">'Mr. Incredible'</span>
+  , superPower: <span class="string">'strength'</span>
+};
 
 <span class="comment">// good</span>
-<span class="comment">/*
-   start
-   end
- */</span>
-<span class="comment">/*
-   here is line 1
-   here is line 2
- */</span>         
+<span class="keyword">var</span> hero = {
+  firstName: <span class="string">'Bob'</span>,
+  lastName: <span class="string">'Parr'</span>,
+  heroName: <span class="string">'Mr. Incredible'</span>,
+  superPower: <span class="string">'strength'</span>
+};
+
 </code></pre></li>
-<li><p>如果某段代码有功能未实现或有待完善，必须添加“TODO”标记，“TODO” 前后应留一个空格。</p>
+<li><p>使用单引号定义字符串。</p>
 
 <pre><code class="javascript"><span class="comment">// bad</span>
-<span class="comment">// 未处理</span>IE的兼容性
-function setOpacity(node, val) {
-    node.style.opacity = val;
-}
-
-// good
-// TODO 未处理IE6-8的兼容性
-function setOpacity(node, val) {
-    node.style.opacity = val;
-}
-</code></pre></li>
-<li><p>文档注释会以预定格式出现在API文档中。以 “/*<em>” 开头，“</em>/” 结束，其间的每一行均以 “*” 开头且与开始符的第一个 “*” 对齐，注释内容与 “*” 间留一个空格。</p>
-
-<pre><code class="javascript"><span class="comment">// bad</span>
-<span class="comment">/*
- * comment
- */</span>
+<span class="keyword">var</span> name = <span class="string">"Capt. Janeway"</span>;
 
 <span class="comment">// good</span>
-<span class="comment">/**
- * comment
- */</span>
+<span class="keyword">var</span> name = <span class="string">'Capt. Janeway'</span>;
 </code></pre></li>
-<li><p>文档注释必须包含一个或多个注释标签。</p>
+<li><p>超长字符串采用加号 <code>+</code>， 多行显示，换行后加两级缩进。</p>
 
 <pre><code class="javascript"><span class="comment">// bad</span>
-<span class="comment">/**
- * 模块说明
- */
+<span class="keyword">var</span> errorMessage = <span class="string">'This is a super error that was thrown because of Batman. When you stop how Batman had anything to do with this, you would get nowhere fast.'</span>;
 
-// good
-/**
- * 模块说明
- * @module 模块名
- */
-
-/**
- * Core模块提供最基础的接口
- * @module Core
- */   
-</code></pre></li>
-<li><p>class 必须搭配@constructor或@static使用，分别标记非静态类与静态类。</p>
-
-<pre><code class="javascript"><span class="comment">// bad</span>
-<span class="comment">/**
- * 组件基类
- * @class Component
- */
-function Componetn(nodes) {
-  // ...
-}
-
-// good
-/**
- * 组件基类
- * @class Component
- * @constructor
- * @param {ArrayLike&lt;Element&gt;} nodes 初始化节点
- */
-function Componetn(nodes) {
-    // ...
-}   
-</code></pre></li>
-<li><p>声明函数或类方法，没有指定@for时，表示此函数为全局或顶层函数。当函数为静态函数时，必须添加@static；当函数有参数时，必须使用@param；当函数有返回值时，必须使用@return。</p>
-
-<pre><code class="javascript"><span class="comment">// bad</span>
-<span class="comment">/**
- * 返回当前集合中指定位置的元素
- * @method
- */
-Component.prototype.getNode = function(i) {
-    // ...
-}
-
-// good
-/**
- * 返回当前集合中指定位置的元素
- * @method
- * @for Component
- * @param {Number} 位置下标。如果为负数，则从集合的最后一个元素开始倒数
- * @return {Element} 指定元素
- */
-Component.prototype.getNode = function(i) {
-    // ...
-}
-</code></pre></li>
-<li><p>声明对象属性，@property</p>
-
-<pre><code class="javascript"><span class="comment">// bad</span>
-<span class="comment">/**
- * id 元素id
- * classNames 样式
- */
-var htmlOptions = {
-    id:null,
-    classNames: null
-}
-htmlOptions.id = "123";
-htmlOptions.classNames = "arrow area";
-
-// good
-/**
- * @property {IDString} id 元素id
- * @property {ClassString} classNames 样式
- */
-var htmlOptions = {
-    id:null,
-    classNames: null
-}
-htmlOptions.id = "123";
-htmlOptions.classNames = "arrow area";
-
-</code></pre></li>
-<li><p>文件注释位于文件的最前面，应包括文件的以下信息：概要说明及版本（必须）、项目地址（开源组件必须）、版权声明（必须）、开源协议（开源组件必须）、版本号（必须）、修改时间（必须）。</p>
-
-<pre><code class="javascript"><span class="comment">// bad</span>
-<span class="comment">/*!
- * Z.js Javascript Library
- */</span>
+<span class="comment">// bad</span>
+<span class="keyword">var</span> errorMessage = <span class="string">'This is a super error that was thrown because \
+of Batman. When you stop how Batman had anything to do \
+with this, you would get nowhere fast.'</span>;
 
 <span class="comment">// good</span>
-<span class="comment">/*!
- * Z.js Javascript Library v1.0.0
- * @snandy - (2013-03-15)
- * http://github.com/snandy/z.js
- * Released under MIT license
- */</span>
+<span class="keyword">var</span> errorMessage = <span class="string">'This is a super error that was thrown because '</span> 
+        + <span class="string">'of Batman. When you stop how Batman had anything to do '</span>
+        + <span class="string">'with this, you would get nowhere fast.'</span>;
+</code></pre></li>
+<li><p>HTML属性使用双引号，即单引号在外层，双引号在内层。</p>
 
+<pre><code class="javascript"><span class="comment">// bad</span>
+<span class="keyword">var</span> html = <span class="string">"&lt;a href='http://www.jd.com'&gt;京东&lt;/a&gt;";
+// good
+var html = '&lt;a href="http://www.jd.com"&gt;京东&lt;/a&gt;';
+</code></pre></li>
+<li><p>大量 HTML 的拼接使用前置加号</p>
+
+<pre><code class="javascript"> <span class="keyword">var</span> theadHTML = <span class="string">''</span>
+        +<span class="string">'&lt;thead&gt;'</span>
+        +   <span class="string">'&lt;tr class="controls"&gt;&lt;th colspan="7"&gt;'</span>
+        +       <span class="string">'&lt;span class="selectMonth"&gt;'</span>
+        +           <span class="string">'&lt;select class="month"&gt;&lt;/select&gt;'</span>
+        +       <span class="string">'&lt;/span&gt;'</span>
+        +       <span class="string">'&lt;span class="slecteYear"&gt;'</span>
+        +           <span class="string">'&lt;select class="year"&gt;&lt;/select&gt;'</span>
+        +       <span class="string">'&lt;/span&gt;'</span>
+        +   <span class="string">'&lt;/th&gt;&lt;/tr&gt;'</span>
+        +   <span class="string">'&lt;tr class="days"&gt;'</span>
+        +       <span class="string">'&lt;th class="J-sun"&gt;日&lt;/th&gt;'
+        +       '&lt;th class="J-mon"&gt;一&lt;/th&gt;'
+        +       '&lt;th class="J-tue"&gt;二&lt;/th&gt;'
+        +       '&lt;th class="J-wed"&gt;三&lt;/th&gt;'
+        +       '&lt;th class="J-thu"&gt;四&lt;/th&gt;'
+        +       '&lt;th class="J-fri"&gt;五&lt;/th&gt;'
+        +       '&lt;th class="J-sat"&gt;六&lt;/th&gt;'</span>
+        +   '&lt;/tr&gt;'
+        +'&lt;/thead&gt;' 
+
+</code></pre></li>
+<li><p>需要引用闭包外层的上下文 <code>this</code> 时，使用标识符 <code>me</code>、<code>self</code>、 <code>that</code>， 不使用 <code>_this</code>。</p>
+
+<pre><code class="javascript"><span class="comment">// bad</span>
+<span class="function"><span class="keyword">function</span> <span class="title">outer</span><span class="params">()</span> {</span>
+    <span class="keyword">var</span> _<span class="keyword">this</span> = <span class="keyword">this</span>;
+    <span class="function"><span class="keyword">function</span> <span class="title">inner</span><span class="params">()</span> {</span>
+        _<span class="keyword">this</span>.search();
+    }
+}
+
+<span class="comment">// good</span>
+<span class="function"><span class="keyword">function</span> <span class="title">outer</span><span class="params">()</span> {</span>
+    <span class="keyword">var</span> me = <span class="keyword">this</span>;
+    <span class="function"><span class="keyword">function</span> <span class="title">inner</span><span class="params">()</span> {</span>
+        me.search();
+    }
+}
 </code></pre></li>
 </ul>
 

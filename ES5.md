@@ -52,7 +52,7 @@
 **[返回列表](#table-of-contents)**
 
 
-## <a name='Objects'>对象</a>
+## <a name='objects'>对象</a>
 
   - [2.1](#2.1) <a name='2.1'></a> 使用对象直接量创建对象。
 
@@ -102,7 +102,7 @@
 
 **[返回列表](#table-of-contents)**
 
-## <a name='Arrays'>数组</a>
+## <a name='arrays'>数组</a>
 
   - [3.1](#3.1) <a name='3.1'></a> 使用数组直接量定义数组。
 
@@ -152,7 +152,7 @@
 **[返回列表](#table-of-contents)**
 
 
-## <a name="Strings">字符串</a>
+## <a name="strings">字符串</a>
 
   - [4.1](#4.1) <a name='4.1'></a> 使用单引号定义字符串。
 
@@ -168,18 +168,17 @@
 
     ```javascript
     // bad
-    var errorMessage = 'This is a super long error that was thrown because of Batman. When you stop to think about how Batman had anything to do with this, you would get nowhere fast.';
+    var errorMessage = 'This is a super error that was thrown because of Batman. When you stop how Batman had anything to do with this, you would get nowhere fast.';
 
     // bad
-    var errorMessage = 'This is a super long error that was thrown because \
-    of Batman. When you stop to think about how Batman had anything to do \
-    with this, you would get nowhere \
-    fast.';
+    var errorMessage = 'This is a super error that was thrown because \
+    of Batman. When you stop how Batman had anything to do \
+    with this, you would get nowhere fast.';
 
     // good
-    var errorMessage = 'This is a super long error that was thrown because ' +
-      'of Batman. When you stop to think about how Batman had anything to do ' +
-      'with this, you would get nowhere fast.';
+    var errorMessage = 'This is a super error that was thrown because ' 
+            + 'of Batman. When you stop how Batman had anything to do '
+            + 'with this, you would get nowhere fast.';
     ```
 
   - [4.3](#4.3) <a name='4.3'></a> 编程时使用 `join` 而不是字符串连接来构建字符串。
@@ -228,7 +227,7 @@
 **[返回列表](#table-of-contents)**
 
 
-## <a name="Functions">函数</a>
+## <a name="functions">函数</a>
 
   - [5.1](#5.1) <a name='5.1'></a> 使用函数声明替代函数表达式。
 
@@ -246,32 +245,23 @@
 
     ```javascript
     // immediately-invoked function expression (IIFE)
-    (() => {
+    (function() {
       console.log('Welcome to the Internet. Please follow me.');
     })();
     ```
 
   - [5.3](#5.3) <a name='5.3'></a> 不要将一个函数定义非函数块内，如 `if` `while` 语句等。虽然浏览器允许这么干，但在各个浏览器中<a href="http://w3help.org/zh-cn/causes/SJ9002" target="_blank">表现不一致</a>。
-  - [5.4](#5.4) <a name='5.4'></a> **注意:** ECMA-262定义把块定义为一组语句，但函数声明不属于语句。 [查看ECMA-262关于此问题](http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf#page=97)。
 
     ```javascript
-    // bad
-    if (currentUser) {
-      function test() {
-        console.log('Nope.');
-      }
-    }
-
-    // good
-    let test;
-    if (currentUser) {
-      test = () => {
-        console.log('Yup.');
-      };
+    if (boo) {
+        function bar() {alert(1);}    
+    } else {
+        function bar() {alert(2);}
     }
     ```
 
-  - [5.5](#5.5) <a name='5.5'></a> 参数不要命名为  `arguments`，该名在函数内自动创建。
+
+  - [5.4](#5.4) <a name='5.4'></a> 参数不要命名为  `arguments`，该名在函数内自动创建。
 
     ```javascript
     // bad
